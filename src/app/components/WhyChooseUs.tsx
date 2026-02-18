@@ -30,9 +30,9 @@ export function WhyChooseUs() {
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-purple-50/20 to-white" />
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-50/30 to-transparent" />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           className="text-center max-w-3xl mx-auto mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,10 +41,10 @@ export function WhyChooseUs() {
         >
           <span className="text-sm text-blue-600 font-medium">Our Commitment</span>
           <h2 className="mt-2 text-3xl md:text-4xl">
-            Affordable Private Hospital in Benin Nigeria
+            Why Choose Med-Vical?
           </h2>
           <p className="mt-4 text-gray-600">
-            Healthcare should be accessible. As one of the most affordable private hospitals in Benin, 
+            Healthcare should be accessible. As one of the most affordable private hospitals in Benin,
             we offer competitive pricing without compromising quality.
           </p>
         </motion.div>
@@ -53,15 +53,15 @@ export function WhyChooseUs() {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className="text-center p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/20 hover:bg-white/70 transition-all"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <motion.div 
+                <motion.div
                   className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 text-white mb-4 shadow-lg"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}

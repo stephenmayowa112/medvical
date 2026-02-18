@@ -51,7 +51,7 @@ export function Services() {
         >
           <span className="text-sm text-blue-600 font-medium">Our Services</span>
           <h2 className="mt-2 text-3xl md:text-4xl">
-            Our Medical Services in Benin City
+            Our Medical Services
           </h2>
           <p className="mt-4 text-gray-600">
             As a full-service private hospital in Benin City, Med-Vical provides comprehensive healthcare services including:

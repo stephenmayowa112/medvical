@@ -11,9 +11,9 @@ export function Contact() {
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-purple-50/20 to-blue-50/30" />
       <div className="absolute inset-0 bg-gradient-to-tr from-blue-50/30 via-transparent to-purple-50/30" />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           className="text-center max-w-3xl mx-auto mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,17 +22,17 @@ export function Contact() {
         >
           <span className="text-sm text-blue-600 font-medium">Get In Touch</span>
           <h2 className="mt-2 text-3xl md:text-4xl">
-            Book an Appointment at Med-Vical Hospital in Benin City
+            Book an Appointment
           </h2>
           <p className="mt-4 text-gray-600">
-            Your health matters. Whether you need a maternity hospital in Benin, a reliable laboratory in Benin City, 
-            or 24/7 emergency treatment, Med-Vical is here to help. Call us today or book an appointment online to 
+            Your health matters. Whether you need a maternity hospital in Benin, a reliable laboratory in Benin City,
+            or 24/7 emergency treatment, Med-Vical is here to help. Call us today or book an appointment online to
             experience quality healthcare from one of the most trusted hospitals in Benin Nigeria.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          <motion.div 
+          <motion.div
             className="lg:col-span-2"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -52,7 +52,7 @@ export function Contact() {
                       <Input placeholder="Doe" />
                     </div>
                   </div>
-                  
+
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm mb-2">Email</label>
@@ -66,8 +66,8 @@ export function Contact() {
 
                   <div>
                     <label className="block text-sm mb-2">Message</label>
-                    <Textarea 
-                      placeholder="Tell us how we can help you..." 
+                    <Textarea
+                      placeholder="Tell us how we can help you..."
                       rows={5}
                     />
                   </div>
