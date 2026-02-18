@@ -1,7 +1,7 @@
 
-  # Recreate design with new text
+  # Medivical
 
-  This is a code bundle for Recreate design with new text. The original project is available at https://www.figma.com/design/XhKKHIxfAngikZC3ugUeh6/Recreate-design-with-new-text.
+  A modern dental clinic website built with React, Vite, and Tailwind CSS.
 
   ## Running the code
 
