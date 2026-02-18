@@ -96,9 +96,9 @@ export function Contact() {
                     <div>
                       <h3 className="font-medium mb-1">Location</h3>
                       <p className="text-sm text-gray-600">
-                        Benin City<br />
-                        Edo State, Nigeria<br />
-                        Near GRA, Ugbowo Area
+                        44 Boundary Road, GRA<br />
+                        Benin City, Edo State<br />
+                        Nigeria
                       </p>
                     </div>
                   </div>
@@ -120,7 +120,7 @@ export function Contact() {
                     </div>
                     <div>
                       <h3 className="font-medium mb-1">Phone</h3>
-                      <p className="text-sm text-gray-600">+234 xxx xxx xxxx</p>
+                      <p className="text-sm text-gray-600">09018911685</p>
                       <p className="text-sm text-gray-600">Emergency: 24/7</p>
                     </div>
                   </div>

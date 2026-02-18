@@ -62,8 +62,8 @@ export function Footer() {
           <div>
             <h3 className="text-white font-medium mb-4">Contact Info</h3>
             <ul className="space-y-3 text-sm">
-              <li>Benin City, Edo State<br />Nigeria</li>
-              <li>Phone: +234 xxx xxx xxxx</li>
+              <li>44 Boundary Road, GRA<br />Benin City, Edo State, Nigeria</li>
+              <li>Phone: 09018911685</li>
               <li>Email: info@medvical.com</li>
               <li className="pt-2">
                 <span className="text-white">Emergency:</span><br />
