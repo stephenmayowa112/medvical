@@ -7,11 +7,11 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-full bg-blue-600" />
+              <img src="/images/logo.png" alt="Med-Vical Specialist Hospital" className="h-10 w-auto" />
               <span className="font-semibold text-white text-lg">Med-Vical</span>
             </div>
             <p className="text-sm mb-4">
-              Best Hospital in Benin City Nigeria. Providing exceptional medical care for maternity, 
+              Best Hospital in Benin City Nigeria. Providing exceptional medical care for maternity,
               laboratory services, and emergency treatment since 2014.
             </p>
             <div className="flex gap-3">
