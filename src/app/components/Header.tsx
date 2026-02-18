@@ -4,12 +4,23 @@ import { Button } from './ui/button';
 export function Header() {
   return (
     <header className="border-b border-white/20 bg-white/70 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+      {/* Top bar with tagline */}
+      <div className="hidden md:block bg-gradient-to-r from-[#0d3b66] to-[#2a8cc4] text-white text-xs py-1.5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <span className="italic">...family friendly, client-centred</span>
+          <span>Pharmacy, Hospital/Lab Equipment & Consumables, Personal Healthcare & Consumer Products, & Healthcare Services</span>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
-            <img src="/images/logo.png" alt="Med-Vical Specialist Hospital" className="h-10 w-auto" />
-            <span className="font-semibold text-lg">Med-Vical</span>
-          </div>
+          <a href="#home" className="flex items-center gap-3">
+            <img src="/images/logo.png" alt="Med-Vical International" className="h-12 w-auto" />
+            <div className="hidden sm:flex flex-col">
+              <span className="font-bold text-lg text-[#0d3b66] leading-tight tracking-wide">MED-VICAL INTERNATIONAL</span>
+              <span className="text-[10px] text-[#2a8cc4] leading-tight">...family friendly, client-centred</span>
+            </div>
+          </a>
 
           <nav className="hidden md:flex items-center gap-8">
             <a href="#home" className="text-sm hover:text-blue-600 transition-colors">Home</a>

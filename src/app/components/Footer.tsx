@@ -6,10 +6,16 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img src="/images/logo.png" alt="Med-Vical Specialist Hospital" className="h-10 w-auto" />
-              <span className="font-semibold text-white text-lg">Med-Vical</span>
+            <div className="flex items-center gap-3 mb-2">
+              <img src="/images/logo.png" alt="Med-Vical International" className="h-12 w-auto" />
+              <div>
+                <span className="font-bold text-white text-lg block leading-tight">MED-VICAL INTERNATIONAL</span>
+                <span className="text-blue-400 text-xs italic">...family friendly, client-centred</span>
+              </div>
             </div>
+            <p className="text-xs text-gray-400 mb-3">
+              Pharmacy, Hospital/Lab Equipment & Consumables, Personal Healthcare & Consumer Products, & Healthcare Services
+            </p>
             <p className="text-sm mb-4">
               Best Hospital in Benin City Nigeria. Providing exceptional medical care for maternity,
               laboratory services, and emergency treatment since 2014.
@@ -44,11 +50,12 @@ export function Footer() {
           <div>
             <h3 className="text-white font-medium mb-4">Our Services</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Maternity Care</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Laboratory Tests</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Emergency Care</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Pediatric Services</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Family Healthcare</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition-colors">Pharmacy</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition-colors">Hospital/Lab Equipment</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition-colors">Maternity Care</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition-colors">Laboratory Tests</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition-colors">Emergency Care</a></li>
+              <li><a href="#services" className="hover:text-blue-400 transition-colors">Healthcare Services</a></li>
             </ul>
           </div>
 
@@ -67,7 +74,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 text-sm text-center">
-          <p>&copy; 2026 Med-Vical Specialist Hospital. Best Hospital in Benin City Nigeria. All rights reserved.</p>
+          <p>&copy; 2026 Med-Vical International. Best Hospital in Benin City Nigeria. All rights reserved.</p>
         </div>
       </div>
     </footer>
