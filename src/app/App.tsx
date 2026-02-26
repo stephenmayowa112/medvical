@@ -1,29 +1,38 @@
+import { BrowserRouter, Routes, Route } from 'react-router';
 import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Stats } from './components/Stats';
-import { Services } from './components/Services';
-import { WhyChooseUs } from './components/WhyChooseUs';
-import { Gallery } from './components/Gallery';
-import { FAQ } from './components/FAQ';
-import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { lazy, Suspense } from 'react';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const StorePage = lazy(() => import('./pages/StorePage'));
+const HealthEducationPage = lazy(() => import('./pages/HealthEducationPage'));
+const ClinicRegistrationPage = lazy(() => import('./pages/ClinicRegistrationPage'));
+
+function PageLoader() {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center">
+      <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
 
 export default function App() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Stats />
-        <Services />
-        <WhyChooseUs />
-        <Gallery />
-        <FAQ />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen">
+        <Header />
+        <main>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/store" element={<StorePage />} />
+              <Route path="/health-education" element={<HealthEducationPage />} />
+              <Route path="/clinic-registration" element={<ClinicRegistrationPage />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }

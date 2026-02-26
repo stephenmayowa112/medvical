@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Link } from 'react-router';
 
 export function Footer() {
   return (
@@ -21,16 +22,16 @@ export function Footer() {
               laboratory services, and emergency treatment since 2014.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" aria-label="Facebook" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" aria-label="Twitter" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
                 <Twitter className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" aria-label="Instagram" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>
@@ -39,23 +40,25 @@ export function Footer() {
           <div>
             <h3 className="text-white font-medium mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#home" className="hover:text-blue-400 transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-blue-400 transition-colors">About Us</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Services</a></li>
-              <li><a href="#gallery" className="hover:text-blue-400 transition-colors">Gallery</a></li>
-              <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
+              <li><Link to="/" className="hover:text-blue-400 transition-colors">Home</Link></li>
+              <li><a href="/#about" className="hover:text-blue-400 transition-colors">About Us</a></li>
+              <li><a href="/#services" className="hover:text-blue-400 transition-colors">Services</a></li>
+              <li><Link to="/store" className="hover:text-blue-400 transition-colors">Store</Link></li>
+              <li><Link to="/health-education" className="hover:text-blue-400 transition-colors">Health Education</Link></li>
+              <li><Link to="/clinic-registration" className="hover:text-blue-400 transition-colors">Clinic Registration</Link></li>
+              <li><a href="/#contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-white font-medium mb-4">Our Services</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Pharmacy</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Hospital/Lab Equipment</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Maternity Care</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Laboratory Tests</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Emergency Care</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Healthcare Services</a></li>
+              <li><a href="/#services" className="hover:text-blue-400 transition-colors">Pharmacy</a></li>
+              <li><a href="/#services" className="hover:text-blue-400 transition-colors">Hospital/Lab Equipment</a></li>
+              <li><a href="/#services" className="hover:text-blue-400 transition-colors">Maternity Care</a></li>
+              <li><a href="/#services" className="hover:text-blue-400 transition-colors">Laboratory Tests</a></li>
+              <li><a href="/#services" className="hover:text-blue-400 transition-colors">Emergency Care</a></li>
+              <li><a href="/#services" className="hover:text-blue-400 transition-colors">Healthcare Services</a></li>
             </ul>
           </div>
 
