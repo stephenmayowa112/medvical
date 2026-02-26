@@ -24,13 +24,10 @@ export function Hero() {
               Top Private Hospital in Benin City, Nigeria
             </h1>
             <p className="text-base md:text-lg font-semibold text-[#2a8cc4]">
-              Pharmacy, Hospital/Lab Equipment & Consumables, Personal Healthcare & Consumer Products, & Healthcare Services
+              Pharmacy &bull; Healthcare Services &bull; Hospital Equipment &amp; Consumables
             </p>
             <p className="text-lg text-gray-600">
-              Med-Vical International is one of the most trusted hospitals in Benin Nigeria,
-              providing high-quality, affordable and patient-centered healthcare. If you are searching
-              for the best hospital in Benin City for maternity care, laboratory tests, surgery,
-              pediatrics or emergency treatment, Med-Vical is your reliable healthcare partner.
+              Trusted, affordable and patient-centered healthcare — from maternity care and paediatrics to surgery, lab diagnostics and 24/7 emergency services.
             </p>
             <motion.div
               className="flex flex-wrap gap-4"
