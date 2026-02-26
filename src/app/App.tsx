@@ -7,6 +7,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const StorePage = lazy(() => import('./pages/StorePage'));
 const HealthEducationPage = lazy(() => import('./pages/HealthEducationPage'));
 const ClinicRegistrationPage = lazy(() => import('./pages/ClinicRegistrationPage'));
+const ArticlePage = lazy(() => import('./pages/ArticlePage'));
 
 function PageLoader() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/store" element={<StorePage />} />
               <Route path="/health-education" element={<HealthEducationPage />} />
+              <Route path="/health-education/:slug" element={<ArticlePage />} />
               <Route path="/clinic-registration" element={<ClinicRegistrationPage />} />
             </Routes>
           </Suspense>

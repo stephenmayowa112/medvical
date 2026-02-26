@@ -4,111 +4,9 @@ import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';
 import { Card, CardContent } from '../components/ui/card';
 import { motion } from 'motion/react';
-import { useState, useMemo } from 'react';
-
-interface Article {
-  id: number;
-  title: string;
-  excerpt: string;
-  category: string;
-  author: string;
-  date: string;
-  readTime: string;
-  image: string;
-  slug: string;
-}
-
-const articleCategories = [
-  'All',
-  'Maternal Health',
-  'Child Health',
-  'Nutrition',
-  'Disease Prevention',
-  'Mental Health',
-  'First Aid',
-];
-
-// Placeholder articles — replace with real content
-const articles: Article[] = [
-  {
-    id: 1,
-    title: 'Understanding Antenatal Care: A Complete Guide for Expecting Mothers',
-    excerpt:
-      'Antenatal care is essential for a healthy pregnancy. Learn what to expect during your visits, which tests are important, and how to prepare for a safe delivery at Med-Vical.',
-    category: 'Maternal Health',
-    author: 'Dr. Med-Vical Team',
-    date: '2026-02-20',
-    readTime: '8 min read',
-    image:
-      'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    slug: 'understanding-antenatal-care',
-  },
-  {
-    id: 2,
-    title: 'Childhood Immunization Schedule in Nigeria: What Every Parent Should Know',
-    excerpt:
-      'Immunization protects your child from life-threatening diseases. Here is the recommended vaccination schedule for children in Nigeria and why you should not skip any dose.',
-    category: 'Child Health',
-    author: 'Dr. Med-Vical Team',
-    date: '2026-02-15',
-    readTime: '6 min read',
-    image:
-      'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    slug: 'childhood-immunization-schedule-nigeria',
-  },
-  {
-    id: 3,
-    title: 'Malaria Prevention Tips: How to Protect Your Family in Benin City',
-    excerpt:
-      'Malaria remains a major health challenge in Nigeria. Discover practical prevention strategies, symptoms to watch for, and when to seek emergency treatment.',
-    category: 'Disease Prevention',
-    author: 'Dr. Med-Vical Team',
-    date: '2026-02-10',
-    readTime: '5 min read',
-    image:
-      'https://images.unsplash.com/photo-1631549916768-4b9318e57f91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    slug: 'malaria-prevention-tips-benin-city',
-  },
-  {
-    id: 4,
-    title: 'Balanced Diet for Nigerians: Affordable Nutrition for the Whole Family',
-    excerpt:
-      'Eating well does not have to be expensive. Learn how to build a balanced diet with locally available Nigerian foods to improve your health and energy levels.',
-    category: 'Nutrition',
-    author: 'Dr. Med-Vical Team',
-    date: '2026-02-05',
-    readTime: '7 min read',
-    image:
-      'https://images.unsplash.com/photo-1490645935967-10de6ba17061?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    slug: 'balanced-diet-nigerians-affordable-nutrition',
-  },
-  {
-    id: 5,
-    title: 'Mental Health Awareness: Breaking the Stigma in Nigerian Communities',
-    excerpt:
-      'Mental health is just as important as physical health. Learn to recognize the signs of depression, anxiety, and stress, and find out where to get help in Benin City.',
-    category: 'Mental Health',
-    author: 'Dr. Med-Vical Team',
-    date: '2026-01-28',
-    readTime: '6 min read',
-    image:
-      'https://images.unsplash.com/photo-1493836512294-502baa1986e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    slug: 'mental-health-awareness-nigerian-communities',
-  },
-  {
-    id: 6,
-    title: 'Basic First Aid Every Nigerian Home Should Know',
-    excerpt:
-      'Accidents can happen anywhere. Knowing basic first aid can save lives. Learn how to handle burns, cuts, choking, and other emergencies before reaching the hospital.',
-    category: 'First Aid',
-    author: 'Dr. Med-Vical Team',
-    date: '2026-01-20',
-    readTime: '5 min read',
-    image:
-      'https://images.unsplash.com/photo-1603398938378-e54eab446dde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    slug: 'basic-first-aid-nigerian-homes',
-  },
-];
+import { useState, useMemo, useEffect } from 'react';
+import { Link } from 'react-router';
+import { articles, articleCategories } from '../data/articles';
 
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString('en-NG', {
@@ -121,6 +19,12 @@ function formatDate(dateString: string) {
 export default function HealthEducationPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = 'Health Education & Resources | Med-Vical International';
+    return () => { document.title = 'Med-Vical International'; };
+  }, []);
 
   const filteredArticles = useMemo(() => {
     return articles.filter((a) => {
@@ -226,10 +130,12 @@ export default function HealthEducationPage() {
                         {filteredArticles[0].readTime}
                       </span>
                     </div>
-                    <Button className="w-fit bg-blue-600 hover:bg-blue-700">
-                      Read Article
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
+                    <Link to={`/health-education/${filteredArticles[0].slug}`}>
+                      <Button className="w-fit bg-blue-600 hover:bg-blue-700">
+                        Read Article
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
                   </CardContent>
                 </div>
               </Card>
@@ -263,6 +169,7 @@ export default function HealthEducationPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
+                  <Link to={`/health-education/${article.slug}`} className="block h-full">
                   <Card className="overflow-hidden hover:shadow-xl transition-all h-full border border-white/20 bg-white/60 backdrop-blur-sm group cursor-pointer">
                     <div className="aspect-[16/10] overflow-hidden">
                       <img
@@ -296,6 +203,7 @@ export default function HealthEducationPage() {
                       </div>
                     </CardContent>
                   </Card>
+                  </Link>
                 </motion.div>
               ))}
             </div>
