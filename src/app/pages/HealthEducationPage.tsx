@@ -1,4 +1,4 @@
-import { BookOpen, Search, Calendar, User, ArrowRight, Clock } from 'lucide-react';
+import { BookOpen, Search, Calendar, User, ArrowRight, Clock, CheckCircle2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';
@@ -7,6 +7,15 @@ import { motion } from 'motion/react';
 import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router';
 import { articles, articleCategories } from '../data/articles';
+
+const gridContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.07 } },
+};
+const gridItem = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(4px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] } },
+};
 
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString('en-NG', {
@@ -81,23 +90,38 @@ export default function HealthEducationPage() {
       <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d3b66] via-[#1a6aa5] to-[#2a8cc4]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+        <motion.div
+          className="absolute bottom-10 left-10 w-56 h-56 bg-cyan-300/10 rounded-full blur-3xl"
+          animate={{ x: [0, 20, 0], y: [0, -12, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4">
+            <motion.div
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+            >
               <BookOpen className="w-4 h-4" />
               <span className="text-sm">Health Education & Resources</span>
-            </div>
+            </motion.div>
             <h1 className="text-4xl md:text-5xl mb-4">
               Your Trusted Source for Health Information
             </h1>
-            <p className="text-lg text-blue-100 max-w-2xl mx-auto">
+            <motion.p
+              className="text-lg text-blue-100 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               Well-researched, professionally reviewed health articles to keep you and your family
               informed. Written by the Med-Vical medical team in Benin City.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -118,17 +142,18 @@ export default function HealthEducationPage() {
             </div>
             <div className="flex items-center gap-2 flex-wrap">
               {articleCategories.map((cat) => (
-                <Badge
-                  key={cat}
-                  variant={selectedCategory === cat ? 'default' : 'outline'}
-                  className={`cursor-pointer transition-all ${selectedCategory === cat
-                      ? 'bg-blue-600 hover:bg-blue-700'
-                      : 'hover:bg-blue-50'
-                    }`}
-                  onClick={() => setSelectedCategory(cat)}
-                >
-                  {cat}
-                </Badge>
+                <motion.div key={cat} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
+                  <Badge
+                    variant={selectedCategory === cat ? 'default' : 'outline'}
+                    className={`cursor-pointer transition-all ${selectedCategory === cat
+                        ? 'bg-blue-600 hover:bg-blue-700'
+                        : 'hover:bg-blue-50'
+                      }`}
+                    onClick={() => setSelectedCategory(cat)}
+                  >
+                    {cat}
+                  </Badge>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -137,46 +162,55 @@ export default function HealthEducationPage() {
           {filteredArticles.length > 0 && selectedCategory === 'All' && searchQuery === '' && (
             <motion.div
               className="mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 0.6 }}
             >
-              <Card className="overflow-hidden border border-white/20 bg-white/60 backdrop-blur-sm hover:shadow-2xl transition-all">
-                <div className="grid md:grid-cols-2">
-                  <div className="aspect-[16/10] md:aspect-auto overflow-hidden">
-                    <img
-                      src={filteredArticles[0].image}
-                      alt={filteredArticles[0].title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <CardContent className="p-6 md:p-8 flex flex-col justify-center">
-                    <Badge className="w-fit mb-3 bg-blue-600">{filteredArticles[0].category}</Badge>
-                    <h2 className="text-2xl md:text-3xl mb-3">{filteredArticles[0].title}</h2>
-                    <p className="text-gray-600 mb-4">{filteredArticles[0].excerpt}</p>
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                      <span className="flex items-center gap-1">
-                        <User className="w-3 h-3" />
-                        {filteredArticles[0].author}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {formatDate(filteredArticles[0].date)}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {filteredArticles[0].readTime}
-                      </span>
+              <motion.div
+                whileHover={{ y: -6, boxShadow: '0 25px 50px -12px rgba(59,130,246,0.15)' }}
+                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              >
+                <Card className="overflow-hidden border border-white/20 bg-white/60 backdrop-blur-sm">
+                  <div className="grid md:grid-cols-2">
+                    <div className="aspect-[16/10] md:aspect-auto overflow-hidden">
+                      <motion.img
+                        src={filteredArticles[0].image}
+                        alt={filteredArticles[0].title}
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.5 }}
+                      />
                     </div>
-                    <Link to={`/health-education/${filteredArticles[0].slug}`}>
-                      <Button className="w-fit bg-blue-600 hover:bg-blue-700">
-                        Read Article
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </div>
-              </Card>
+                    <CardContent className="p-6 md:p-8 flex flex-col justify-center">
+                      <Badge className="w-fit mb-3 bg-blue-600">{filteredArticles[0].category}</Badge>
+                      <h2 className="text-2xl md:text-3xl mb-3">{filteredArticles[0].title}</h2>
+                      <p className="text-gray-600 mb-4">{filteredArticles[0].excerpt}</p>
+                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                        <span className="flex items-center gap-1">
+                          <User className="w-3 h-3" />
+                          {filteredArticles[0].author}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-3 h-3" />
+                          {formatDate(filteredArticles[0].date)}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {filteredArticles[0].readTime}
+                        </span>
+                      </div>
+                      <Link to={`/health-education/${filteredArticles[0].slug}`}>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} className="w-fit">
+                          <Button className="w-fit bg-blue-600 hover:bg-blue-700">
+                            Read Article
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Button>
+                        </motion.div>
+                      </Link>
+                    </CardContent>
+                  </div>
+                </Card>
+              </motion.div>
             </motion.div>
           )}
 
@@ -196,83 +230,148 @@ export default function HealthEducationPage() {
               </Button>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+              variants={gridContainer}
+              initial="hidden"
+              animate="visible"
+              key={selectedCategory + searchQuery}
+            >
               {(selectedCategory === 'All' && searchQuery === ''
                 ? filteredArticles.slice(1)
                 : filteredArticles
-              ).map((article, index) => (
-                <motion.div
-                  key={article.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                >
+              ).map((article) => (
+                <motion.div key={article.id} variants={gridItem}>
                   <Link to={`/health-education/${article.slug}`} className="block h-full">
-                    <Card className="overflow-hidden hover:shadow-xl transition-all h-full border border-white/20 bg-white/60 backdrop-blur-sm group cursor-pointer">
-                      <div className="aspect-[16/10] overflow-hidden">
-                        <img
-                          src={article.image}
-                          alt={article.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <CardContent className="p-5">
-                        <div className="flex items-center gap-2 mb-3">
-                          <Badge variant="outline" className="text-xs">
-                            {article.category}
-                          </Badge>
-                          <span className="text-xs text-gray-400 flex items-center gap-1">
-                            <Clock className="w-3 h-3" />
-                            {article.readTime}
-                          </span>
+                    <motion.div
+                      whileHover={{ y: -8, boxShadow: '0 20px 40px -12px rgba(59,130,246,0.12)' }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                      className="h-full"
+                    >
+                      <Card className="overflow-hidden h-full border border-white/20 bg-white/60 backdrop-blur-sm group cursor-pointer">
+                        <div className="aspect-[16/10] overflow-hidden">
+                          <motion.img
+                            src={article.image}
+                            alt={article.title}
+                            className="w-full h-full object-cover"
+                            whileHover={{ scale: 1.06 }}
+                            transition={{ duration: 0.4 }}
+                          />
                         </div>
-                        <h3 className="font-semibold text-base mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
-                          {article.title}
-                        </h3>
-                        <p className="text-sm text-gray-500 mb-4 line-clamp-3">
-                          {article.excerpt}
-                        </p>
-                        <div className="flex items-center justify-between text-xs text-gray-400">
-                          <span className="flex items-center gap-1">
-                            <User className="w-3 h-3" />
-                            {article.author}
-                          </span>
-                          <span>{formatDate(article.date)}</span>
-                        </div>
-                      </CardContent>
-                    </Card>
+                        <CardContent className="p-5">
+                          <div className="flex items-center gap-2 mb-3">
+                            <Badge variant="outline" className="text-xs">
+                              {article.category}
+                            </Badge>
+                            <span className="text-xs text-gray-400 flex items-center gap-1">
+                              <Clock className="w-3 h-3" />
+                              {article.readTime}
+                            </span>
+                          </div>
+                          <h3 className="font-semibold text-base mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                            {article.title}
+                          </h3>
+                          <p className="text-sm text-gray-500 mb-4 line-clamp-3">
+                            {article.excerpt}
+                          </p>
+                          <div className="flex items-center justify-between text-xs text-gray-400">
+                            <span className="flex items-center gap-1">
+                              <User className="w-3 h-3" />
+                              {article.author}
+                            </span>
+                            <span>{formatDate(article.date)}</span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
                   </Link>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
 
           {/* Load More */}
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              Load More Articles
-            </Button>
-          </div>
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} className="inline-block">
+              <Button variant="outline" size="lg">
+                Load More Articles
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Newsletter CTA */}
-      <section className="relative py-16">
+      <section className="relative py-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66] to-[#2a8cc4]" />
+        <motion.div
+          className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"
+          animate={{ scale: [1, 1.3, 1] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-2xl md:text-3xl mb-3">Stay Informed About Your Health</h2>
-          <p className="text-blue-100 mb-6">
+          <motion.h2
+            className="text-2xl md:text-3xl mb-3"
+            initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Stay Informed About Your Health
+          </motion.h2>
+          <motion.p
+            className="text-blue-100 mb-6"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             Subscribe to our newsletter for the latest health tips, articles, and updates from Med-Vical International.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <Input
               placeholder="Enter your email address"
               className="bg-white/10 border-white/20 text-white placeholder:text-blue-200"
             />
-            <Button className="bg-white text-[#0d3b66] hover:bg-gray-100 whitespace-nowrap">
-              Subscribe
-            </Button>
-          </div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+              <Button className="bg-white text-[#0d3b66] hover:bg-gray-100 whitespace-nowrap">
+                Subscribe
+              </Button>
+            </motion.div>
+          </motion.div>
+          <motion.div
+            className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-blue-100"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            {['Free weekly articles', 'Expert medical advice', 'Health tips & updates'].map((text, i) => (
+              <motion.span
+                key={i}
+                className="flex items-center gap-2"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + i * 0.1 }}
+              >
+                <CheckCircle2 className="w-4 h-4 text-green-300" />
+                {text}
+              </motion.span>
+            ))}
+          </motion.div>
         </div>
       </section>
     </div>

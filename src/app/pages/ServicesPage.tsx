@@ -25,6 +25,8 @@ const serviceDivisions = [
     link: '/services/medical-centre',
     image:
       'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    accent: 'from-blue-500 to-cyan-500',
+    glow: 'rgba(59,130,246,0.25)',
   },
   {
     icon: Package,
@@ -42,8 +44,19 @@ const serviceDivisions = [
     link: '/services/medical-supplies',
     image:
       'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    accent: 'from-emerald-500 to-teal-500',
+    glow: 'rgba(16,185,129,0.25)',
   },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.25 } },
+};
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, filter: 'blur(6px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] } },
+};
 
 export default function ServicesPage() {
   useEffect(() => {
@@ -58,22 +71,40 @@ export default function ServicesPage() {
       <section className="relative py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d3b66] via-[#1a6aa5] to-[#2a8cc4]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+        {/* Floating blobs */}
+        <motion.div
+          className="absolute top-10 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl"
+          animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute bottom-10 right-10 w-56 h-56 bg-cyan-400/10 rounded-full blur-3xl"
+          animate={{ x: [0, -25, 0], y: [0, 25, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <Badge className="mb-4 bg-white/20 backdrop-blur-sm text-white border-white/30">
-              Our Services
-            </Badge>
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.2 }}>
+              <Badge className="mb-4 bg-white/20 backdrop-blur-sm text-white border-white/30">
+                Our Services
+              </Badge>
+            </motion.div>
             <h1 className="text-4xl md:text-5xl mb-4">
               Comprehensive Healthcare &amp; Supply Solutions
             </h1>
-            <p className="text-lg text-blue-100 max-w-2xl mx-auto">
+            <motion.p
+              className="text-lg text-blue-100 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               Med-Vical International operates two key service divisions — our Medical Centre providing
               clinical healthcare, and our Supply division distributing quality medical products nationwide.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -81,81 +112,130 @@ export default function ServicesPage() {
       {/* Service Divisions */}
       <section className="relative py-16 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <motion.div
+          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           {serviceDivisions.map((division, index) => {
             const Icon = division.icon;
             const isReversed = index % 2 !== 0;
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-              >
-                <Card className="overflow-hidden border border-white/20 bg-white/70 backdrop-blur-sm hover:shadow-2xl transition-all">
-                  <div className={`grid md:grid-cols-2 ${isReversed ? 'md:[direction:rtl]' : ''}`}>
-                    <div className="aspect-[16/10] md:aspect-auto overflow-hidden">
-                      <img
-                        src={division.image}
-                        alt={division.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <CardContent className={`p-6 md:p-10 flex flex-col justify-center ${isReversed ? 'md:[direction:ltr]' : ''}`}>
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">
-                          <Icon className="w-6 h-6 text-white" />
-                        </div>
-                        <h2 className="text-2xl md:text-3xl">{division.title}</h2>
+              <motion.div key={index} variants={cardVariants}>
+                <motion.div
+                  whileHover={{ y: -8, boxShadow: `0 25px 50px -12px ${division.glow}` }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                >
+                  <Card className="overflow-hidden border border-white/20 bg-white/70 backdrop-blur-sm shadow-lg">
+                    <div className={`grid md:grid-cols-2 ${isReversed ? 'md:[direction:rtl]' : ''}`}>
+                      <div className="aspect-[16/10] md:aspect-auto overflow-hidden">
+                        <motion.img
+                          src={division.image}
+                          alt={division.title}
+                          className="w-full h-full object-cover"
+                          whileHover={{ scale: 1.06 }}
+                          transition={{ duration: 0.6, ease: 'easeOut' }}
+                        />
                       </div>
-                      <p className="text-gray-600 mb-6 leading-relaxed">{division.description}</p>
+                      <CardContent className={`p-6 md:p-10 flex flex-col justify-center ${isReversed ? 'md:[direction:ltr]' : ''}`}>
+                        <div className="flex items-center gap-3 mb-4">
+                          <motion.div
+                            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${division.accent} flex items-center justify-center shadow-lg`}
+                            whileHover={{ scale: 1.15, rotate: 5 }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                          >
+                            <Icon className="w-6 h-6 text-white" />
+                          </motion.div>
+                          <h2 className="text-2xl md:text-3xl">{division.title}</h2>
+                        </div>
+                        <p className="text-gray-600 mb-6 leading-relaxed">{division.description}</p>
 
-                      <ul className="grid grid-cols-2 gap-2 mb-6">
-                        {division.highlights.map((item, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 flex-shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+                        <ul className="grid grid-cols-2 gap-2 mb-6">
+                          {division.highlights.map((item, idx) => (
+                            <motion.li
+                              key={idx}
+                              className="flex items-center gap-2 text-sm text-gray-700"
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.3, delay: idx * 0.06 }}
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 flex-shrink-0" />
+                              {item}
+                            </motion.li>
+                          ))}
+                        </ul>
 
-                      <Link to={division.link} className="w-fit">
-                        <Button className="bg-blue-600 hover:bg-blue-700">
-                          Learn More
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                      </Link>
-                    </CardContent>
-                  </div>
-                </Card>
+                        <Link to={division.link} className="w-fit">
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                            <Button className="bg-blue-600 hover:bg-blue-700 group/btn">
+                              Learn More
+                              <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                            </Button>
+                          </motion.div>
+                        </Link>
+                      </CardContent>
+                    </div>
+                  </Card>
+                </motion.div>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="relative py-16">
+      <section className="relative py-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66] to-[#2a8cc4]" />
+        <motion.div
+          className="absolute -top-20 -left-20 w-60 h-60 bg-white/5 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-2xl md:text-3xl mb-3">Your Health Is Our Priority</h2>
-          <p className="text-blue-100 mb-6">
+          <motion.h2
+            className="text-2xl md:text-3xl mb-3"
+            initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Your Health Is Our Priority
+          </motion.h2>
+          <motion.p
+            className="text-blue-100 mb-6"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
             Whether you need clinical care or quality medical supplies, Med-Vical International is your trusted partner.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          </motion.p>
+          <motion.div
+            className="flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <Link to="/clinic-registration">
-              <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
-                Register as Patient
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
+                  Register as Patient
+                </Button>
+              </motion.div>
             </Link>
             <a href="tel:+2349018911685">
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                <Phone className="w-4 h-4 mr-2" />
-                Call Us
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call Us
+                </Button>
+              </motion.div>
             </a>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

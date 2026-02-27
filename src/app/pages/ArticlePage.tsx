@@ -1,4 +1,4 @@
-import { ArrowLeft, Calendar, User, Clock, MapPin, Share2 } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Clock, MapPin, Share2, CheckCircle2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Card, CardContent } from '../components/ui/card';
@@ -208,11 +208,16 @@ export default function ArticlePage() {
       <section className="relative py-12 md:py-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d3b66] via-[#1a6aa5] to-[#2a8cc4]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+        <motion.div
+          className="absolute bottom-10 right-10 w-48 h-48 bg-cyan-300/10 rounded-full blur-3xl"
+          animate={{ x: [0, -15, 0], y: [0, 10, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <Link
               to="/health-education"
@@ -222,15 +227,22 @@ export default function ArticlePage() {
               <span className="text-sm">Back to Health Education</span>
             </Link>
 
-            <Badge className="mb-4 bg-white/20 backdrop-blur-sm text-white border-white/30">
-              {article.category}
-            </Badge>
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.15 }}>
+              <Badge className="mb-4 bg-white/20 backdrop-blur-sm text-white border-white/30">
+                {article.category}
+              </Badge>
+            </motion.div>
 
             <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
               {article.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-blue-100">
+            <motion.div
+              className="flex flex-wrap items-center gap-4 text-sm text-blue-100"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+            >
               <span className="flex items-center gap-1.5">
                 <User className="w-4 h-4" />
                 {article.author}
@@ -243,7 +255,7 @@ export default function ArticlePage() {
                 <Clock className="w-4 h-4" />
                 {article.readTime}
               </span>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -256,16 +268,18 @@ export default function ArticlePage() {
             {/* Main Content */}
             <motion.article
               className="prose-article"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               {/* Featured Image */}
               <div className="rounded-2xl overflow-hidden mb-8 shadow-lg">
-                <img
+                <motion.img
                   src={article.image}
                   alt={article.title}
                   className="w-full h-auto object-cover aspect-[16/9]"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.5 }}
                 />
               </div>
 
@@ -282,16 +296,23 @@ export default function ArticlePage() {
                     <span className="text-sm text-gray-500">Share this article</span>
                   </div>
                   <Link to="/clinic-registration">
-                    <Button className="bg-blue-600 hover:bg-blue-700">
-                      Book an Appointment
-                    </Button>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                      <Button className="bg-blue-600 hover:bg-blue-700">
+                        Book an Appointment
+                      </Button>
+                    </motion.div>
                   </Link>
                 </div>
               </div>
             </motion.article>
 
             {/* Sidebar */}
-            <aside className="hidden lg:block space-y-6">
+            <motion.aside
+              className="hidden lg:block space-y-6"
+              initial={{ opacity: 0, x: 30, filter: 'blur(4px)' }}
+              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
               {/* CTA Card */}
               <Card className="border border-blue-100 bg-blue-50/50 sticky top-24">
                 <CardContent className="p-5">
@@ -300,14 +321,18 @@ export default function ArticlePage() {
                     Medvical International provides trusted, comprehensive child healthcare services in Benin City.
                   </p>
                   <Link to="/clinic-registration" className="block">
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 mb-2" size="sm">
-                      Register Now
-                    </Button>
+                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700 mb-2" size="sm">
+                        Register Now
+                      </Button>
+                    </motion.div>
                   </Link>
                   <a href="tel:+2348147982690" className="block">
-                    <Button variant="outline" className="w-full" size="sm">
-                      Call: 08147982690
-                    </Button>
+                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                      <Button variant="outline" className="w-full" size="sm">
+                        Call: 08147982690
+                      </Button>
+                    </motion.div>
                   </a>
                 </CardContent>
               </Card>
@@ -317,52 +342,113 @@ export default function ArticlePage() {
                 <div>
                   <h3 className="font-semibold text-sm text-gray-800 mb-3">Related Articles</h3>
                   <div className="space-y-3">
-                    {relatedArticles.map((related) => (
-                      <Link
+                    {relatedArticles.map((related, i) => (
+                      <motion.div
                         key={related.id}
-                        to={`/health-education/${related.slug}`}
-                        className="block group"
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
                       >
-                        <Card className="border border-gray-100 hover:shadow-md transition-all">
-                          <CardContent className="p-3">
-                            <p className="text-sm font-medium group-hover:text-blue-600 transition-colors line-clamp-2">
-                              {related.title}
-                            </p>
-                            <span className="text-xs text-gray-400 mt-1 block">
-                              {related.readTime}
-                            </span>
-                          </CardContent>
-                        </Card>
-                      </Link>
+                        <Link
+                          to={`/health-education/${related.slug}`}
+                          className="block group"
+                        >
+                          <motion.div
+                            whileHover={{ x: 4, boxShadow: '0 8px 20px -6px rgba(59,130,246,0.12)' }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                          >
+                            <Card className="border border-gray-100">
+                              <CardContent className="p-3">
+                                <p className="text-sm font-medium group-hover:text-blue-600 transition-colors line-clamp-2">
+                                  {related.title}
+                                </p>
+                                <span className="text-xs text-gray-400 mt-1 block">
+                                  {related.readTime}
+                                </span>
+                              </CardContent>
+                            </Card>
+                          </motion.div>
+                        </Link>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
               )}
-            </aside>
+            </motion.aside>
           </div>
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="relative py-12">
+      <section className="relative py-12 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0d3b66] to-[#2a8cc4]" />
+        <motion.div
+          className="absolute top-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl"
+          animate={{ scale: [1, 1.3, 1] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-2xl md:text-3xl mb-3">Your Child's Health Deserves Expert Care</h2>
-          <p className="text-blue-100 mb-6">
+          <motion.h2
+            className="text-2xl md:text-3xl mb-3"
+            initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Your Child's Health Deserves Expert Care
+          </motion.h2>
+          <motion.p
+            className="text-blue-100 mb-6"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             Visit Medvical International Ltd in Benin City for advanced paediatric care, NICU services, and trusted healthcare.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          </motion.p>
+          <motion.div
+            className="flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <Link to="/clinic-registration">
-              <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
-                Register as a Patient
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
+                  Register as a Patient
+                </Button>
+              </motion.div>
             </Link>
             <Link to="/health-education">
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                More Articles
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+                  More Articles
+                </Button>
+              </motion.div>
             </Link>
-          </div>
+          </motion.div>
+          <motion.div
+            className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-blue-100"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            {['Expert paediatric care', 'NICU services', '24/7 emergency'].map((text, i) => (
+              <motion.span
+                key={i}
+                className="flex items-center gap-2"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 + i * 0.1 }}
+              >
+                <CheckCircle2 className="w-4 h-4 text-green-300" />
+                {text}
+              </motion.span>
+            ))}
+          </motion.div>
         </div>
       </section>
     </div>

@@ -3,8 +3,14 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { Card, CardContent } from '../components/ui/card';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
+
+const contactColors = [
+  { accent: 'from-blue-500 to-cyan-500', glow: 'rgba(59,130,246,0.15)' },
+  { accent: 'from-emerald-500 to-teal-500', glow: 'rgba(16,185,129,0.15)' },
+  { accent: 'from-violet-500 to-purple-500', glow: 'rgba(139,92,246,0.15)' },
+];
 
 interface FormData {
   firstName: string;
@@ -81,6 +87,11 @@ export default function ClinicRegistrationPage() {
       <div className="min-h-screen">
         <section className="relative py-16 md:py-20 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#0d3b66] via-[#1a6aa5] to-[#2a8cc4]" />
+          <motion.div
+            className="absolute top-10 right-20 w-48 h-48 bg-green-300/10 rounded-full blur-3xl"
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+          />
           <div className="relative max-w-2xl mx-auto px-4 text-center text-white py-20">
             <motion.div
               initial={{ scale: 0 }}
@@ -91,8 +102,8 @@ export default function ClinicRegistrationPage() {
             </motion.div>
             <motion.h1
               className="text-3xl md:text-4xl mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               Registration Submitted Successfully!
@@ -113,25 +124,29 @@ export default function ClinicRegistrationPage() {
               transition={{ delay: 0.7 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button
-                size="lg"
-                className="bg-white text-[#0d3b66] hover:bg-gray-100"
-                onClick={() => {
-                  setSubmitted(false);
-                  setFormData(initialFormData);
-                  setStep(1);
-                }}
-              >
-                Register Another Patient
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-white border-white hover:bg-white/10"
-                onClick={() => (window.location.href = '/')}
-              >
-                Return to Home
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                <Button
+                  size="lg"
+                  className="bg-white text-[#0d3b66] hover:bg-gray-100"
+                  onClick={() => {
+                    setSubmitted(false);
+                    setFormData(initialFormData);
+                    setStep(1);
+                  }}
+                >
+                  Register Another Patient
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-white border-white hover:bg-white/10"
+                  onClick={() => (window.location.href = '/')}
+                >
+                  Return to Home
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -145,21 +160,36 @@ export default function ClinicRegistrationPage() {
       <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d3b66] via-[#1a6aa5] to-[#2a8cc4]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+        <motion.div
+          className="absolute bottom-10 left-10 w-56 h-56 bg-cyan-300/10 rounded-full blur-3xl"
+          animate={{ x: [0, 20, 0], y: [0, -12, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4">
+            <motion.div
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+            >
               <ClipboardList className="w-4 h-4" />
               <span className="text-sm">Patient Registration</span>
-            </div>
+            </motion.div>
             <h1 className="text-4xl md:text-5xl mb-4">Clinic Registration</h1>
-            <p className="text-lg text-blue-100 max-w-2xl mx-auto">
+            <motion.p
+              className="text-lg text-blue-100 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               Register as a new patient at Med-Vical International. Fill in your details below and
               our team will get in touch with you to complete the process.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -169,13 +199,18 @@ export default function ClinicRegistrationPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Progress Steps */}
-          <div className="flex items-center justify-center gap-4 mb-10">
+          <motion.div
+            className="flex items-center justify-center gap-4 mb-10"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             {[
               { num: 1, label: 'Personal Info' },
               { num: 2, label: 'Medical Info' },
               { num: 3, label: 'Preferences' },
             ].map((s) => (
-              <button
+              <motion.button
                 key={s.num}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
                   step === s.num
@@ -185,6 +220,8 @@ export default function ClinicRegistrationPage() {
                     : 'bg-gray-100 text-gray-500'
                 }`}
                 onClick={() => setStep(s.num)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
               >
                 {step > s.num ? (
                   <CheckCircle className="w-4 h-4" />
@@ -194,19 +231,22 @@ export default function ClinicRegistrationPage() {
                   </span>
                 )}
                 <span className="text-sm font-medium hidden sm:inline">{s.label}</span>
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
 
           <form onSubmit={handleSubmit}>
             <Card className="border border-white/20 bg-white/60 backdrop-blur-md shadow-xl">
               <CardContent className="p-6 md:p-8">
+                <AnimatePresence mode="wait">
                 {/* Step 1: Personal Information */}
                 {step === 1 && (
                   <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3 }}
+                    key="step-1"
+                    initial={{ opacity: 0, x: 30, filter: 'blur(4px)' }}
+                    animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, x: -30, filter: 'blur(4px)' }}
+                    transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className="space-y-6"
                   >
                     <div className="flex items-center gap-3 mb-6">
@@ -369,13 +409,15 @@ export default function ClinicRegistrationPage() {
                     </div>
 
                     <div className="flex justify-end">
-                      <Button
-                        type="button"
-                        className="bg-blue-600 hover:bg-blue-700"
-                        onClick={() => setStep(2)}
-                      >
-                        Next: Medical Info
-                      </Button>
+                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                        <Button
+                          type="button"
+                          className="bg-blue-600 hover:bg-blue-700"
+                          onClick={() => setStep(2)}
+                        >
+                          Next: Medical Info
+                        </Button>
+                      </motion.div>
                     </div>
                   </motion.div>
                 )}
@@ -383,9 +425,11 @@ export default function ClinicRegistrationPage() {
                 {/* Step 2: Medical Information */}
                 {step === 2 && (
                   <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3 }}
+                    key="step-2"
+                    initial={{ opacity: 0, x: 30, filter: 'blur(4px)' }}
+                    animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, x: -30, filter: 'blur(4px)' }}
+                    transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className="space-y-6"
                   >
                     <div className="flex items-center gap-3 mb-6">
@@ -440,16 +484,20 @@ export default function ClinicRegistrationPage() {
                     </div>
 
                     <div className="flex justify-between">
-                      <Button type="button" variant="outline" onClick={() => setStep(1)}>
-                        Back
-                      </Button>
-                      <Button
-                        type="button"
-                        className="bg-blue-600 hover:bg-blue-700"
-                        onClick={() => setStep(3)}
-                      >
-                        Next: Preferences
-                      </Button>
+                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                        <Button type="button" variant="outline" onClick={() => setStep(1)}>
+                          Back
+                        </Button>
+                      </motion.div>
+                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                        <Button
+                          type="button"
+                          className="bg-blue-600 hover:bg-blue-700"
+                          onClick={() => setStep(3)}
+                        >
+                          Next: Preferences
+                        </Button>
+                      </motion.div>
                     </div>
                   </motion.div>
                 )}
@@ -457,9 +505,11 @@ export default function ClinicRegistrationPage() {
                 {/* Step 3: Preferences */}
                 {step === 3 && (
                   <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3 }}
+                    key="step-3"
+                    initial={{ opacity: 0, x: 30, filter: 'blur(4px)' }}
+                    animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, x: -30, filter: 'blur(4px)' }}
+                    transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className="space-y-6"
                   >
                     <div className="flex items-center gap-3 mb-6">
@@ -529,21 +579,32 @@ export default function ClinicRegistrationPage() {
                     </div>
 
                     <div className="flex justify-between">
-                      <Button type="button" variant="outline" onClick={() => setStep(2)}>
-                        Back
-                      </Button>
-                      <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
-                        Submit Registration
-                      </Button>
+                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                        <Button type="button" variant="outline" onClick={() => setStep(2)}>
+                          Back
+                        </Button>
+                      </motion.div>
+                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                        <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+                          Submit Registration
+                        </Button>
+                      </motion.div>
                     </div>
                   </motion.div>
                 )}
+                </AnimatePresence>
               </CardContent>
             </Card>
           </form>
 
           {/* Contact Info */}
-          <div className="mt-12 grid sm:grid-cols-3 gap-6">
+          <motion.div
+            className="mt-12 grid sm:grid-cols-3 gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             {[
               {
                 icon: Phone,
@@ -565,25 +626,36 @@ export default function ClinicRegistrationPage() {
               },
             ].map((item, index) => {
               const Icon = item.icon;
+              const color = contactColors[index % contactColors.length];
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+                  whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                 >
-                  <Card className="border border-white/20 bg-white/60 backdrop-blur-sm text-center p-6">
-                    <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-3">
-                      <Icon className="w-5 h-5 text-blue-600" />
-                    </div>
-                    <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
-                    <p className="text-sm text-gray-800">{item.info}</p>
-                    <p className="text-xs text-gray-500">{item.sub}</p>
-                  </Card>
+                  <motion.div
+                    whileHover={{ y: -6, boxShadow: `0 20px 40px -12px ${color.glow}` }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                  >
+                    <Card className="border border-white/20 bg-white/60 backdrop-blur-sm text-center p-6">
+                      <motion.div
+                        className={`w-12 h-12 rounded-full bg-gradient-to-br ${color.accent} flex items-center justify-center mx-auto mb-3 shadow-md`}
+                        whileHover={{ scale: 1.15, rotate: 5 }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                      >
+                        <Icon className="w-5 h-5 text-white" />
+                      </motion.div>
+                      <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
+                      <p className="text-sm text-gray-800">{item.info}</p>
+                      <p className="text-xs text-gray-500">{item.sub}</p>
+                    </Card>
+                  </motion.div>
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
