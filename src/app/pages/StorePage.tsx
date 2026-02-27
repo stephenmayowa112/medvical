@@ -163,6 +163,16 @@ export default function StorePage() {
   const cartTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
+  const handleCheckout = () => {
+    if (cart.length === 0) return;
+    const items = cart
+      .map((item) => `• ${item.name} x${item.quantity} — ${formatNaira(item.price * item.quantity)}`)
+      .join('\n');
+    const message = `Hello Med-Vical International!\n\nI'd like to order the following items:\n\n${items}\n\n*Total: ${formatNaira(cartTotal)}*\n\nPlease confirm availability and delivery details. Thank you!`;
+    const phone = '2349018911685';
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Banner */}
@@ -387,7 +397,7 @@ export default function StorePage() {
                           <span className="font-bold text-[#0d3b66]">{formatNaira(cartTotal)}</span>
                         </div>
                         <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                          <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                          <Button className="w-full bg-green-600 hover:bg-green-700" onClick={handleCheckout}>
                             Checkout via WhatsApp
                           </Button>
                         </motion.div>
@@ -477,7 +487,7 @@ export default function StorePage() {
                       <span className="font-bold text-[#0d3b66] text-lg">{formatNaira(cartTotal)}</span>
                     </div>
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                      <Button className="w-full bg-green-600 hover:bg-green-700" onClick={handleCheckout}>
                         Checkout via WhatsApp
                       </Button>
                     </motion.div>
