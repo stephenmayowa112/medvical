@@ -47,30 +47,52 @@ export function Hero() {
 
           <motion.div
             className="relative"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, x: 50, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <div className="relative">
-              {/* Decorative accent behind the image */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-3xl blur-2xl" />
-              <img
+              {/* Animated pulsing glow behind the image */}
+              <motion.div
+                className="absolute -inset-4 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-3xl blur-2xl"
+                animate={{ opacity: [0.4, 0.8, 0.4] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              {/* Floating decorative blob */}
+              <motion.div
+                className="absolute -top-8 -right-8 w-32 h-32 bg-cyan-300/15 rounded-full blur-2xl pointer-events-none"
+                animate={{ x: [0, 15, 0], y: [0, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.img
                 src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800"
                 alt="Med-Vical International Hospital - Modern healthcare facility in Benin City, Nigeria"
                 className="relative rounded-2xl shadow-2xl w-full h-auto object-cover aspect-[4/3]"
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               />
               {/* Floating badge */}
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+              <motion.div
+                className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100"
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.6, type: 'spring', stiffness: 200 }}
+                whileHover={{ y: -4, boxShadow: '0 16px 32px -8px rgba(0,0,0,0.12)' }}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
+                  <motion.div
+                    className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center"
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  >
                     <span className="text-white text-lg">✓</span>
-                  </div>
+                  </motion.div>
                   <div>
                     <p className="font-semibold text-sm text-gray-900">Open 24/7</p>
                     <p className="text-xs text-gray-500">Emergency Services</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
