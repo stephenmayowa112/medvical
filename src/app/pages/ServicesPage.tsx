@@ -79,7 +79,7 @@ export default function ServicesPage() {
           poster="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
         >
           <source
-            src="https://videos.pexels.com/video-files/5452293/5452293-uhd_2560_1440_30fps.mp4"
+            src="/images/Regenerate_Video_With_Black_People.mp4"
             type="video/mp4"
           />
         </video>
