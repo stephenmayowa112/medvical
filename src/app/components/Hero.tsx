@@ -23,9 +23,6 @@ export function Hero() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight">
               Top Private Hospital in Benin City, Nigeria
             </h1>
-            <p className="text-base md:text-lg font-semibold text-[#2a8cc4]">
-              Pharmacy &bull; Healthcare Services &bull; Hospital Equipment &amp; Consumables
-            </p>
             <p className="text-lg text-gray-600">
               Trusted, affordable and patient-centered healthcare — from maternity care and paediatrics to surgery, lab diagnostics and 24/7 emergency services.
             </p>
