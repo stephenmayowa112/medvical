@@ -89,14 +89,24 @@ export default function MedicalCentrePage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0d3b66] via-[#1a6aa5] to-[#2a8cc4]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        <motion.div
-          className="absolute top-10 right-20 w-72 h-72 bg-white/5 rounded-full blur-3xl"
-          animate={{ x: [0, 25, 0], y: [0, -15, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        />
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
+        >
+          <source
+            src="https://videos.pexels.com/video-files/5452293/5452293-uhd_2560_1440_30fps.mp4"
+            type="video/mp4"
+          />
+        </video>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <motion.div
