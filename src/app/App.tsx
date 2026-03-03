@@ -11,6 +11,8 @@ const ArticlePage = lazy(() => import('./pages/ArticlePage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const MedicalCentrePage = lazy(() => import('./pages/MedicalCentrePage'));
 const MedicalSuppliesPage = lazy(() => import('./pages/MedicalSuppliesPage'));
+const FlyersListPage = lazy(() => import('./pages/FlyersListPage'));
+const FlyerPage = lazy(() => import('./pages/FlyerPage'));
 
 function PageLoader() {
   return (
@@ -36,6 +38,8 @@ export default function App() {
               <Route path="/health-education" element={<HealthEducationPage />} />
               <Route path="/health-education/:slug" element={<ArticlePage />} />
               <Route path="/clinic-registration" element={<ClinicRegistrationPage />} />
+              <Route path="/flyers" element={<FlyersListPage />} />
+              <Route path="/flyers/:slug" element={<FlyerPage />} />
             </Routes>
           </Suspense>
         </main>

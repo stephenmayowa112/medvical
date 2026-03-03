@@ -16,6 +16,7 @@ const navLinks = [
     ],
   },
   { label: 'Health Education', href: '/health-education' },
+  { label: 'Flyers', href: '/flyers' },
   { label: 'Contact Us', href: '/#contact' },
 ];
 
