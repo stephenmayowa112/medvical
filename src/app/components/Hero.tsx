@@ -50,7 +50,7 @@ export function Hero() {
                 Book Appointment
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button size="lg" variant="outline" className="border-white bg-white/20 backdrop-blur-sm text-white hover:bg-white hover:text-[#0d3b66]" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
                 Learn More
               </Button>
             </motion.div>
