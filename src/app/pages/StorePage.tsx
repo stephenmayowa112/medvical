@@ -1,8 +1,15 @@
-import { ShoppingCart, Search, Filter, Plus, Minus, X, CheckCircle2 } from 'lucide-react';
+import { ShoppingCart, Search, Filter, Plus, Minus, X, CheckCircle2, Package } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '../components/ui/dialog';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useMemo } from 'react';
 
@@ -124,6 +131,7 @@ export default function StorePage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [cart, setCart] = useState<CartItem[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
@@ -226,11 +234,10 @@ export default function StorePage() {
                 <motion.div key={cat} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
                   <Badge
                     variant={selectedCategory === cat ? 'default' : 'outline'}
-                    className={`cursor-pointer transition-all ${
-                      selectedCategory === cat
+                    className={`cursor-pointer transition-all ${selectedCategory === cat
                         ? 'bg-blue-600 hover:bg-blue-700'
                         : 'hover:bg-blue-50'
-                    }`}
+                      }`}
                     onClick={() => setSelectedCategory(cat)}
                   >
                     {cat}
@@ -285,7 +292,8 @@ export default function StorePage() {
                       <motion.div
                         whileHover={{ y: -8, boxShadow: '0 20px 40px -12px rgba(59,130,246,0.15)' }}
                         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                        className="h-full"
+                        className="h-full cursor-pointer"
+                        onClick={() => setSelectedProduct(product)}
                       >
                         <Card className="overflow-hidden h-full border border-white/20 bg-white/60 backdrop-blur-sm group">
                           <div className="aspect-square overflow-hidden bg-gray-100">
@@ -311,7 +319,10 @@ export default function StorePage() {
                                 <Button
                                   size="sm"
                                   className="bg-blue-600 hover:bg-blue-700"
-                                  onClick={() => addToCart(product)}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    addToCart(product);
+                                  }}
                                 >
                                   Add to Cart
                                 </Button>
@@ -571,6 +582,74 @@ export default function StorePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Product Detail Modal */}
+      <Dialog open={!!selectedProduct} onOpenChange={(open) => { if (!open) setSelectedProduct(null); }}>
+        <DialogContent className="sm:max-w-lg p-0 overflow-hidden rounded-2xl">
+          {selectedProduct && (
+            <>
+              {/* Product Image */}
+              <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">
+                <img
+                  src={selectedProduct.image}
+                  alt={selectedProduct.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 left-3">
+                  <Badge
+                    className={`text-xs font-medium ${selectedProduct.inStock
+                        ? 'bg-green-500/90 text-white border-green-500'
+                        : 'bg-red-500/90 text-white border-red-500'
+                      }`}
+                  >
+                    {selectedProduct.inStock ? 'In Stock' : 'Out of Stock'}
+                  </Badge>
+                </div>
+              </div>
+
+              {/* Product Info */}
+              <div className="px-6 pb-6 pt-2">
+                <DialogHeader className="mb-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Badge variant="outline" className="text-xs">
+                      {selectedProduct.category}
+                    </Badge>
+                  </div>
+                  <DialogTitle className="text-xl font-bold text-[#0d3b66]">
+                    {selectedProduct.name}
+                  </DialogTitle>
+                  <DialogDescription className="text-sm text-gray-600 leading-relaxed">
+                    {selectedProduct.description}
+                  </DialogDescription>
+                </DialogHeader>
+
+                <div className="flex items-center gap-2 mb-5 text-sm text-gray-500">
+                  <Package className="w-4 h-4" />
+                  <span>{selectedProduct.inStock ? 'Available for delivery' : 'Currently unavailable'}</span>
+                </div>
+
+                <div className="flex items-center justify-between gap-4">
+                  <span className="text-2xl font-bold text-[#0d3b66]">
+                    {formatNaira(selectedProduct.price)}
+                  </span>
+                  <Button
+                    size="lg"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+                    disabled={!selectedProduct.inStock}
+                    onClick={() => {
+                      addToCart(selectedProduct);
+                      setSelectedProduct(null);
+                    }}
+                  >
+                    <ShoppingCart className="w-4 h-4 mr-2" />
+                    Add to Cart
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
