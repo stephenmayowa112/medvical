@@ -1,5 +1,5 @@
 import {
-  Stethoscope, Package, ArrowRight, Phone,
+  Stethoscope, Package, ArrowRight, Phone, ShoppingCart
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
@@ -46,6 +46,25 @@ const serviceDivisions = [
       'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
     accent: 'from-emerald-500 to-teal-500',
     glow: 'rgba(16,185,129,0.25)',
+  },
+  {
+    icon: ShoppingCart,
+    title: 'Med-Vical Store',
+    description:
+      'Shop our wide range of personal healthcare products, wellness items, and daily consumer goods directly online. Enjoy secure checkout and quick delivery for all your health and lifestyle needs.',
+    highlights: [
+      'Personal healthcare',
+      'Wellness products',
+      'Daily consumer goods',
+      'Secure online checkout',
+      'Quick nationwide delivery',
+      'Verified quality products',
+    ],
+    link: '/store',
+    image:
+      'https://images.unsplash.com/photo-1576602976047-174e57a47881?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    accent: 'from-violet-500 to-purple-500',
+    glow: 'rgba(139,92,246,0.25)',
   },
 ];
 
