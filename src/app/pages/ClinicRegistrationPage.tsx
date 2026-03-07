@@ -180,7 +180,7 @@ export default function ClinicRegistrationPage() {
       <section className="relative py-12 md:py-16">
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <form onSubmit={handleSubmit}>
-            <Card className="border border-white/20 bg-white shadow-xl rounded-xl overflow-hidden">
+            <Card className="border-0 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] ring-1 ring-slate-900/10 rounded-2xl overflow-hidden">
               <CardContent className="p-0">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -190,78 +190,78 @@ export default function ClinicRegistrationPage() {
                 >
                   {/* Section 1: Name & Contact */}
                   <div>
-                    <div className="flex items-center gap-3 mb-6 pb-2 border-b border-gray-100">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                    <div className="flex items-center gap-3 mb-6 pb-2 border-b-2 border-slate-200">
+                      <div className="w-8 h-8 rounded-full bg-blue-50 border border-blue-100 shadow-sm flex items-center justify-center">
                         <User className="w-4 h-4 text-blue-600" />
                       </div>
-                      <h2 className="text-lg font-semibold text-gray-800">Personal Details</h2>
+                      <h2 className="text-xl font-bold text-slate-800 tracking-tight">Personal Details</h2>
                     </div>
 
                     <div className="space-y-5">
                       <div className="grid md:grid-cols-3 gap-5">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                             Name <span className="text-red-500">*</span>
-                            <span className="block text-xs font-normal text-gray-400 mt-0.5">First</span>
+                            <span className="block text-xs font-medium text-slate-500 mt-0.5">First</span>
                           </label>
                           <Input
                             required
                             value={formData.firstName}
                             onChange={(e) => updateField('firstName', e.target.value)}
-                            className="bg-gray-50/50"
+                            className="bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                             <span className="invisible">Name</span>
-                            <span className="block text-xs font-normal text-gray-400 mt-0.5">Last</span>
+                            <span className="block text-xs font-medium text-slate-500 mt-0.5">Last</span>
                           </label>
                           <Input
                             required
                             value={formData.lastName}
                             onChange={(e) => updateField('lastName', e.target.value)}
-                            className="bg-gray-50/50"
+                            className="bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                             <span className="invisible">Name</span>
-                            <span className="block text-xs font-normal text-gray-400 mt-0.5">Middle Name</span>
+                            <span className="block text-xs font-medium text-slate-500 mt-0.5">Middle Name</span>
                           </label>
                           <Input
                             value={formData.middleName}
                             onChange={(e) => updateField('middleName', e.target.value)}
-                            className="bg-gray-50/50"
+                            className="bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                           />
                         </div>
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-5">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                             Phone Number <span className="text-red-500">*</span>
                           </label>
                           <div className="relative">
-                            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                             <Input
                               required
                               type="tel"
-                              className="pl-9 bg-gray-50/50"
+                              className="pl-11 bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                               value={formData.phone}
                               onChange={(e) => updateField('phone', e.target.value)}
                             />
                           </div>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                             Email Address <span className="text-red-500">*</span>
                           </label>
                           <div className="relative">
-                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                             <Input
                               required
                               type="email"
-                              className="pl-9 bg-gray-50/50"
+                              className="pl-11 bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                               value={formData.email}
                               onChange={(e) => updateField('email', e.target.value)}
                             />
@@ -273,47 +273,47 @@ export default function ClinicRegistrationPage() {
 
                   {/* Section 2: Address */}
                   <div>
-                    <div className="flex items-center gap-3 mb-6 pb-2 border-b border-gray-100">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                    <div className="flex items-center gap-3 mb-6 pb-2 border-b-2 border-slate-200">
+                      <div className="w-8 h-8 rounded-full bg-blue-50 border border-blue-100 shadow-sm flex items-center justify-center">
                         <MapPin className="w-4 h-4 text-blue-600" />
                       </div>
-                      <h2 className="text-lg font-semibold text-gray-800">Address Details</h2>
+                      <h2 className="text-xl font-bold text-slate-800 tracking-tight">Address Details</h2>
                     </div>
 
                     <div className="space-y-5">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                           Home Address <span className="text-red-500">*</span>
                         </label>
                         <Input
                           required
                           value={formData.address}
                           onChange={(e) => updateField('address', e.target.value)}
-                          className="bg-gray-50/50"
+                          className="bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                         />
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-5">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                             City <span className="text-red-500">*</span>
                           </label>
                           <Input
                             required
                             value={formData.city}
                             onChange={(e) => updateField('city', e.target.value)}
-                            className="bg-gray-50/50"
+                            className="bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                             State <span className="text-red-500">*</span>
                           </label>
                           <Input
                             required
                             value={formData.state}
                             onChange={(e) => updateField('state', e.target.value)}
-                            className="bg-gray-50/50"
+                            className="bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                           />
                         </div>
                       </div>
@@ -322,39 +322,39 @@ export default function ClinicRegistrationPage() {
 
                   {/* Section 3: Additional Info */}
                   <div>
-                    <div className="flex items-center gap-3 mb-6 pb-2 border-b border-gray-100">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                    <div className="flex items-center gap-3 mb-6 pb-2 border-b-2 border-slate-200">
+                      <div className="w-8 h-8 rounded-full bg-blue-50 border border-blue-100 shadow-sm flex items-center justify-center">
                         <ClipboardList className="w-4 h-4 text-blue-600" />
                       </div>
-                      <h2 className="text-lg font-semibold text-gray-800">Additional Information</h2>
+                      <h2 className="text-xl font-bold text-slate-800 tracking-tight">Additional Information</h2>
                     </div>
 
                     <div className="space-y-5">
                       <div className="grid md:grid-cols-2 gap-5">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">Marital Status</label>
-                          <div className="space-y-2">
+                          <label className="block text-sm font-semibold text-slate-700 mb-2">Marital Status</label>
+                          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                             {maritalStatuses.map((status) => (
-                              <label key={status} className="flex items-center gap-2 cursor-pointer">
+                              <label key={status} className={`flex items-center p-3 border-2 rounded-xl cursor-pointer transition-all ${formData.maritalStatus === status ? 'border-blue-500 bg-blue-50/50 shadow-sm ring-4 ring-blue-500/10' : 'border-slate-300 bg-white hover:border-blue-300 shadow-sm'}`}>
                                 <input
                                   type="radio"
                                   name="maritalStatus"
                                   value={status}
                                   checked={formData.maritalStatus === status}
                                   onChange={(e) => updateField('maritalStatus', e.target.value)}
-                                  className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                                  className="w-4.5 h-4.5 text-blue-600 border-slate-300 focus:ring-blue-500"
                                 />
-                                <span className="text-sm text-gray-700">{status}</span>
+                                <span className={`ml-2 text-sm font-semibold ${formData.maritalStatus === status ? 'text-blue-700' : 'text-slate-700'}`}>{status}</span>
                               </label>
                             ))}
                           </div>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">Name Of Organization/School</label>
+                          <label className="block text-sm font-semibold text-slate-700 mb-1.5">Name Of Organization/School</label>
                           <Input
                             value={formData.organization}
                             onChange={(e) => updateField('organization', e.target.value)}
-                            className="bg-gray-50/50"
+                            className="bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                           />
                         </div>
                       </div>
@@ -363,51 +363,51 @@ export default function ClinicRegistrationPage() {
 
                   {/* Section 4: Next of Kin */}
                   <div>
-                    <div className="flex items-center gap-3 mb-6 pb-2 border-b border-gray-100">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                    <div className="flex items-center gap-3 mb-6 pb-2 border-b-2 border-slate-200">
+                      <div className="w-8 h-8 rounded-full bg-blue-50 border border-blue-100 shadow-sm flex items-center justify-center">
                         <User className="w-4 h-4 text-blue-600" />
                       </div>
-                      <h2 className="text-lg font-semibold text-gray-800">Next Of Kin Information</h2>
+                      <h2 className="text-xl font-bold text-slate-800 tracking-tight">Next Of Kin Information</h2>
                     </div>
 
                     <div className="space-y-5">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                           Next Of Kin <span className="text-red-500">*</span>
                         </label>
                         <Input
                           required
                           value={formData.nextOfKinName}
                           onChange={(e) => updateField('nextOfKinName', e.target.value)}
-                          className="bg-gray-50/50"
+                          className="bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                         />
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-5">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                             Next Of Kin Address <span className="text-red-500">*</span>
                           </label>
                           <div className="relative">
-                            <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                            <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                             <Input
                               required
-                              className="pl-9 bg-gray-50/50"
+                              className="pl-11 bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                               value={formData.nextOfKinAddress}
                               onChange={(e) => updateField('nextOfKinAddress', e.target.value)}
                             />
                           </div>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                             Next Of Kin Phone Number <span className="text-red-500">*</span>
                           </label>
                           <div className="relative">
-                            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                             <Input
                               required
                               type="tel"
-                              className="pl-9 bg-gray-50/50"
+                              className="pl-11 bg-white border-2 border-slate-300 shadow-sm hover:border-blue-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all rounded-lg text-slate-800 font-medium"
                               value={formData.nextOfKinPhone}
                               onChange={(e) => updateField('nextOfKinPhone', e.target.value)}
                             />
@@ -420,7 +420,7 @@ export default function ClinicRegistrationPage() {
                   <div className="pt-6 border-t border-gray-100">
                     <Button
                       type="submit"
-                      className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-2.5 rounded-lg text-sm font-medium flex items-center justify-center gap-2"
+                      className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-10 py-3 rounded-xl text-base font-semibold shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
