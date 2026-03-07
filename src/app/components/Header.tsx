@@ -16,6 +16,7 @@ const navLinks = [
     ],
   },
   { label: 'Health Education', href: '/health-education' },
+  { label: 'Clinic Registration', href: '/clinic-registration' },
   { label: 'Flyers', href: '/flyers' },
   { label: 'Contact Us', href: '/#contact' },
 ];
@@ -142,11 +143,6 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <Link to="/clinic-registration">
-              <Button size="sm" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                Register
-              </Button>
-            </Link>
             <Button size="sm" className="bg-blue-600 hover:bg-blue-700" onClick={() => {
               if (location.pathname === '/') {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -230,12 +226,15 @@ export function Header() {
                 </Link>
               )
             )}
+            <Link
+              to="/clinic-registration"
+              className={`block px-3 py-2.5 text-sm rounded-lg hover:bg-blue-50 transition-colors ${location.pathname === '/clinic-registration' ? 'text-blue-600 font-medium bg-blue-50' : ''
+                }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Clinic Registration
+            </Link>
             <div className="pt-3 flex flex-col gap-2">
-              <Link to="/clinic-registration" onClick={() => setMobileMenuOpen(false)}>
-                <Button size="sm" variant="outline" className="w-full border-blue-600 text-blue-600">
-                  Clinic Registration
-                </Button>
-              </Link>
               <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700" onClick={() => {
                 setMobileMenuOpen(false);
                 if (location.pathname === '/') {
