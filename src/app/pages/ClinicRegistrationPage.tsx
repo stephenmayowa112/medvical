@@ -335,16 +335,16 @@ export default function ClinicRegistrationPage() {
                           <label className="block text-sm font-semibold text-slate-700 mb-2">Marital Status</label>
                           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                             {maritalStatuses.map((status) => (
-                              <label key={status} className={`flex items-center p-3 border-2 rounded-xl cursor-pointer transition-all ${formData.maritalStatus === status ? 'border-blue-500 bg-blue-50/50 shadow-sm ring-4 ring-blue-500/10' : 'border-slate-300 bg-white hover:border-blue-300 shadow-sm'}`}>
+                              <label key={status} className={`flex items-center px-2 py-3 sm:px-3 sm:py-3 border-2 rounded-xl cursor-pointer transition-all ${formData.maritalStatus === status ? 'border-blue-500 bg-blue-50/50 shadow-sm ring-4 ring-blue-500/10' : 'border-slate-300 bg-white hover:border-blue-300 shadow-sm'}`}>
                                 <input
                                   type="radio"
                                   name="maritalStatus"
                                   value={status}
                                   checked={formData.maritalStatus === status}
                                   onChange={(e) => updateField('maritalStatus', e.target.value)}
-                                  className="w-4.5 h-4.5 text-blue-600 border-slate-300 focus:ring-blue-500"
+                                  className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-blue-600 border-slate-300 focus:ring-blue-500 shrink-0"
                                 />
-                                <span className={`ml-2 text-sm font-semibold ${formData.maritalStatus === status ? 'text-blue-700' : 'text-slate-700'}`}>{status}</span>
+                                <span className={`ml-1.5 sm:ml-2 text-xs sm:text-sm font-semibold truncate ${formData.maritalStatus === status ? 'text-blue-700' : 'text-slate-700'}`} title={status}>{status}</span>
                               </label>
                             ))}
                           </div>
