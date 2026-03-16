@@ -108,79 +108,54 @@ export default function MedicalCentrePage() {
         <div className="absolute inset-0 bg-black/55" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="text-white"
-            >
-              <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.15 }}>
-                <Badge className="mb-4 bg-white/20 backdrop-blur-sm text-white border-white/30">
-                  Our Services
-                </Badge>
-              </motion.div>
-              <h1 className="text-4xl md:text-5xl leading-tight mb-4">
-                Med-Vical Medical Centre
-              </h1>
-              <motion.p
-                className="text-lg text-blue-100 mb-6 leading-relaxed"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.25 }}
-              >
-                Comprehensive healthcare services delivered with compassion.
-                From routine check-ups to specialty consultations, our medical
-                centre is equipped to meet your family's healthcare needs.
-              </motion.p>
-              <motion.div
-                className="flex flex-wrap gap-4"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <Link to="/clinic-registration">
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                    <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
-                      Register as Patient
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </motion.div>
-                </Link>
-                <a href="tel:+2347086080230">
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                    <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                      <Phone className="w-4 h-4 mr-2" />
-                      Book Appointment
-                    </Button>
-                  </motion.div>
-                </a>
-              </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-white max-w-3xl"
+          >
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.15 }}>
+              <Badge className="mb-4 bg-white/20 backdrop-blur-sm text-white border-white/30">
+                Our Services
+              </Badge>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 40, filter: 'blur(6px)' }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="hidden md:block"
+            <h1 className="text-4xl md:text-5xl leading-tight mb-4">
+              Med-Vical Medical Centre
+            </h1>
+            <motion.p
+              className="text-lg text-blue-100 mb-6 leading-relaxed"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
             >
-              <div className="relative">
-                <motion.div
-                  className="absolute -inset-4 bg-white/10 rounded-3xl"
-                  animate={{ opacity: [0.5, 0.8, 0.5] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                  style={{ filter: 'blur(24px)' }}
-                />
-                <motion.img
-                  src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800"
-                  alt="Med-Vical Medical Centre – modern healthcare facility in Benin City"
-                  className="relative rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.5 }}
-                />
-              </div>
+              Comprehensive healthcare services delivered with compassion.
+              From routine check-ups to specialty consultations, our medical
+              centre is equipped to meet your family's healthcare needs.
+            </motion.p>
+            <motion.div
+              className="flex flex-wrap gap-4"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <Link to="/clinic-registration">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                  <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
+                    Register as Patient
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </motion.div>
+              </Link>
+              <a href="tel:+2347086080230">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+                    <Phone className="w-4 h-4 mr-2" />
+                    Book Appointment
+                  </Button>
+                </motion.div>
+              </a>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

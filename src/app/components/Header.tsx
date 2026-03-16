@@ -11,8 +11,8 @@ const navLinks = [
     href: '/services',
     children: [
       { label: 'Med-Vical Medical Centre', href: '/services/medical-centre' },
-      { label: 'Medical Supplies', href: '/services/medical-supplies' },
-      { label: 'Store', href: '/store' },
+      { label: 'MedVical Supply', href: '/services/medical-supplies' },
+      { label: 'MedVical Pharmacy', href: '/store' },
     ],
   },
   { label: 'Health Education', href: '/health-education' },
