@@ -157,7 +157,7 @@ export default function MedicalSuppliesPage() {
                 </a>
                 <a href="tel:+2348035673681">
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                    <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 hover:text-white">
+                    <Button size="lg" variant="outline" className="text-cyan-300 border-white hover:bg-white/10 hover:text-white">
                       <Phone className="w-4 h-4 mr-2" />
                       Call 08035673681
                     </Button>
@@ -343,7 +343,7 @@ export default function MedicalSuppliesPage() {
               </a>
               <a href="tel:+2348035673681">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 hover:text-white">
+                  <Button size="lg" variant="outline" className="text-cyan-300 border-white hover:bg-white/10 hover:text-white">
                     <Phone className="w-4 h-4 mr-2" />
                     Call 08035673681
                   </Button>
@@ -351,7 +351,7 @@ export default function MedicalSuppliesPage() {
               </a>
               <Link to="/store">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 hover:text-white">
+                  <Button size="lg" variant="outline" className="text-cyan-300 border-white hover:bg-white/10 hover:text-white">
                     Visit Our Store
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
