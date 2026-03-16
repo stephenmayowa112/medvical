@@ -162,7 +162,7 @@ export default function ClinicRegistrationPage() {
               <ClipboardList className="w-4 h-4" />
               <span className="text-sm">Patient Registration</span>
             </motion.div>
-            <h1 className="text-4xl md:text-5xl mb-4">Clinic Registration</h1>
+            <h1 className="text-4xl md:text-5xl mb-4">Patient Registration</h1>
             <motion.p
               className="text-lg text-blue-100 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 15 }}

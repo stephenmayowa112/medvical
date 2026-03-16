@@ -88,7 +88,7 @@ export function Footer() {
                 { to: '/services', label: 'Services' },
                 { to: '/store', label: 'Store' },
                 { to: '/health-education', label: 'Health Education' },
-                { to: '/clinic-registration', label: 'Clinic Registration' },
+                { to: '/clinic-registration', label: 'Patient Registration' },
                 { href: '/#contact', label: 'Contact' },
               ].map((link) => (
                 <motion.li key={link.label} whileHover={{ x: 4 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>

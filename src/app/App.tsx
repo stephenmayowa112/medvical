@@ -6,7 +6,7 @@ import { lazy, Suspense } from 'react';
 const HomePage = lazy(() => import('./pages/HomePage'));
 const StorePage = lazy(() => import('./pages/StorePage'));
 const HealthEducationPage = lazy(() => import('./pages/HealthEducationPage'));
-const ClinicRegistrationPage = lazy(() => import('./pages/ClinicRegistrationPage'));
+const PatientRegistrationPage = lazy(() => import('./pages/PatientRegistrationPage'));
 const ArticlePage = lazy(() => import('./pages/ArticlePage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const MedicalCentrePage = lazy(() => import('./pages/MedicalCentrePage'));
@@ -37,7 +37,7 @@ export default function App() {
               <Route path="/store" element={<StorePage />} />
               <Route path="/health-education" element={<HealthEducationPage />} />
               <Route path="/health-education/:slug" element={<ArticlePage />} />
-              <Route path="/clinic-registration" element={<ClinicRegistrationPage />} />
+              <Route path="/clinic-registration" element={<PatientRegistrationPage />} />
               <Route path="/flyers" element={<FlyersListPage />} />
               <Route path="/flyers/:slug" element={<FlyerPage />} />
             </Routes>

@@ -75,7 +75,7 @@ export default defineConfig({
         {
           path: '/clinic-registration',
           tags: {
-            title: 'Clinic Registration | Med-Vical International',
+            title: 'Patient Registration | Med-Vical International',
             description: 'Register as a patient at Med-Vical International in Benin City, Nigeria. Book an appointment for maternity, paediatric, emergency, and specialist medical services.',
             url: `${BASE_URL}/clinic-registration`,
             canonical: `${BASE_URL}/clinic-registration`,

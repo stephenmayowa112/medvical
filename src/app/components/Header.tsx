@@ -16,7 +16,7 @@ const navLinks = [
     ],
   },
   { label: 'Health Education', href: '/health-education' },
-  { label: 'Clinic Registration', href: '/clinic-registration' },
+  { label: 'Patient Registration', href: '/clinic-registration' },
   { label: 'Flyers', href: '/flyers' },
   { label: 'Contact Us', href: '/#contact' },
 ];
@@ -232,7 +232,7 @@ export function Header() {
                 }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Clinic Registration
+              Patient Registration
             </Link>
             <div className="pt-3 flex flex-col gap-2">
               <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700" onClick={() => {
