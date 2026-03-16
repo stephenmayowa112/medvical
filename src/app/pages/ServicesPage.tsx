@@ -219,7 +219,7 @@ export default function ServicesPage() {
                       </ul>
                       <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                         <Button 
-                          className="w-full bg-blue-600 hover:bg-blue-700"
+                          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                           onClick={() => setShowRetailForm(true)}
                         >
                           Get Started
@@ -254,7 +254,7 @@ export default function ServicesPage() {
                         />
                       </div>
                       <div className="flex gap-3">
-                        <Button type="submit" className="flex-1 bg-blue-600 hover:bg-blue-700">
+                        <Button type="submit" className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
                           Submit via WhatsApp
                         </Button>
                         <Button 
@@ -310,7 +310,7 @@ export default function ServicesPage() {
                       </ul>
                       <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                         <Button 
-                          className="w-full bg-emerald-600 hover:bg-emerald-700"
+                          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
                           onClick={() => setShowWholesaleForm(true)}
                         >
                           Get Started
@@ -345,7 +345,7 @@ export default function ServicesPage() {
                         />
                       </div>
                       <div className="flex gap-3">
-                        <Button type="submit" className="flex-1 bg-emerald-600 hover:bg-emerald-700">
+                        <Button type="submit" className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white">
                           Submit via WhatsApp
                         </Button>
                         <Button 
@@ -426,7 +426,7 @@ export default function ServicesPage() {
 
                         <Link to={division.link} className="w-fit">
                           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                            <Button className="bg-blue-600 hover:bg-blue-700 group/btn">
+                            <Button className="bg-blue-600 hover:bg-blue-700 text-white group/btn">
                               Learn More
                               <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                             </Button>

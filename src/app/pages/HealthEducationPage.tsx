@@ -146,7 +146,7 @@ export default function HealthEducationPage() {
                   <Badge
                     variant={selectedCategory === cat ? 'default' : 'outline'}
                     className={`cursor-pointer transition-all ${selectedCategory === cat
-                        ? 'bg-blue-600 hover:bg-blue-700'
+                        ? 'bg-blue-600 hover:bg-blue-700 text-white'
                         : 'hover:bg-blue-50'
                       }`}
                     onClick={() => setSelectedCategory(cat)}
@@ -182,7 +182,7 @@ export default function HealthEducationPage() {
                       />
                     </div>
                     <CardContent className="p-6 md:p-8 flex flex-col justify-center">
-                      <Badge className="w-fit mb-3 bg-blue-600">{filteredArticles[0].category}</Badge>
+                      <Badge className="w-fit mb-3 bg-blue-600 text-white">{filteredArticles[0].category}</Badge>
                       <h2 className="text-2xl md:text-3xl mb-3">{filteredArticles[0].title}</h2>
                       <p className="text-gray-600 mb-4">{filteredArticles[0].excerpt}</p>
                       <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
@@ -201,7 +201,7 @@ export default function HealthEducationPage() {
                       </div>
                       <Link to={`/health-education/${filteredArticles[0].slug}`}>
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} className="w-fit">
-                          <Button className="w-fit bg-blue-600 hover:bg-blue-700">
+                          <Button className="w-fit bg-blue-600 hover:bg-blue-700 text-white">
                             Read Article
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Button>

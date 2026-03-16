@@ -186,7 +186,7 @@ export default function ArticlePage() {
           <h1 className="text-3xl font-bold mb-4">Article Not Found</h1>
           <p className="text-gray-500 mb-6">The article you are looking for does not exist or has been moved.</p>
           <Link to="/health-education">
-            <Button className="bg-blue-600 hover:bg-blue-700">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Health Education
             </Button>
@@ -297,7 +297,7 @@ export default function ArticlePage() {
                   </div>
                   <Link to="/clinic-registration">
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                      <Button className="bg-blue-600 hover:bg-blue-700">
+                      <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                         Book an Appointment
                       </Button>
                     </motion.div>
@@ -322,7 +322,7 @@ export default function ArticlePage() {
                   </p>
                   <Link to="/clinic-registration" className="block">
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700 mb-2" size="sm">
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white mb-2" size="sm">
                         Register Now
                       </Button>
                     </motion.div>

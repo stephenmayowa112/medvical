@@ -143,7 +143,7 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-700" onClick={() => {
+            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => {
               if (location.pathname === '/') {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               } else {
@@ -235,7 +235,7 @@ export function Header() {
               Patient Registration
             </Link>
             <div className="pt-3 flex flex-col gap-2">
-              <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700" onClick={() => {
+              <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={() => {
                 setMobileMenuOpen(false);
                 if (location.pathname === '/') {
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });

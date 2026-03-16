@@ -140,7 +140,7 @@ export default function MedicalCentrePage() {
             >
               <Link to="/clinic-registration">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
+                  <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100 hover:text-[#0d3b66]">
                     Register as Patient
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
@@ -148,7 +148,7 @@ export default function MedicalCentrePage() {
               </Link>
               <a href="tel:+2347086080230">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 hover:text-white">
                     <Phone className="w-4 h-4 mr-2" />
                     Book Appointment
                   </Button>
@@ -324,7 +324,7 @@ export default function MedicalCentrePage() {
             >
               <a href="tel:+2347086080230">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
+                  <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100 hover:text-[#0d3b66]">
                     <Phone className="w-4 h-4 mr-2" />
                     Call 07086080230
                   </Button>
@@ -332,7 +332,7 @@ export default function MedicalCentrePage() {
               </a>
               <Link to="/clinic-registration">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 hover:text-white">
                     Register Online
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>

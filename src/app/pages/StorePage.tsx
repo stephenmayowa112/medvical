@@ -235,7 +235,7 @@ export default function StorePage() {
                   <Badge
                     variant={selectedCategory === cat ? 'default' : 'outline'}
                     className={`cursor-pointer transition-all ${selectedCategory === cat
-                        ? 'bg-blue-600 hover:bg-blue-700'
+                        ? 'bg-blue-600 hover:bg-blue-700 text-white'
                         : 'hover:bg-blue-50'
                       }`}
                     onClick={() => setSelectedCategory(cat)}
@@ -318,7 +318,7 @@ export default function StorePage() {
                               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <Button
                                   size="sm"
-                                  className="bg-blue-600 hover:bg-blue-700"
+                                  className="bg-blue-600 hover:bg-blue-700 text-white"
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     addToCart(product);
