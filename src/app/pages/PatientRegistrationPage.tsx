@@ -97,7 +97,7 @@ export default function ClinicRegistrationPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              Thank you for registering with Med-Vical International. Our team will review your
+              Thank you for registering with medvical medical centre. Our team will review your
               information and contact you within 24 hours to confirm your registration and schedule
               your first appointment.
             </motion.p>
@@ -169,7 +169,7 @@ export default function ClinicRegistrationPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Register as a new patient at Med-Vical International. Fill in your details below and
+              Register as a new patient at medvical medical centre. Fill in your details below and
               our team will get in touch with you to complete the process.
             </motion.p>
           </motion.div>
