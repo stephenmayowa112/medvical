@@ -4,9 +4,11 @@ import {
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const serviceDivisions = [
   {
@@ -78,11 +80,38 @@ const cardVariants = {
 };
 
 export default function ServicesPage() {
+  const [showRetailForm, setShowRetailForm] = useState(false);
+  const [showWholesaleForm, setShowWholesaleForm] = useState(false);
+  const [retailName, setRetailName] = useState('');
+  const [retailPhone, setRetailPhone] = useState('');
+  const [facilityName, setFacilityName] = useState('');
+  const [procurementOfficer, setProcurementOfficer] = useState('');
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = 'Our Services | Med-Vical International';
     return () => { document.title = 'Med-Vical International'; };
   }, []);
+
+  const handleRetailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const message = `Hello Med-Vical Pharmacy!\n\nI need retail medical supplies.\n\nName: ${retailName}\nPhone: ${retailPhone}\n\nPlease contact me. Thank you!`;
+    const phone = '2349018911685';
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    setRetailName('');
+    setRetailPhone('');
+    setShowRetailForm(false);
+  };
+
+  const handleWholesaleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const message = `Hello MedVical Supply!\n\nI need wholesale medical supplies.\n\nFacility Name: ${facilityName}\nProcurement Officer: ${procurementOfficer}\n\nPlease contact us for bulk orders. Thank you!`;
+    const phone = '2348087874018';
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    setFacilityName('');
+    setProcurementOfficer('');
+    setShowWholesaleForm(false);
+  };
 
   return (
     <div className="min-h-screen">
@@ -207,6 +236,210 @@ export default function ServicesPage() {
             );
           })}
         </motion.div>
+      </section>
+
+      {/* Pharmacy & Supply Forms */}
+      <section className="relative py-16 md:py-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-14"
+            initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-sm text-blue-600 font-medium">Get Started</span>
+            <h2 className="mt-2 text-3xl md:text-4xl">MedVical Pharmacy & Medical Supplies</h2>
+            <p className="mt-4 text-gray-600">
+              Choose retail for quick medical needs or wholesale for clinics and government facilities.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Retail Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -30, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="border border-blue-100 bg-white/80 backdrop-blur-sm shadow-lg overflow-hidden">
+                <div className="bg-gradient-to-r from-blue-500 to-cyan-500 p-6 text-white">
+                  <ShoppingCart className="w-10 h-10 mb-3" />
+                  <h3 className="text-2xl font-bold mb-2">MedVical Pharmacy</h3>
+                  <p className="text-blue-100 text-sm">Retail - Quick Medical Needs</p>
+                </div>
+                <CardContent className="p-6">
+                  {!showRetailForm ? (
+                    <div className="space-y-4">
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        For individuals and families needing quick access to quality pharmaceutical products and personal healthcare items.
+                      </p>
+                      <ul className="space-y-2 text-sm text-gray-700">
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                          Prescription medications
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                          Over-the-counter drugs
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                          Personal care products
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                          Fast delivery
+                        </li>
+                      </ul>
+                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                        <Button 
+                          className="w-full bg-blue-600 hover:bg-blue-700"
+                          onClick={() => setShowRetailForm(true)}
+                        >
+                          Get Started
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </motion.div>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleRetailSubmit} className="space-y-4">
+                      <div>
+                        <Label htmlFor="retail-name">Full Name</Label>
+                        <Input
+                          id="retail-name"
+                          type="text"
+                          placeholder="Enter your name"
+                          value={retailName}
+                          onChange={(e) => setRetailName(e.target.value)}
+                          required
+                          className="mt-1"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="retail-phone">Phone Number</Label>
+                        <Input
+                          id="retail-phone"
+                          type="tel"
+                          placeholder="Enter your phone number"
+                          value={retailPhone}
+                          onChange={(e) => setRetailPhone(e.target.value)}
+                          required
+                          className="mt-1"
+                        />
+                      </div>
+                      <div className="flex gap-3">
+                        <Button type="submit" className="flex-1 bg-blue-600 hover:bg-blue-700">
+                          Submit via WhatsApp
+                        </Button>
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          onClick={() => setShowRetailForm(false)}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    </form>
+                  )}
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Wholesale Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 30, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              <Card className="border border-emerald-100 bg-white/80 backdrop-blur-sm shadow-lg overflow-hidden">
+                <div className="bg-gradient-to-r from-emerald-500 to-teal-500 p-6 text-white">
+                  <Package className="w-10 h-10 mb-3" />
+                  <h3 className="text-2xl font-bold mb-2">MedVical Supply</h3>
+                  <p className="text-emerald-100 text-sm">Wholesale - Clinics & Government Officials</p>
+                </div>
+                <CardContent className="p-6">
+                  {!showWholesaleForm ? (
+                    <div className="space-y-4">
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        For healthcare facilities, clinics, hospitals, and government institutions requiring bulk medical supplies and equipment.
+                      </p>
+                      <ul className="space-y-2 text-sm text-gray-700">
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                          Wholesale pricing
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                          Bulk orders
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                          Medical equipment
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                          Nationwide delivery
+                        </li>
+                      </ul>
+                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                        <Button 
+                          className="w-full bg-emerald-600 hover:bg-emerald-700"
+                          onClick={() => setShowWholesaleForm(true)}
+                        >
+                          Get Started
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </motion.div>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleWholesaleSubmit} className="space-y-4">
+                      <div>
+                        <Label htmlFor="facility-name">Name of Facility</Label>
+                        <Input
+                          id="facility-name"
+                          type="text"
+                          placeholder="Enter facility name"
+                          value={facilityName}
+                          onChange={(e) => setFacilityName(e.target.value)}
+                          required
+                          className="mt-1"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="procurement-officer">Procurement Officer</Label>
+                        <Input
+                          id="procurement-officer"
+                          type="text"
+                          placeholder="Enter procurement officer name"
+                          value={procurementOfficer}
+                          onChange={(e) => setProcurementOfficer(e.target.value)}
+                          required
+                          className="mt-1"
+                        />
+                      </div>
+                      <div className="flex gap-3">
+                        <Button type="submit" className="flex-1 bg-emerald-600 hover:bg-emerald-700">
+                          Submit via WhatsApp
+                        </Button>
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          onClick={() => setShowWholesaleForm(false)}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    </form>
+                  )}
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Bottom CTA */}
