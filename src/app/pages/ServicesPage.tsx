@@ -161,83 +161,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Service Divisions */}
-      <section className="relative py-16 md:py-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50" />
-        <motion.div
-          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-        >
-          {serviceDivisions.map((division, index) => {
-            const Icon = division.icon;
-            const isReversed = index % 2 !== 0;
-            return (
-              <motion.div key={index} variants={cardVariants}>
-                <motion.div
-                  whileHover={{ y: -8, boxShadow: `0 25px 50px -12px ${division.glow}` }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                >
-                  <Card className="overflow-hidden border border-white/20 bg-white/70 backdrop-blur-sm shadow-lg">
-                    <div className={`grid md:grid-cols-2 ${isReversed ? 'md:[direction:rtl]' : ''}`}>
-                      <div className="aspect-[16/10] md:aspect-auto overflow-hidden">
-                        <motion.img
-                          src={division.image}
-                          alt={division.title}
-                          className="w-full h-full object-cover"
-                          whileHover={{ scale: 1.06 }}
-                          transition={{ duration: 0.6, ease: 'easeOut' }}
-                        />
-                      </div>
-                      <CardContent className={`p-6 md:p-10 flex flex-col justify-center ${isReversed ? 'md:[direction:ltr]' : ''}`}>
-                        <div className="flex items-center gap-3 mb-4">
-                          <motion.div
-                            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${division.accent} flex items-center justify-center shadow-lg`}
-                            whileHover={{ scale: 1.15, rotate: 5 }}
-                            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                          >
-                            <Icon className="w-6 h-6 text-white" />
-                          </motion.div>
-                          <h2 className="text-2xl md:text-3xl">{division.title}</h2>
-                        </div>
-                        <p className="text-gray-600 mb-6 leading-relaxed">{division.description}</p>
-
-                        <ul className="grid grid-cols-2 gap-2 mb-6">
-                          {division.highlights.map((item, idx) => (
-                            <motion.li
-                              key={idx}
-                              className="flex items-center gap-2 text-sm text-gray-700"
-                              initial={{ opacity: 0, x: -10 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.3, delay: idx * 0.06 }}
-                            >
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 flex-shrink-0" />
-                              {item}
-                            </motion.li>
-                          ))}
-                        </ul>
-
-                        <Link to={division.link} className="w-fit">
-                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                            <Button className="bg-blue-600 hover:bg-blue-700 group/btn">
-                              Learn More
-                              <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                            </Button>
-                          </motion.div>
-                        </Link>
-                      </CardContent>
-                    </div>
-                  </Card>
-                </motion.div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </section>
-
       {/* Pharmacy & Supply Forms */}
       <section className="relative py-16 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white" />
@@ -440,6 +363,83 @@ export default function ServicesPage() {
             </motion.div>
           </div>
         </div>
+      </section>
+
+      {/* Service Divisions */}
+      <section className="relative py-16 md:py-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50" />
+        <motion.div
+          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
+          {serviceDivisions.map((division, index) => {
+            const Icon = division.icon;
+            const isReversed = index % 2 !== 0;
+            return (
+              <motion.div key={index} variants={cardVariants}>
+                <motion.div
+                  whileHover={{ y: -8, boxShadow: `0 25px 50px -12px ${division.glow}` }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                >
+                  <Card className="overflow-hidden border border-white/20 bg-white/70 backdrop-blur-sm shadow-lg">
+                    <div className={`grid md:grid-cols-2 ${isReversed ? 'md:[direction:rtl]' : ''}`}>
+                      <div className="aspect-[16/10] md:aspect-auto overflow-hidden">
+                        <motion.img
+                          src={division.image}
+                          alt={division.title}
+                          className="w-full h-full object-cover"
+                          whileHover={{ scale: 1.06 }}
+                          transition={{ duration: 0.6, ease: 'easeOut' }}
+                        />
+                      </div>
+                      <CardContent className={`p-6 md:p-10 flex flex-col justify-center ${isReversed ? 'md:[direction:ltr]' : ''}`}>
+                        <div className="flex items-center gap-3 mb-4">
+                          <motion.div
+                            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${division.accent} flex items-center justify-center shadow-lg`}
+                            whileHover={{ scale: 1.15, rotate: 5 }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                          >
+                            <Icon className="w-6 h-6 text-white" />
+                          </motion.div>
+                          <h2 className="text-2xl md:text-3xl">{division.title}</h2>
+                        </div>
+                        <p className="text-gray-600 mb-6 leading-relaxed">{division.description}</p>
+
+                        <ul className="grid grid-cols-2 gap-2 mb-6">
+                          {division.highlights.map((item, idx) => (
+                            <motion.li
+                              key={idx}
+                              className="flex items-center gap-2 text-sm text-gray-700"
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.3, delay: idx * 0.06 }}
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 flex-shrink-0" />
+                              {item}
+                            </motion.li>
+                          ))}
+                        </ul>
+
+                        <Link to={division.link} className="w-fit">
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                            <Button className="bg-blue-600 hover:bg-blue-700 group/btn">
+                              Learn More
+                              <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                            </Button>
+                          </motion.div>
+                        </Link>
+                      </CardContent>
+                    </div>
+                  </Card>
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </section>
 
       {/* Bottom CTA */}
