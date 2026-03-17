@@ -4,8 +4,50 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Card, CardContent } from './ui/card';
 import { motion } from 'motion/react';
+import { useState } from 'react';
+import { sendFormEmail } from '../../config/email';
 
 export function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const success = await sendFormEmail({
+      subject: 'New Appointment Booking - MedVical',
+      fromName: 'MedVical Contact Form',
+      formType: 'Contact/Appointment Booking',
+      fields: {
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.phone,
+        message: `New appointment booking request:\n\nName: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nMessage: ${formData.message}`,
+      },
+    });
+
+    setIsSubmitting(false);
+
+    if (success) {
+      alert('Thank you! Your appointment request has been submitted. We will contact you shortly.');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        message: '',
+      });
+    } else {
+      alert('There was an error submitting your request. Please try again or call us directly at 09018911685.');
+    }
+  };
   return (
     <section id="contact" className="relative py-16 md:py-24 overflow-hidden">
       {/* Gradient Background */}
@@ -41,26 +83,48 @@ export function Contact() {
           >
             <Card className="border border-white/20 bg-white/60 backdrop-blur-md shadow-xl">
               <CardContent className="p-6 md:p-8">
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm mb-2">First Name</label>
-                      <Input placeholder="John" />
+                      <Input 
+                        placeholder="John" 
+                        value={formData.firstName}
+                        onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                        required
+                      />
                     </div>
                     <div>
                       <label className="block text-sm mb-2">Last Name</label>
-                      <Input placeholder="Doe" />
+                      <Input 
+                        placeholder="Doe" 
+                        value={formData.lastName}
+                        onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                        required
+                      />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm mb-2">Email</label>
-                      <Input type="email" placeholder="john@example.com" />
+                      <Input 
+                        type="email" 
+                        placeholder="john@example.com" 
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        required
+                      />
                     </div>
                     <div>
                       <label className="block text-sm mb-2">Phone</label>
-                      <Input type="tel" placeholder="+234 xxx xxx xxxx" />
+                      <Input 
+                        type="tel" 
+                        placeholder="+234 xxx xxx xxxx" 
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        required
+                      />
                     </div>
                   </div>
 
@@ -69,11 +133,19 @@ export function Contact() {
                     <Textarea
                       placeholder="Tell us how we can help you..."
                       rows={5}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      required
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                    Book Appointment
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Book Appointment'}
                   </Button>
                 </form>
               </CardContent>

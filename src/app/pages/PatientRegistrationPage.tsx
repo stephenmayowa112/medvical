@@ -4,6 +4,7 @@ import { Input } from '../components/ui/input';
 import { Card, CardContent } from '../components/ui/card';
 import { motion } from 'motion/react';
 import { useState } from 'react';
+import { sendFormEmail } from '../../config/email';
 
 const contactColors = [
   { accent: 'from-blue-500 to-cyan-500', glow: 'rgba(59,130,246,0.15)' },
@@ -55,14 +56,39 @@ export default function ClinicRegistrationPage() {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    
+    const success = await sendFormEmail({
+      subject: 'New Patient Registration - MedVical Medical Centre',
+      fromName: 'MedVical Patient Registration',
+      formType: 'Patient Registration',
+      fields: {
+        full_name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        date_of_birth: formData.dateOfBirth,
+        gender: formData.gender,
+        address: formData.address,
+        city: formData.city,
+        state: formData.state,
+        emergency_contact_name: formData.emergencyContactName,
+        emergency_contact_phone: formData.emergencyContactPhone,
+        medical_history: formData.medicalHistory || 'None provided',
+        current_medications: formData.currentMedications || 'None provided',
+        allergies: formData.allergies || 'None provided',
+        message: `New patient registration:\n\nFull Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nDate of Birth: ${formData.dateOfBirth}\nGender: ${formData.gender}\nAddress: ${formData.address}\nCity: ${formData.city}\nState: ${formData.state}\n\nEmergency Contact:\nName: ${formData.emergencyContactName}\nPhone: ${formData.emergencyContactPhone}\n\nMedical Information:\nMedical History: ${formData.medicalHistory || 'None provided'}\nCurrent Medications: ${formData.currentMedications || 'None provided'}\nAllergies: ${formData.allergies || 'None provided'}`,
+      },
+    });
+
+    setIsSubmitting(false);
+    
+    if (success) {
       setSubmitted(true);
-    }, 1500)
+    } else {
+      alert('There was an error submitting your registration. Please try again or call us directly at 07086080230.');
+    }
   };
 
   if (submitted) {

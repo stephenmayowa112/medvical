@@ -7,6 +7,7 @@ import { Label } from '../components/ui/label';
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
 import { useEffect, useState } from 'react';
+import { sendFormEmail } from '../../config/email';
 
 export default function PharmacySuppliesPage() {
   const [showRetailForm, setShowRetailForm] = useState(false);
@@ -22,24 +23,52 @@ export default function PharmacySuppliesPage() {
     return () => { document.title = 'Med-Vical International'; };
   }, []);
 
-  const handleRetailSubmit = (e: React.FormEvent) => {
+  const handleRetailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hello Med-Vical Pharmacy!\n\nI need retail medical supplies.\n\nName: ${retailName}\nPhone: ${retailPhone}\n\nPlease contact me. Thank you!`;
-    const phone = '2349018911685';
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-    setRetailName('');
-    setRetailPhone('');
-    setShowRetailForm(false);
+    
+    const success = await sendFormEmail({
+      subject: 'New Retail Pharmacy Order - MedVical',
+      fromName: 'MedVical Pharmacy (Retail)',
+      formType: 'Retail - Quick Medical Needs',
+      fields: {
+        name: retailName,
+        phone: retailPhone,
+        message: `New retail pharmacy order request:\n\nCustomer Name: ${retailName}\nPhone Number: ${retailPhone}`,
+      },
+    });
+
+    if (success) {
+      alert('Thank you! Your request has been submitted. We will contact you shortly.');
+      setRetailName('');
+      setRetailPhone('');
+      setShowRetailForm(false);
+    } else {
+      alert('There was an error submitting your request. Please try again or call us directly at 09018911685.');
+    }
   };
 
-  const handleWholesaleSubmit = (e: React.FormEvent) => {
+  const handleWholesaleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hello MedVical Supply!\n\nI need wholesale medical supplies.\n\nFacility Name: ${facilityName}\nProcurement Officer: ${procurementOfficer}\n\nPlease contact us for bulk orders. Thank you!`;
-    const phone = '2348087874018';
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-    setFacilityName('');
-    setProcurementOfficer('');
-    setShowWholesaleForm(false);
+    
+    const success = await sendFormEmail({
+      subject: 'New Wholesale Medical Supplies Order - MedVical',
+      fromName: 'MedVical Supply (Wholesale)',
+      formType: 'Wholesale - Clinics & Government Officials',
+      fields: {
+        facility_name: facilityName,
+        procurement_officer: procurementOfficer,
+        message: `New wholesale medical supplies order request:\n\nFacility Name: ${facilityName}\nProcurement Officer: ${procurementOfficer}`,
+      },
+    });
+
+    if (success) {
+      alert('Thank you! Your request has been submitted. We will contact you shortly.');
+      setFacilityName('');
+      setProcurementOfficer('');
+      setShowWholesaleForm(false);
+    } else {
+      alert('There was an error submitting your request. Please try again or call us directly at 08087874018.');
+    }
   };
 
   return (
