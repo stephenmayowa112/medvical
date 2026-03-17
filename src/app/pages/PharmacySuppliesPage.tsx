@@ -212,7 +212,7 @@ export default function PharmacySuppliesPage() {
                       </div>
                       <div className="flex gap-3">
                         <Button type="submit" className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
-                          Submit via WhatsApp
+                          Submit
                         </Button>
                         <Button 
                           type="button" 
@@ -303,7 +303,7 @@ export default function PharmacySuppliesPage() {
                       </div>
                       <div className="flex gap-3">
                         <Button type="submit" className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white">
-                          Submit via WhatsApp
+                          Submit
                         </Button>
                         <Button 
                           type="button" 

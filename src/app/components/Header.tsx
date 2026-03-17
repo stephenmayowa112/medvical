@@ -10,7 +10,7 @@ const navLinks = [
     label: 'Our Services',
     href: '/services',
     children: [
-      { label: 'Med-Vical Medical Centre', href: '/services/medical-centre' },
+      { label: 'Medical Centre', href: '/services/medical-centre' },
       { label: 'Pharmacy and Medical Supplies', href: '/services/pharmacy-supplies' },
       { label: 'Med-Vical Health', href: '/health-education' },
     ],
