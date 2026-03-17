@@ -1,10 +1,11 @@
-import { ShoppingCart, Package, ArrowRight, Phone } from 'lucide-react';
+import { ShoppingCart, Package, ArrowRight, Phone, Store } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { motion } from 'motion/react';
+import { Link } from 'react-router';
 import { useEffect, useState } from 'react';
 
 export default function PharmacySuppliesPage() {
@@ -342,6 +343,14 @@ export default function PharmacySuppliesPage() {
                 </Button>
               </motion.div>
             </a>
+            <Link to="/store">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100 hover:text-[#0d3b66]">
+                  <Store className="w-4 h-4 mr-2" />
+                  Visit Our Store
+                </Button>
+              </motion.div>
+            </Link>
           </motion.div>
         </div>
       </section>
