@@ -181,11 +181,11 @@ export const ALL_DIVISIONS: DivisionInfo[] = [
  */
 export const BENIN_CITY_OFFICE: OfficeLocation = {
   id: 'benin-city',
-  name: 'Med-Vical International - Benin City',
+  name: 'Med-Vical International - Benin City (Head Office)',
   city: 'Benin City',
-  address: '88 Akpakpava Road, Benin City, Edo State, Nigeria',
-  phone: '+2349018911685',
-  email: 'info@medvical.com',
+  address: '44, Boundary Road off Airport Road, Benin City, Edo State, Nigeria',
+  phone: '+2347086080230',
+  email: 'medvicalhealth@gmail.com',
   hours: {
     weekday: 'Monday - Friday: 8:00 AM - 6:00 PM',
     weekend: 'Saturday: 9:00 AM - 4:00 PM, Sunday: Closed',
@@ -203,19 +203,19 @@ export const BENIN_CITY_OFFICE: OfficeLocation = {
  */
 export const LAGOS_OFFICE: OfficeLocation = {
   id: 'lagos',
-  name: 'Med-Vical International - Lagos',
+  name: 'Med-Vical International - Lagos (Liaison Office)',
   city: 'Lagos',
-  address: 'Victoria Island, Lagos, Nigeria',
+  address: '3, Shola Martins, Oko-Oba, Lagos State, Nigeria',
   phone: '+2348087874018',
-  email: 'lagos@medvical.com',
+  email: 'medvicalinternational@yahoo.com',
   hours: {
     weekday: 'Monday - Friday: 8:00 AM - 6:00 PM',
     weekend: 'Saturday: 9:00 AM - 2:00 PM, Sunday: Closed',
     emergency: 'Emergency referrals to Benin City',
   },
   coordinates: {
-    lat: 6.4281,
-    lng: 3.4219,
+    lat: 6.5833,
+    lng: 3.2833,
   },
   services: ['MPPS'],
 };
@@ -225,11 +225,11 @@ export const LAGOS_OFFICE: OfficeLocation = {
  */
 export const ABUJA_OFFICE: OfficeLocation = {
   id: 'abuja',
-  name: 'Med-Vical International - Abuja',
+  name: 'Med-Vical International - Abuja (Liaison Office)',
   city: 'Abuja',
-  address: 'Central Business District, Abuja, FCT, Nigeria',
+  address: '5 Mulunfashi Close, off Emeka Anyaoku Street, Area 11, Garki, Abuja, FCT, Nigeria',
   phone: '+2347086080230',
-  email: 'abuja@medvical.com',
+  email: 'medvicalinternational@yahoo.com',
   hours: {
     weekday: 'Monday - Friday: 8:00 AM - 6:00 PM',
     weekend: 'Saturday: 9:00 AM - 2:00 PM, Sunday: Closed',

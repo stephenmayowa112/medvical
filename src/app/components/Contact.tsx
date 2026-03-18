@@ -62,7 +62,7 @@ export function Contact() {
                     <div>
                       <h3 className="font-medium mb-1">Location</h3>
                       <p className="text-sm text-gray-600">
-                        88 Akpakpava Road<br />
+                        44, Boundary Road off Airport Road<br />
                         Benin City, Edo State<br />
                         Nigeria
                       </p>
@@ -86,7 +86,8 @@ export function Contact() {
                     </div>
                     <div>
                       <h3 className="font-medium mb-1">Phone</h3>
-                      <p className="text-sm text-gray-600">+234 901 891 1685</p>
+                      <p className="text-sm text-gray-600">MMC: 07086080230 / 07030977820</p>
+                      <p className="text-sm text-gray-600">Pharmacy: 07030943250 / 09018911685</p>
                       <p className="text-sm text-gray-600">Emergency: 24/7</p>
                     </div>
                   </div>
@@ -108,7 +109,8 @@ export function Contact() {
                     </div>
                     <div>
                       <h3 className="font-medium mb-1">Email</h3>
-                      <p className="text-sm text-gray-600">info@medvical.com</p>
+                      <p className="text-sm text-gray-600">medvicalhealth@gmail.com</p>
+                      <p className="text-sm text-gray-600">medvicalinternational@yahoo.com</p>
                     </div>
                   </div>
                 </CardContent>

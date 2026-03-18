@@ -38,7 +38,7 @@ export function Hero() {
               Delivering Healthcare with Integrity and Excellence
             </h1>
             <p className="text-lg text-gray-200">
-              Delivering healthcare products and services with integrity and excellence — through our three specialised divisions: Med-Vical Medical Centre, Pharmacy &amp; Supplies, and Med-Vical Health.
+              Delivering healthcare products and services with integrity and excellence.
             </p>
             <motion.div
               className="flex flex-wrap gap-4"
@@ -46,12 +46,17 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                Book Appointment
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+              <a href="https://wa.me/message/RK4MSSMD3MHCG1" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                  Shop Now
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </a>
               <Button size="lg" variant="outline" className="border-white bg-white/20 backdrop-blur-sm text-white hover:bg-white hover:text-[#0d3b66]" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
                 Learn More
+              </Button>
+              <Button size="lg" variant="outline" className="border-white bg-white/20 backdrop-blur-sm !text-yellow-300 hover:bg-white/10 hover:!text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                Contact Us
               </Button>
             </motion.div>
 

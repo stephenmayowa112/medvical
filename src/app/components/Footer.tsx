@@ -96,7 +96,7 @@ export function Footer() {
               {[
                 { icon: Facebook, label: 'Facebook', href: '#' },
                 { icon: Twitter, label: 'Twitter', href: '#' },
-                { icon: Instagram, label: 'Instagram', href: '#' },
+                { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/medvical_international/' },
                 { icon: Linkedin, label: 'LinkedIn', href: '#' },
               ].map((social, i) => {
                 const Icon = social.icon;
@@ -196,6 +196,8 @@ export function Footer() {
           <p>&copy; {new Date().getFullYear()} Med-Vical International. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <a href="/privacy-policy" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
+            <span className="text-gray-700">·</span>
+            <a href="/terms-of-service" className="hover:text-gray-400 transition-colors">Terms of Service</a>
             <span className="text-gray-700">·</span>
             <p className="italic text-gray-600">"Family-Friendly, Client-Centred"</p>
           </div>
