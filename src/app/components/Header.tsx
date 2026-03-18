@@ -160,6 +160,7 @@ export function Header() {
           </div>
 
           <button
+            type="button"
             className="lg:hidden p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
@@ -177,22 +178,16 @@ export function Header() {
               link.children ? (
                 <div key={link.label}>
                   <button
+                    type="button"
                     className="flex items-center justify-between w-full px-3 py-2.5 text-sm rounded-lg hover:bg-blue-50 transition-colors"
                     onClick={() => setMobileServicesOpen((prev) => !prev)}
-                    aria-expanded={mobileServicesOpen}
+                    aria-expanded={mobileServicesOpen ? 'true' : 'false'}
                   >
                     {link.label}
                     <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {mobileServicesOpen && (
                     <div className="ml-4 space-y-1">
-                      <Link
-                        to={link.href}
-                        className="block px-3 py-2 text-sm rounded-lg hover:bg-blue-50 transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        All Services
-                      </Link>
                       {link.children.map((child) => (
                         <Link
                           key={child.label}
@@ -207,6 +202,17 @@ export function Header() {
                     </div>
                   )}
                 </div>
+              ) : 'external' in link && link.external ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-3 py-2.5 text-sm rounded-lg hover:bg-blue-50 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
               ) : link.href.startsWith('/#') ? (
                 <a
                   key={link.label}
