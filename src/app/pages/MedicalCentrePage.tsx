@@ -572,5 +572,3 @@ const MessageCircle = ({ className }: { className?: string }) => (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.837L3 21l1.338-3.123A8.949 8.949 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
   </svg>
 );
-
-export default MedicalCentrePage;

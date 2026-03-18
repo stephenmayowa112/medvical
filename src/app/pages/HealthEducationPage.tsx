@@ -7,6 +7,7 @@ import { motion } from 'motion/react';
 import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router';
 import { articles, articleCategories } from '../data/articles';
+import { WhatsAppWidget } from '../components/features/WhatsAppWidget';
 
 const gridContainer = {
   hidden: { opacity: 0 },
@@ -16,6 +17,31 @@ const gridItem = {
   hidden: { opacity: 0, y: 30, filter: 'blur(4px)' },
   visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] } },
 };
+
+const mhsPrograms = [
+  {
+    title: 'School Health Programme',
+    description: 'Routine screenings, health talks, immunization support, and school wellness planning for learners and staff.',
+  },
+  {
+    title: 'Community Outreach Initiatives',
+    description: 'Mobile outreaches focused on prevention, early detection, and referral support in underserved communities.',
+  },
+  {
+    title: 'Health Retainership Services',
+    description: 'Structured retainership packages for organizations with periodic checkups, health education, and rapid referral access.',
+  },
+  {
+    title: 'AccessHealth Platform',
+    description: 'A practical channel for continuous health engagement, appointment guidance, and community health communication.',
+  },
+];
+
+const upcomingEvents = [
+  { name: 'School Health Screening Week', date: 'April 10 - April 14, 2026', venue: 'Benin City Partner Schools' },
+  { name: 'Community BP & Diabetes Check', date: 'April 27, 2026', venue: 'Uselu Community Hall' },
+  { name: 'Corporate Wellness Roundtable', date: 'May 8, 2026', venue: 'Med-Vical Conference Hub' },
+];
 
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString('en-NG', {
@@ -123,6 +149,58 @@ export default function HealthEducationPage() {
               informed. Written by the Med-Vical medical team in Benin City.
             </motion.p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* MHS Programmes */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 md:mb-10">
+            <h2 className="text-3xl mb-2">Med-Vical Health (MHS) Programmes</h2>
+            <p className="text-gray-600 max-w-3xl">
+              We combine education, outreach, and institutional support to improve health outcomes across schools, families, and workplaces.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+            {mhsPrograms.map((program) => (
+              <Card key={program.title} className="border border-slate-200 bg-white">
+                <CardContent className="p-6">
+                  <h3 className="text-xl mb-2">{program.title}</h3>
+                  <p className="text-gray-600">{program.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-6">
+            <Card className="border border-slate-200">
+              <CardContent className="p-6">
+                <h3 className="text-xl mb-4">Event Calendar</h3>
+                <div className="space-y-4">
+                  {upcomingEvents.map((event) => (
+                    <div key={event.name} className="border-l-4 border-blue-500 pl-4">
+                      <p className="font-semibold text-slate-800">{event.name}</p>
+                      <p className="text-sm text-slate-600">{event.date}</p>
+                      <p className="text-sm text-slate-500">{event.venue}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border border-slate-200">
+              <CardContent className="p-6">
+                <h3 className="text-xl mb-4">Educational Resources</h3>
+                <ul className="space-y-3 text-slate-700">
+                  <li>Monthly family health briefs and preventive care guides.</li>
+                  <li>School-ready policy templates for safe and healthy learning environments.</li>
+                  <li>Corporate wellness toolkits and periodic screening schedules.</li>
+                  <li>Community-first referral information for fast access to specialist support.</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -374,6 +452,8 @@ export default function HealthEducationPage() {
           </motion.div>
         </div>
       </section>
+
+      <WhatsAppWidget division="MHS" defaultMessage="Hello Med-Vical Health, I would like information about your school health and outreach programmes." />
     </div>
   );
 }

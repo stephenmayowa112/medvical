@@ -1,5 +1,6 @@
 import { MessageCircle } from 'lucide-react';
-import { generateWhatsAppLink, type DivisionId } from '../../data/content';
+import { type DivisionId } from '../../data/content';
+import { generateWhatsAppLink } from '../../utils/whatsapp';
 
 /**
  * Props for the WhatsAppWidget component
