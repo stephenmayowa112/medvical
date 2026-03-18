@@ -12,3 +12,6 @@ export type { GoogleMapsEmbedProps, Location } from './GoogleMapsEmbed';
 
 export { ContactForm } from './ContactForm';
 export type { ContactFormData } from '../../utils/validation';
+
+export { NewsletterForm } from './NewsletterForm';
+export type { NewsletterFormData } from '../../utils/validation';
