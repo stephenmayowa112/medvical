@@ -75,7 +75,7 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 mb-12">
           <motion.div
             className="lg:col-span-2"
             initial={{ opacity: 0, x: -30 }}
@@ -249,6 +249,22 @@ export function Contact() {
             </motion.div>
           </div>
         </div>
+
+        {/* Google Maps Integration */}
+        <motion.div
+          className="mt-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h3 className="text-2xl font-semibold text-center mb-6">Our Locations</h3>
+          <GoogleMapsEmbed 
+            locations={ALL_OFFICE_LOCATIONS}
+            height="500px"
+            className="shadow-xl"
+          />
+        </motion.div>
       </div>
     </section>
   );

@@ -9,3 +9,6 @@ export type { WhatsAppWidgetProps } from './WhatsAppWidget';
 
 export { GoogleMapsEmbed } from './GoogleMapsEmbed';
 export type { GoogleMapsEmbedProps, Location } from './GoogleMapsEmbed';
+
+export { ContactForm } from './ContactForm';
+export type { ContactFormData } from '../../utils/validation';
