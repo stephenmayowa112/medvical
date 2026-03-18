@@ -302,8 +302,8 @@ The implementation follows a logical sequence: foundation setup → core feature
     - **Validates: Requirements 15.2, 15.3, 15.4**
     - Test that for any office location, it includes complete address, phone, and hours
 
-- [-] 9. Update HomePage with new content and features
-  - [-] 9.1 Update HomePage content and structure
+- [x] 9. Update HomePage with new content and features
+  - [x] 9.1 Update HomePage content and structure
     - Update `src/app/pages/HomePage.tsx`
     - Update Hero component with new tagline and messaging
     - Create DivisionsOverview component showcasing MMC, MPPS, MHS
@@ -328,8 +328,8 @@ The implementation follows a logical sequence: foundation setup → core feature
     - **Validates: Requirements 6.1**
     - Test that for any page, WhatsApp widget is present and accessible
 
-- [ ] 10. Update ServicesPage with division structure
-  - [ ] 10.1 Update ServicesPage content
+- [x] 10. Update ServicesPage with division structure
+  - [x] 10.1 Update ServicesPage content
     - Update `src/app/pages/ServicesPage.tsx`
     - Create overview section for all three divisions
     - Create service cards for MMC, MPPS, MHS with descriptions
@@ -345,8 +345,8 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test WhatsApp integration for each division
     - _Requirements: 1.3_
 
-- [ ] 11. Update MedicalCentrePage with new content
-  - [ ] 11.1 Update MedicalCentrePage content
+- [-] 11. Update MedicalCentrePage with new content
+  - [-] 11.1 Update MedicalCentrePage content
     - Update `src/app/pages/MedicalCentrePage.tsx`
     - Update specialty clinics list with current offerings
     - Add NICU/PICU information section

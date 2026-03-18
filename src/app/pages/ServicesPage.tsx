@@ -1,74 +1,116 @@
 import {
-  Stethoscope, Package, ArrowRight, Phone, ShoppingCart
+  Stethoscope, Package, Heart, ArrowRight, Phone, MessageCircle, Users, Hospital, Pill
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { ContactForm } from '../components/features/ContactForm';
+import { generateWhatsAppLink, ALL_DIVISIONS, type DivisionId } from '../data/content';
 
-const serviceDivisions = [
-  {
-    icon: Stethoscope,
-    title: 'Med-Vical Medical Centre',
-    description:
-      'Comprehensive healthcare services — from basic health checks and screening to specialty out-patient clinics, walk-in clinics, diagnostic services and 24/7 emergency care.',
-    highlights: [
-      'Health check & screening',
-      'Specialty out-patient clinics',
-      'Diagnostic & lab services',
-      '24/7 emergency care',
-      'Walk-in clinics',
-      'Antenatal & obstetric care',
-    ],
-    link: '/services/medical-centre',
-    image:
-      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-    accent: 'from-blue-500 to-cyan-500',
-    glow: 'rgba(59,130,246,0.25)',
-  },
-  {
-    icon: Package,
-    title: 'Med-Vical Supplies',
-    description:
-      'The wholesale, distribution and supply division — quality pharmaceuticals, medical devices, hospital and laboratory equipment and consumables at competitive wholesale prices with nationwide delivery.',
-    highlights: [
-      'Pharmaceuticals',
-      'Surgicals & dressings',
-      'Medical devices',
-      'Hospital & lab equipment',
-      'Consumables',
-      'Nationwide delivery',
-    ],
-    link: '/services/medical-supplies',
-    image:
-      'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-    accent: 'from-emerald-500 to-teal-500',
-    glow: 'rgba(16,185,129,0.25)',
-  },
-  {
-    icon: ShoppingCart,
-    title: 'Med-Vical Store',
-    description:
-      'Shop our wide range of personal healthcare products, wellness items, and daily consumer goods directly online. Enjoy secure checkout and quick delivery for all your health and lifestyle needs.',
-    highlights: [
-      'Personal healthcare',
-      'Wellness products',
-      'Daily consumer goods',
-      'Secure online checkout',
-      'Quick nationwide delivery',
-      'Verified quality products',
-    ],
-    link: '/store',
-    image:
-      'https://images.unsplash.com/photo-1576602976047-174e57a47881?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-    accent: 'from-violet-500 to-purple-500',
-    glow: 'rgba(139,92,246,0.25)',
-  },
-];
+// Map division icons from content.ts to lucide-react icons
+const getDivisionIcon = (iconName: string) => {
+  switch (iconName) {
+    case 'hospital':
+      return Hospital;
+    case 'pharmacy':
+      return Package;
+    case 'heart':
+      return Heart;
+    default:
+      return Stethoscope;
+  }
+};
+
+// Map division colors to Tailwind classes
+const getDivisionColorClasses = (color: string) => {
+  switch (color) {
+    case 'blue':
+      return {
+        gradient: 'from-blue-500 to-cyan-500',
+        bg: 'bg-blue-50',
+        border: 'border-blue-100',
+        text: 'text-blue-600',
+        button: 'bg-blue-600 hover:bg-blue-700',
+        glow: 'rgba(59,130,246,0.25)',
+        dot: 'bg-blue-600'
+      };
+    case 'red':
+      return {
+        gradient: 'from-red-500 to-orange-500',
+        bg: 'bg-red-50',
+        border: 'border-red-100',
+        text: 'text-red-600',
+        button: 'bg-red-600 hover:bg-red-700',
+        glow: 'rgba(239,68,68,0.25)',
+        dot: 'bg-red-600'
+      };
+    case 'orange':
+      return {
+        gradient: 'from-orange-500 to-amber-500',
+        bg: 'bg-orange-50',
+        border: 'border-orange-100',
+        text: 'text-orange-600',
+        button: 'bg-orange-600 hover:bg-orange-700',
+        glow: 'rgba(249,115,22,0.25)',
+        dot: 'bg-orange-600'
+      };
+    default:
+      return {
+        gradient: 'from-blue-500 to-cyan-500',
+        bg: 'bg-blue-50',
+        border: 'border-blue-100',
+        text: 'text-blue-600',
+        button: 'bg-blue-600 hover:bg-blue-700',
+        glow: 'rgba(59,130,246,0.25)',
+        dot: 'bg-blue-600'
+      };
+  }
+};
+
+// Get division-specific inquiry type
+const getDivisionInquiryType = (divisionId: DivisionId) => {
+  switch (divisionId) {
+    case 'MMC':
+      return 'medical-services';
+    case 'MPPS':
+      return 'pharmacy-supplies';
+    case 'MHS':
+      return 'health-programs';
+    default:
+      return 'general';
+  }
+};
+
+// Get division image
+const getDivisionImage = (divisionId: DivisionId) => {
+  switch (divisionId) {
+    case 'MMC':
+      return 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800';
+    case 'MPPS':
+      return 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800';
+    case 'MHS':
+      return 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800';
+    default:
+      return 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800';
+  }
+};
+
+// Get division page link
+const getDivisionLink = (divisionId: DivisionId) => {
+  switch (divisionId) {
+    case 'MMC':
+      return '/services/medical-centre';
+    case 'MPPS':
+      return '/services/pharmacy-supplies';
+    case 'MHS':
+      return '/services/health-education';
+    default:
+      return '/services';
+  }
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -80,38 +122,11 @@ const cardVariants = {
 };
 
 export default function ServicesPage() {
-  const [showRetailForm, setShowRetailForm] = useState(false);
-  const [showWholesaleForm, setShowWholesaleForm] = useState(false);
-  const [retailName, setRetailName] = useState('');
-  const [retailPhone, setRetailPhone] = useState('');
-  const [facilityName, setFacilityName] = useState('');
-  const [procurementOfficer, setProcurementOfficer] = useState('');
-
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = 'Our Services | Med-Vical International';
     return () => { document.title = 'Med-Vical International'; };
   }, []);
-
-  const handleRetailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const message = `Hello Med-Vical Pharmacy!\n\nI need retail medical supplies.\n\nName: ${retailName}\nPhone: ${retailPhone}\n\nPlease contact me. Thank you!`;
-    const phone = '2349018911685';
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-    setRetailName('');
-    setRetailPhone('');
-    setShowRetailForm(false);
-  };
-
-  const handleWholesaleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const message = `Hello MedVical Supply!\n\nI need wholesale medical supplies.\n\nFacility Name: ${facilityName}\nProcurement Officer: ${procurementOfficer}\n\nPlease contact us for bulk orders. Thank you!`;
-    const phone = '2348087874018';
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-    setFacilityName('');
-    setProcurementOfficer('');
-    setShowWholesaleForm(false);
-  };
 
   return (
     <div className="min-h-screen">
@@ -146,7 +161,7 @@ export default function ServicesPage() {
               </Badge>
             </motion.div>
             <h1 className="text-4xl md:text-5xl mb-4">
-              Comprehensive Healthcare &amp; Supply Solutions
+              Comprehensive Healthcare Solutions Across Three Divisions
             </h1>
             <motion.p
               className="text-lg text-blue-100 max-w-2xl mx-auto"
@@ -154,14 +169,14 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Med-Vical International operates two key service divisions — our Medical Centre providing
-              clinical healthcare, and our Supply division distributing quality medical products nationwide.
+              Med-Vical International operates three specialized divisions to meet all your healthcare needs — 
+              from clinical services and medical supplies to community health programs.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Pharmacy & Supply Forms */}
+      {/* Divisions Overview */}
       <section className="relative py-16 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/30 to-white" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -172,200 +187,90 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-sm text-blue-600 font-medium">Get Started</span>
-            <h2 className="mt-2 text-3xl md:text-4xl">MedVical Pharmacy & Medical Supplies</h2>
+            <span className="text-sm text-blue-600 font-medium">Our Divisions</span>
+            <h2 className="mt-2 text-3xl md:text-4xl">Three Specialized Healthcare Divisions</h2>
             <p className="mt-4 text-gray-600">
-              Choose retail for quick medical needs or wholesale for clinics and government facilities.
+              Each division focuses on specific aspects of healthcare delivery, ensuring comprehensive coverage 
+              for all your medical needs.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Retail Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -30, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <Card className="border border-blue-100 bg-white/80 backdrop-blur-sm shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-500 to-cyan-500 p-6 text-white">
-                  <ShoppingCart className="w-10 h-10 mb-3" />
-                  <h3 className="text-2xl font-bold mb-2">MedVical Pharmacy</h3>
-                  <p className="text-blue-100 text-sm">Retail - Quick Medical Needs</p>
-                </div>
-                <CardContent className="p-6">
-                  {!showRetailForm ? (
-                    <div className="space-y-4">
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        For individuals and families needing quick access to quality pharmaceutical products and personal healthcare items.
-                      </p>
-                      <ul className="space-y-2 text-sm text-gray-700">
-                        <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                          Prescription medications
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                          Over-the-counter drugs
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                          Personal care products
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                          Fast delivery
-                        </li>
-                      </ul>
-                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                        <Button 
-                          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                          onClick={() => setShowRetailForm(true)}
-                        >
-                          Get Started
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                      </motion.div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {ALL_DIVISIONS.map((division, index) => {
+              const Icon = getDivisionIcon(division.icon);
+              const colors = getDivisionColorClasses(division.color);
+              const image = getDivisionImage(division.id);
+              const link = getDivisionLink(division.id);
+              
+              return (
+                <motion.div
+                  key={division.id}
+                  initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+                  whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <Card className={`border ${colors.border} ${colors.bg} backdrop-blur-sm shadow-lg overflow-hidden h-full`}>
+                    <div className={`bg-gradient-to-r ${colors.gradient} p-6 text-white`}>
+                      <Icon className="w-10 h-10 mb-3" />
+                      <h3 className="text-xl font-bold mb-1">{division.name}</h3>
+                      <p className="text-white/80 text-sm">{division.fullName}</p>
                     </div>
-                  ) : (
-                    <form onSubmit={handleRetailSubmit} className="space-y-4">
-                      <div>
-                        <Label htmlFor="retail-name">Full Name</Label>
-                        <Input
-                          id="retail-name"
-                          type="text"
-                          placeholder="Enter your name"
-                          value={retailName}
-                          onChange={(e) => setRetailName(e.target.value)}
-                          required
-                          className="mt-1"
+                    <CardContent className="p-6">
+                      <div className="aspect-[16/10] overflow-hidden rounded-lg mb-4">
+                        <img
+                          src={image}
+                          alt={division.name}
+                          className="w-full h-full object-cover"
                         />
                       </div>
-                      <div>
-                        <Label htmlFor="retail-phone">Phone Number</Label>
-                        <Input
-                          id="retail-phone"
-                          type="tel"
-                          placeholder="Enter your phone number"
-                          value={retailPhone}
-                          onChange={(e) => setRetailPhone(e.target.value)}
-                          required
-                          className="mt-1"
-                        />
-                      </div>
-                      <div className="flex gap-3">
-                        <Button type="submit" className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
-                          Submit via WhatsApp
-                        </Button>
-                        <Button 
-                          type="button" 
-                          variant="outline" 
-                          onClick={() => setShowRetailForm(false)}
-                        >
-                          Cancel
-                        </Button>
-                      </div>
-                    </form>
-                  )}
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Wholesale Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 30, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-            >
-              <Card className="border border-emerald-100 bg-white/80 backdrop-blur-sm shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-emerald-500 to-teal-500 p-6 text-white">
-                  <Package className="w-10 h-10 mb-3" />
-                  <h3 className="text-2xl font-bold mb-2">MedVical Supply</h3>
-                  <p className="text-emerald-100 text-sm">Wholesale - Clinics & Government Officials</p>
-                </div>
-                <CardContent className="p-6">
-                  {!showWholesaleForm ? (
-                    <div className="space-y-4">
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        For healthcare facilities, clinics, hospitals, and government institutions requiring bulk medical supplies and equipment.
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                        {division.description}
                       </p>
-                      <ul className="space-y-2 text-sm text-gray-700">
-                        <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                          Wholesale pricing
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                          Bulk orders
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                          Medical equipment
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                          Nationwide delivery
-                        </li>
-                      </ul>
-                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                        <Button 
-                          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
-                          onClick={() => setShowWholesaleForm(true)}
+                      <div className="space-y-3 mb-6">
+                        <h4 className="font-medium text-gray-800">Key Services:</h4>
+                        <ul className="space-y-2">
+                          {division.services.slice(0, 4).map((service, idx) => (
+                            <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                              <span className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
+                              {service}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="flex flex-col gap-3">
+                        <Link to={link} className="w-full">
+                          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                            <Button className={`w-full ${colors.button} text-white`}>
+                              Learn More
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                          </motion.div>
+                        </Link>
+                        <a 
+                          href={generateWhatsAppLink(division.id)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full"
                         >
-                          Get Started
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                      </motion.div>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleWholesaleSubmit} className="space-y-4">
-                      <div>
-                        <Label htmlFor="facility-name">Name of Facility</Label>
-                        <Input
-                          id="facility-name"
-                          type="text"
-                          placeholder="Enter facility name"
-                          value={facilityName}
-                          onChange={(e) => setFacilityName(e.target.value)}
-                          required
-                          className="mt-1"
-                        />
+                          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                            <Button variant="outline" className="w-full border-gray-300">
+                              <MessageCircle className="w-4 h-4 mr-2 text-green-600" />
+                              WhatsApp Inquiry
+                            </Button>
+                          </motion.div>
+                        </a>
                       </div>
-                      <div>
-                        <Label htmlFor="procurement-officer">Procurement Officer</Label>
-                        <Input
-                          id="procurement-officer"
-                          type="text"
-                          placeholder="Enter procurement officer name"
-                          value={procurementOfficer}
-                          onChange={(e) => setProcurementOfficer(e.target.value)}
-                          required
-                          className="mt-1"
-                        />
-                      </div>
-                      <div className="flex gap-3">
-                        <Button type="submit" className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white">
-                          Submit via WhatsApp
-                        </Button>
-                        <Button 
-                          type="button" 
-                          variant="outline" 
-                          onClick={() => setShowWholesaleForm(false)}
-                        >
-                          Cancel
-                        </Button>
-                      </div>
-                    </form>
-                  )}
-                </CardContent>
-              </Card>
-            </motion.div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Service Divisions */}
+      {/* Detailed Division Cards */}
       <section className="relative py-16 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50" />
         <motion.div
@@ -375,21 +280,25 @@ export default function ServicesPage() {
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
         >
-          {serviceDivisions.map((division, index) => {
-            const Icon = division.icon;
+          {ALL_DIVISIONS.map((division, index) => {
+            const Icon = getDivisionIcon(division.icon);
+            const colors = getDivisionColorClasses(division.color);
+            const image = getDivisionImage(division.id);
+            const link = getDivisionLink(division.id);
             const isReversed = index % 2 !== 0;
+            
             return (
-              <motion.div key={index} variants={cardVariants}>
+              <motion.div key={division.id} variants={cardVariants}>
                 <motion.div
-                  whileHover={{ y: -8, boxShadow: `0 25px 50px -12px ${division.glow}` }}
+                  whileHover={{ y: -8, boxShadow: `0 25px 50px -12px ${colors.glow}` }}
                   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                 >
                   <Card className="overflow-hidden border border-white/20 bg-white/70 backdrop-blur-sm shadow-lg">
                     <div className={`grid md:grid-cols-2 ${isReversed ? 'md:[direction:rtl]' : ''}`}>
                       <div className="aspect-[16/10] md:aspect-auto overflow-hidden">
                         <motion.img
-                          src={division.image}
-                          alt={division.title}
+                          src={image}
+                          alt={division.name}
                           className="w-full h-full object-cover"
                           whileHover={{ scale: 1.06 }}
                           transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -398,40 +307,61 @@ export default function ServicesPage() {
                       <CardContent className={`p-6 md:p-10 flex flex-col justify-center ${isReversed ? 'md:[direction:ltr]' : ''}`}>
                         <div className="flex items-center gap-3 mb-4">
                           <motion.div
-                            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${division.accent} flex items-center justify-center shadow-lg`}
+                            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${colors.gradient} flex items-center justify-center shadow-lg`}
                             whileHover={{ scale: 1.15, rotate: 5 }}
                             transition={{ type: 'spring', stiffness: 400, damping: 15 }}
                           >
                             <Icon className="w-6 h-6 text-white" />
                           </motion.div>
-                          <h2 className="text-2xl md:text-3xl">{division.title}</h2>
+                          <div>
+                            <h2 className="text-2xl md:text-3xl">{division.fullName}</h2>
+                            <p className="text-gray-500 text-sm">({division.name})</p>
+                          </div>
                         </div>
                         <p className="text-gray-600 mb-6 leading-relaxed">{division.description}</p>
 
-                        <ul className="grid grid-cols-2 gap-2 mb-6">
-                          {division.highlights.map((item, idx) => (
-                            <motion.li
-                              key={idx}
-                              className="flex items-center gap-2 text-sm text-gray-700"
-                              initial={{ opacity: 0, x: -10 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.3, delay: idx * 0.06 }}
-                            >
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 flex-shrink-0" />
-                              {item}
-                            </motion.li>
-                          ))}
-                        </ul>
+                        <div className="mb-6">
+                          <h3 className="font-medium text-gray-800 mb-3">Services Offered:</h3>
+                          <ul className="grid grid-cols-2 gap-2">
+                            {division.services.map((service, idx) => (
+                              <motion.li
+                                key={idx}
+                                className="flex items-center gap-2 text-sm text-gray-700"
+                                initial={{ opacity: 0, x: -10 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.3, delay: idx * 0.06 }}
+                              >
+                                <span className={`w-1.5 h-1.5 rounded-full ${colors.dot} flex-shrink-0`} />
+                                {service}
+                              </motion.li>
+                            ))}
+                          </ul>
+                        </div>
 
-                        <Link to={division.link} className="w-fit">
-                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                            <Button className="bg-blue-600 hover:bg-blue-700 text-white group/btn">
-                              Learn More
-                              <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                            </Button>
-                          </motion.div>
-                        </Link>
+                        <div className="flex flex-wrap gap-3">
+                          <Link to={link} className="w-fit">
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                              <Button className={`${colors.button} text-white group/btn`}>
+                                Learn More
+                                <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                              </Button>
+                            </motion.div>
+                          </Link>
+                          <a 
+                            href={generateWhatsAppLink(division.id)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-fit"
+                          >
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                              <Button variant="outline" className="border-gray-300">
+                                <MessageCircle className="w-4 h-4 mr-2 text-green-600" />
+                                WhatsApp Inquiry
+                              </Button>
+                            </motion.div>
+                          </a>
+                        </div>
                       </CardContent>
                     </div>
                   </Card>
@@ -440,6 +370,81 @@ export default function ServicesPage() {
             );
           })}
         </motion.div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="relative py-16 md:py-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/20 to-white" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-sm text-blue-600 font-medium">Get in Touch</span>
+              <h2 className="mt-2 text-3xl md:text-4xl">Contact Our Divisions</h2>
+              <p className="mt-4 text-gray-600">
+                Have questions or need more information about our services? Contact the appropriate division 
+                directly or use the form to send your inquiry.
+              </p>
+              
+              <div className="mt-8 space-y-6">
+                {ALL_DIVISIONS.map((division) => {
+                  const colors = getDivisionColorClasses(division.color);
+                  const inquiryType = getDivisionInquiryType(division.id);
+                  
+                  return (
+                    <div key={division.id} className="p-4 border border-gray-200 rounded-lg bg-white">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className={`w-3 h-3 rounded-full ${colors.dot}`} />
+                        <h3 className="font-medium text-gray-800">{division.fullName}</h3>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-3">{division.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        <a 
+                          href={`tel:${division.contactPhone}`}
+                          className="text-sm text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                        >
+                          <Phone className="w-3 h-3" />
+                          {division.contactPhone}
+                        </a>
+                        <span className="text-gray-300">•</span>
+                        <a 
+                          href={generateWhatsAppLink(division.id)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-green-600 hover:text-green-800 flex items-center gap-1"
+                        >
+                          <MessageCircle className="w-3 h-3" />
+                          WhatsApp
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              <Card className="border border-gray-200 bg-white/80 backdrop-blur-sm shadow-lg">
+                <CardContent className="p-6 md:p-8">
+                  <h3 className="text-xl font-bold mb-2">Send Us a Message</h3>
+                  <p className="text-gray-600 text-sm mb-6">
+                    Fill out the form below and we'll route your inquiry to the appropriate division.
+                  </p>
+                  <ContactForm defaultInquiryType="general" />
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Bottom CTA */}
@@ -467,7 +472,8 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            Whether you need clinical care or quality medical supplies, Med-Vical International is your trusted partner.
+            Whether you need clinical care, medical supplies, or community health programs, 
+            Med-Vical International is your trusted partner across all three divisions.
           </motion.p>
           <motion.div
             className="flex flex-wrap justify-center gap-4"
