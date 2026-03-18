@@ -243,8 +243,8 @@ The implementation follows a logical sequence: foundation setup → core feature
     - **Validates: Requirements 10.5**
     - Test that for any submitted testimonial, it's stored in pending state and not displayed until approved
 
-- [-] 7. Update Header component with new navigation
-  - [-] 7.1 Update Header navigation structure
+- [x] 7. Update Header component with new navigation
+  - [x] 7.1 Update Header navigation structure
     - Update `src/app/components/Header.tsx`
     - Restructure navigation to reflect three divisions (MMC, MPPS, MHS)
     - Update services dropdown with division links
@@ -278,8 +278,8 @@ The implementation follows a logical sequence: foundation setup → core feature
     - **Validates: Requirements 11.5**
     - Test that for any page, simHealth Africa link is accessible
 
-- [ ] 8. Update Footer component with newsletter and new content
-  - [ ] 8.1 Update Footer with newsletter integration
+- [-] 8. Update Footer component with newsletter and new content
+  - [-] 8.1 Update Footer with newsletter integration
     - Update `src/app/components/Footer.tsx`
     - Integrate NewsletterForm component in footer
     - Update quick links section with new pages
