@@ -135,8 +135,8 @@ export default function MedicalCentrePage() {
           loop
           muted
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
-          poster="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
         >
           <source src="/images/Regenerate_Video_With_Black_People.mp4" type="video/mp4" />
         </video>
@@ -183,16 +183,16 @@ export default function MedicalCentrePage() {
             >
               <Link to="/patient-registration">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
+                  <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100 text-base font-bold px-8 py-6">
                     Register as Patient
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </motion.div>
               </Link>
               <a href="tel:+2347086080230">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" variant="outline" className="text-yellow-300 border-white hover:bg-white/10 hover:text-white">
-                    <Phone className="w-4 h-4 mr-2" />
+                  <Button size="lg" variant="outline" className="border-2 border-white bg-white/15 text-white font-bold text-base px-8 py-6 hover:bg-white hover:text-[#0d3b66]">
+                    <Phone className="w-5 h-5 mr-2" />
                     Book Appointment
                   </Button>
                 </motion.div>

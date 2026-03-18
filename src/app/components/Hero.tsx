@@ -11,8 +11,8 @@ export function Hero() {
         loop
         muted
         playsInline
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
-        poster="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
       >
         <source
           src="/images/Regenerate_Video_With_Black_People.mp4"
