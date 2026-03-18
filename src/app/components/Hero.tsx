@@ -32,13 +32,13 @@ export function Hero() {
             transition={{ duration: 0.6 }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25">
-              <span className="text-sm text-white font-medium">...family friendly, client-centred</span>
+              <span className="text-sm text-white font-medium">Family-Friendly, Client-Centred</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight text-white drop-shadow-lg">
-              Top Private Hospital in Benin City, Nigeria
+              Delivering Healthcare with Integrity and Excellence
             </h1>
             <p className="text-lg text-gray-200">
-              Trusted, affordable and patient-centered healthcare — from maternity care and paediatrics to surgery, lab diagnostics and 24/7 emergency services.
+              Delivering healthcare products and services with integrity and excellence — through our three specialised divisions: Med-Vical Medical Centre, Pharmacy &amp; Supplies, and Med-Vical Health.
             </p>
             <motion.div
               className="flex flex-wrap gap-4"

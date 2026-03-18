@@ -3,9 +3,9 @@ import { motion } from 'motion/react';
 export function Stats() {
   const stats = [
     { number: '24/7', label: 'Emergency Care' },
-    { number: '1000+', label: 'Satisfied Patients' },
-    { number: '50+', label: 'Medical Professionals' },
-    { number: '100%', label: 'Commitment to Care' },
+    { number: '5000+', label: 'Patients Served' },
+    { number: '3', label: 'Specialised Divisions' },
+    { number: '100%', label: 'Client-Centred Care' },
   ];
 
   return (

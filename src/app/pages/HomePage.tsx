@@ -1,23 +1,23 @@
 import { Hero } from '../components/Hero';
-import { About } from '../components/About';
+import { DivisionsOverview } from '../components/DivisionsOverview';
 import { Stats } from '../components/Stats';
+import { FeaturedServices } from '../components/FeaturedServices';
+import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { WhyChooseUs } from '../components/WhyChooseUs';
-import { Gallery } from '../components/Gallery';
-import { FAQ } from '../components/FAQ';
+import { NewsletterCTA } from '../components/NewsletterCTA';
 import { Contact } from '../components/Contact';
-import { ServicesCTA } from '../components/ServicesCTA';
 import { WhatsAppWidget } from '../components/features/WhatsAppWidget';
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <About />
+      <DivisionsOverview />
       <Stats />
-      <ServicesCTA />
+      <FeaturedServices />
+      <TestimonialsCarousel />
       <WhyChooseUs />
-      <Gallery />
-      <FAQ />
+      <NewsletterCTA />
       <Contact />
       <WhatsAppWidget division="MMC" />
     </>

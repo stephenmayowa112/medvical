@@ -1,22 +1,32 @@
-import { DollarSign, MapPin, Users, Zap } from 'lucide-react';
+import { DollarSign, MapPin, Users, Zap, ShieldCheck, Clock } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export function WhyChooseUs() {
   const features = [
+    {
+      icon: Users,
+      title: 'Family-Friendly, Client-Centred',
+      description: 'We put patients and families first in everything we do — from the moment you walk in to long after you leave.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'NHIA & EDOHIS Accredited',
+      description: 'Fully accredited by Nigeria\'s leading health insurance bodies, ensuring quality standards you can trust.',
+    },
     {
       icon: DollarSign,
       title: 'Affordable Healthcare',
       description: 'Competitive pricing without compromising quality. We partner with leading HMOs and insurance providers.',
     },
     {
+      icon: Clock,
+      title: '24/7 Emergency Services',
+      description: 'Our emergency team and ambulance service are available around the clock, every day of the year.',
+    },
+    {
       icon: MapPin,
       title: 'Convenient Location',
       description: 'Located in the heart of Benin City, easily accessible from GRA, Ugbowo, Sapele Road, and surrounding areas.',
-    },
-    {
-      icon: Users,
-      title: 'Patient-Centered Care',
-      description: 'We prioritize your comfort, safety, and professional care in every visit. Your health is our mission.',
     },
     {
       icon: Zap,
@@ -28,7 +38,7 @@ export function WhyChooseUs() {
   return (
     <section className="relative py-16 md:py-24 overflow-hidden">
       {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-purple-50/20 to-white" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-blue-50/20 to-white" />
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-50/30 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,17 +49,17 @@ export function WhyChooseUs() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-sm text-blue-600 font-medium">Our Commitment</span>
-          <h2 className="mt-2 text-3xl md:text-4xl">
+          <span className="text-sm text-blue-600 font-medium uppercase tracking-wide">Our Commitment</span>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
             Why Choose Med-Vical?
           </h2>
           <p className="mt-4 text-gray-600">
-            Healthcare should be accessible. As one of the most affordable private hospitals in Benin,
-            we offer competitive pricing without compromising quality.
+            Delivering healthcare products and services with integrity and excellence.
+            We combine clinical expertise with genuine compassion to serve every patient.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
