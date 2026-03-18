@@ -6,6 +6,7 @@ import { Gallery } from '../components/Gallery';
 import { FAQ } from '../components/FAQ';
 import { Contact } from '../components/Contact';
 import { ServicesCTA } from '../components/ServicesCTA';
+import { WhatsAppWidget } from '../components/features/WhatsAppWidget';
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Gallery />
       <FAQ />
       <Contact />
+      <WhatsAppWidget division="MMC" />
     </>
   );
 }

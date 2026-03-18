@@ -21,8 +21,8 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that all office locations have complete address and contact information
     - _Requirements: 15.2, 15.3, 15.4_
 
-- [ ] 2. Implement WhatsApp integration feature
-  - [-] 2.1 Create WhatsAppWidget component
+- [x] 2. Implement WhatsApp integration feature
+  - [x] 2.1 Create WhatsAppWidget component
     - Create `src/app/components/features/WhatsAppWidget.tsx`
     - Implement floating button with fixed positioning (bottom-right)
     - Add props for phoneNumber, defaultMessage, division, position
@@ -32,7 +32,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Add ARIA labels for accessibility
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 13.4_
   
-  - [~] 2.2 Create WhatsApp configuration utility
+  - [x] 2.2 Create WhatsApp configuration utility
     - Create `src/app/utils/whatsapp.ts`
     - Define WhatsAppConfig with phone numbers for each division
     - Implement `generateWhatsAppLink()` function with message encoding
@@ -57,8 +57,8 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any WhatsApp link, the URL includes encoded pre-populated message
 
 
-- [ ] 3. Implement Google Maps integration
-  - [~] 3.1 Create GoogleMapsEmbed component
+- [-] 3. Implement Google Maps integration
+  - [ ] 3.1 Create GoogleMapsEmbed component
     - Create `src/app/components/features/GoogleMapsEmbed.tsx`
     - Implement Google Maps JavaScript API integration
     - Add props for locations array, defaultCenter, defaultZoom, height
@@ -70,7 +70,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Add lazy loading for performance
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
   
-  - [~] 3.2 Create Google Maps configuration
+  - [ ] 3.2 Create Google Maps configuration
     - Create `src/config/maps.ts` for API key and configuration
     - Add environment variable for Google Maps API key
     - Define custom map styles matching brand colors
@@ -99,7 +99,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any mobile viewport size, map maintains full functionality
 
 - [ ] 4. Implement enhanced contact form
-  - [~] 4.1 Create ContactForm component with inquiry types
+  - [ ] 4.1 Create ContactForm component with inquiry types
     - Create `src/app/components/features/ContactForm.tsx`
     - Implement form fields: name, email, phone, inquiryType, message
     - Add inquiry type dropdown with options: general, medical-services, pharmacy-supplies, health-programs, emergency
@@ -112,14 +112,14 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Style with brand guidelines
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 18.5_
   
-  - [~] 4.2 Create form validation utilities
+  - [ ] 4.2 Create form validation utilities
     - Create `src/app/utils/validation.ts`
     - Define Zod schemas for contact form, newsletter, testimonial forms
     - Implement validation rules (email format, phone format, min/max lengths)
     - Export reusable validation functions
     - _Requirements: 8.4, 9.2_
   
-  - [~] 4.3 Create form submission hook
+  - [ ] 4.3 Create form submission hook
     - Create `src/app/hooks/useContactForm.ts`
     - Implement form submission logic with error handling
     - Add retry logic for network failures
@@ -150,7 +150,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any form submission failure, form displays user-friendly error message
 
 - [ ] 5. Implement newsletter subscription system
-  - [~] 5.1 Create NewsletterForm component
+  - [ ] 5.1 Create NewsletterForm component
     - Create `src/app/components/features/NewsletterForm.tsx`
     - Implement email input field with optional name field
     - Add inline and standalone display variants
@@ -162,7 +162,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Style for footer and standalone use
     - _Requirements: 9.1, 9.2, 9.3, 9.4, 9.5, 9.6_
   
-  - [~] 5.2 Create newsletter subscription hook
+  - [ ] 5.2 Create newsletter subscription hook
     - Create `src/app/hooks/useNewsletter.ts`
     - Implement subscription logic with API integration
     - Add duplicate email checking
@@ -192,14 +192,14 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any already-subscribed email, system informs user without creating duplicate
 
 - [ ] 6. Implement testimonial system
-  - [~] 6.1 Create testimonial data models
+  - [ ] 6.1 Create testimonial data models
     - Create `src/app/data/testimonials.ts`
     - Define `Testimonial` interface with all required fields
     - Create sample testimonial data for initial display
     - Implement testimonial filtering and sorting utilities
     - _Requirements: 10.1, 10.2_
   
-  - [~] 6.2 Create TestimonialCard component
+  - [ ] 6.2 Create TestimonialCard component
     - Create `src/app/components/features/TestimonialCard.tsx`
     - Implement card layout with patient name/anonymous, date, rating, text
     - Add star rating display (1-5 stars)
@@ -209,7 +209,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Style with brand guidelines and smooth animations
     - _Requirements: 10.2_
   
-  - [~] 6.3 Create TestimonialForm component
+  - [ ] 6.3 Create TestimonialForm component
     - Create `src/app/components/features/TestimonialForm.tsx`
     - Implement form fields: name, email, isAnonymous, rating, text, service, photo
     - Add star rating selector component
@@ -222,7 +222,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Display submission confirmation
     - _Requirements: 10.3, 10.4_
   
-  - [~] 6.4 Create testimonials management hook
+  - [ ] 6.4 Create testimonials management hook
     - Create `src/app/hooks/useTestimonials.ts`
     - Implement testimonial submission logic
     - Add filtering by service/division
@@ -244,7 +244,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any submitted testimonial, it's stored in pending state and not displayed until approved
 
 - [ ] 7. Update Header component with new navigation
-  - [~] 7.1 Update Header navigation structure
+  - [ ] 7.1 Update Header navigation structure
     - Update `src/app/components/Header.tsx`
     - Restructure navigation to reflect three divisions (MMC, MPPS, MHS)
     - Update services dropdown with division links
@@ -279,7 +279,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any page, simHealth Africa link is accessible
 
 - [ ] 8. Update Footer component with newsletter and new content
-  - [~] 8.1 Update Footer with newsletter integration
+  - [ ] 8.1 Update Footer with newsletter integration
     - Update `src/app/components/Footer.tsx`
     - Integrate NewsletterForm component in footer
     - Update quick links section with new pages
@@ -303,7 +303,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any office location, it includes complete address, phone, and hours
 
 - [ ] 9. Update HomePage with new content and features
-  - [~] 9.1 Update HomePage content and structure
+  - [ ] 9.1 Update HomePage content and structure
     - Update `src/app/pages/HomePage.tsx`
     - Update Hero component with new tagline and messaging
     - Create DivisionsOverview component showcasing MMC, MPPS, MHS
@@ -329,7 +329,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any page, WhatsApp widget is present and accessible
 
 - [ ] 10. Update ServicesPage with division structure
-  - [~] 10.1 Update ServicesPage content
+  - [ ] 10.1 Update ServicesPage content
     - Update `src/app/pages/ServicesPage.tsx`
     - Create overview section for all three divisions
     - Create service cards for MMC, MPPS, MHS with descriptions
@@ -346,7 +346,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - _Requirements: 1.3_
 
 - [ ] 11. Update MedicalCentrePage with new content
-  - [~] 11.1 Update MedicalCentrePage content
+  - [ ] 11.1 Update MedicalCentrePage content
     - Update `src/app/pages/MedicalCentrePage.tsx`
     - Update specialty clinics list with current offerings
     - Add NICU/PICU information section
@@ -366,7 +366,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - _Requirements: 1.4, 14.5_
 
 - [ ] 12. Update PharmacySuppliesPage with new content
-  - [~] 12.1 Update PharmacySuppliesPage content
+  - [ ] 12.1 Update PharmacySuppliesPage content
     - Update `src/app/pages/PharmacySuppliesPage.tsx`
     - Add retail vs. wholesale distinction section
     - Update product categories with current offerings
@@ -385,7 +385,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - _Requirements: 1.5_
 
 - [ ] 13. Update HealthEducationPage (MHS) with new content
-  - [~] 13.1 Update HealthEducationPage content
+  - [ ] 13.1 Update HealthEducationPage content
     - Update `src/app/pages/HealthEducationPage.tsx`
     - Add school health programme section
     - Add community outreach initiatives section
@@ -405,7 +405,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - _Requirements: 1.6_
 
 - [ ] 14. Create new TestimonialsPage
-  - [~] 14.1 Create TestimonialsPage component
+  - [ ] 14.1 Create TestimonialsPage component
     - Create `src/app/pages/TestimonialsPage.tsx`
     - Create page header with title and description
     - Implement testimonials grid layout using TestimonialCard
@@ -418,7 +418,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Style with brand guidelines
     - _Requirements: 4.1, 4.2, 10.1, 10.3_
   
-  - [~] 14.2 Add TestimonialsPage to routing
+  - [ ] 14.2 Add TestimonialsPage to routing
     - Update `src/app/App.tsx` routing configuration
     - Add route for `/testimonials` path
     - Implement lazy loading for TestimonialsPage
@@ -433,19 +433,19 @@ The implementation follows a logical sequence: foundation setup → core feature
     - _Requirements: 10.1, 10.3_
 
 - [ ] 15. Remove obsolete pages safely
-  - [~] 15.1 Identify and document obsolete pages
+  - [ ] 15.1 Identify and document obsolete pages
     - Review current pages and identify obsolete ones
     - Document removed pages for reference
     - Verify no critical dependencies exist
     - _Requirements: 5.1, 5.5_
   
-  - [~] 15.2 Remove obsolete page components and routes
+  - [ ] 15.2 Remove obsolete page components and routes
     - Remove obsolete page component files
     - Update `src/app/App.tsx` to remove obsolete routes
     - Remove navigation links to obsolete pages from Header and Footer
     - _Requirements: 5.2, 5.3_
   
-  - [~] 15.3 Implement redirects or 404 handling
+  - [ ] 15.3 Implement redirects or 404 handling
     - Create 404 error page component
     - Implement redirects for removed pages to appropriate alternatives
     - Update routing to handle non-existent paths
@@ -486,7 +486,7 @@ The implementation follows a logical sequence: foundation setup → core feature
   - Ensure all tests pass, ask the user if questions arise
 
 - [ ] 17. Implement mobile responsiveness across all pages
-  - [~] 17.1 Implement responsive layouts for all components
+  - [ ] 17.1 Implement responsive layouts for all components
     - Review all page components for mobile responsiveness
     - Update layouts to use mobile-first responsive design
     - Ensure proper breakpoints for mobile, tablet, desktop
@@ -513,7 +513,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any interactive element on mobile, element has minimum 44x44px touch target
 
 - [ ] 18. Implement accessibility features
-  - [~] 18.1 Add accessibility attributes to all components
+  - [ ] 18.1 Add accessibility attributes to all components
     - Add alt text to all images across all pages
     - Ensure color contrast ratios meet WCAG 2.1 AA standards
     - Implement keyboard navigation support for all interactive elements
@@ -561,7 +561,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any interactive element, when focused, a visible focus indicator is displayed
 
 - [ ] 19. Implement SEO optimization
-  - [~] 19.1 Add SEO meta tags to all pages
+  - [ ] 19.1 Add SEO meta tags to all pages
     - Add descriptive meta titles to all pages
     - Add meta descriptions to all pages
     - Ensure semantic heading hierarchy (h1-h6) on all pages
@@ -598,7 +598,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any page, it includes Open Graph meta tags
 
 - [ ] 20. Implement performance optimization
-  - [~] 20.1 Optimize page load performance
+  - [ ] 20.1 Optimize page load performance
     - Implement lazy loading for images below the fold
     - Optimize image sizes and formats (WebP where supported)
     - Implement code splitting for page components
@@ -629,7 +629,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any static asset, it's served with appropriate cache headers
 
 - [ ] 21. Implement error handling and user feedback
-  - [~] 21.1 Add comprehensive error handling
+  - [ ] 21.1 Add comprehensive error handling
     - Implement error boundaries for component errors
     - Add network error handling with retry options
     - Create user-friendly error messages for all failure scenarios
@@ -651,7 +651,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Test that for any failed network request, system provides retry options or alternative contact methods
 
 - [ ] 22. Implement brand guidelines compliance
-  - [~] 22.1 Apply brand guidelines across all components
+  - [ ] 22.1 Apply brand guidelines across all components
     - Ensure color palette (blue, red, orange, white) is used consistently
     - Display tagline "Family-Friendly, Client-Centred" prominently
     - Display subtext "Delivering healthcare products and services with integrity and excellence"
