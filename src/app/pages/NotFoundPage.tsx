@@ -24,7 +24,7 @@ export default function NotFoundPage() {
             <Link to="/testimonials">Read Testimonials</Link>
           </Button>
           <Button asChild variant="outline">
-            <Link to="/clinic-registration">Patient Registration</Link>
+            <Link to="/patient-registration">Patient Registration</Link>
           </Button>
         </div>
       </div>

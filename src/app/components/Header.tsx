@@ -238,8 +238,8 @@ export function Header() {
               )
             )}
             <Link
-              to="/clinic-registration"
-              className={`block px-3 py-2.5 text-sm rounded-lg hover:bg-blue-50 transition-colors ${location.pathname === '/clinic-registration' ? 'text-blue-600 font-medium bg-blue-50' : ''
+              to="/patient-registration"
+              className={`block px-3 py-2.5 text-sm rounded-lg hover:bg-blue-50 transition-colors ${location.pathname === '/patient-registration' ? 'text-blue-600 font-medium bg-blue-50' : ''
                 }`}
               onClick={() => setMobileMenuOpen(false)}
             >

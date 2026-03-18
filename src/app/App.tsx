@@ -42,13 +42,13 @@ export default function App() {
               <Route path="/store" element={<StorePage />} />
               <Route path="/health-education" element={<HealthEducationPage />} />
               <Route path="/health-education/:slug" element={<ArticlePage />} />
-              <Route path="/clinic-registration" element={<PatientRegistrationPage />} />
+              <Route path="/patient-registration" element={<PatientRegistrationPage />} />
               <Route path="/flyers" element={<FlyersListPage />} />
               <Route path="/flyers/:slug" element={<FlyerPage />} />
               <Route path="/medical-centre" element={<Navigate to="/services/medical-centre" replace />} />
               <Route path="/medical-supplies" element={<Navigate to="/services/medical-supplies" replace />} />
               <Route path="/pharmacy-supplies" element={<Navigate to="/services/pharmacy-supplies" replace />} />
-              <Route path="/patient-registration" element={<Navigate to="/clinic-registration" replace />} />
+              <Route path="/clinic-registration" element={<Navigate to="/patient-registration" replace />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>

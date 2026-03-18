@@ -194,7 +194,11 @@ export function Footer() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <p>&copy; {new Date().getFullYear()} Med-Vical International. All rights reserved.</p>
-          <p className="italic text-gray-600">"Family-Friendly, Client-Centred"</p>
+          <div className="flex items-center gap-4">
+            <a href="/privacy-policy" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
+            <span className="text-gray-700">·</span>
+            <p className="italic text-gray-600">"Family-Friendly, Client-Centred"</p>
+          </div>
         </motion.div>
       </div>
     </footer>

@@ -181,7 +181,7 @@ export default function MedicalCentrePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <Link to="/clinic-registration">
+              <Link to="/patient-registration">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                   <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
                     Register as Patient
@@ -459,7 +459,7 @@ export default function MedicalCentrePage() {
                   </Button>
                 </motion.div>
               </a>
-              <Link to="/clinic-registration">
+              <Link to="/patient-registration">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                   <Button size="lg" variant="outline" className="text-yellow-300 border-white hover:bg-white/10 hover:text-white">
                     Register Online

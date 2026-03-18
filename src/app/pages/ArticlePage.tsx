@@ -295,7 +295,7 @@ export default function ArticlePage() {
                     <Share2 className="w-5 h-5 text-gray-400" />
                     <span className="text-sm text-gray-500">Share this article</span>
                   </div>
-                  <Link to="/clinic-registration">
+                  <Link to="/patient-registration">
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                       <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                         Book an Appointment
@@ -320,7 +320,7 @@ export default function ArticlePage() {
                   <p className="text-sm text-gray-600 mb-4">
                     Medvical International provides trusted, comprehensive child healthcare services in Benin City.
                   </p>
-                  <Link to="/clinic-registration" className="block">
+                  <Link to="/patient-registration" className="block">
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                       <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white mb-2" size="sm">
                         Register Now
@@ -413,7 +413,7 @@ export default function ArticlePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Link to="/clinic-registration">
+            <Link to="/patient-registration">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                 <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
                   Register as a Patient
