@@ -15,3 +15,11 @@ export type { ContactFormData } from '../../utils/validation';
 
 export { NewsletterForm } from './NewsletterForm';
 export type { NewsletterFormData } from '../../utils/validation';
+
+export { TestimonialCard } from './TestimonialCard';
+export type { TestimonialCardProps } from './TestimonialCard';
+
+export { TestimonialForm } from './TestimonialForm';
+export type { TestimonialFormProps } from './TestimonialForm';
+
+export type { TestimonialFormData } from '../../utils/validation';

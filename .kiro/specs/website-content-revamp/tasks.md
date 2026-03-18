@@ -191,15 +191,15 @@ The implementation follows a logical sequence: foundation setup → core feature
     - **Validates: Requirements 9.5**
     - Test that for any already-subscribed email, system informs user without creating duplicate
 
-- [-] 6. Implement testimonial system
-  - [ ] 6.1 Create testimonial data models
+- [x] 6. Implement testimonial system
+  - [x] 6.1 Create testimonial data models
     - Create `src/app/data/testimonials.ts`
     - Define `Testimonial` interface with all required fields
     - Create sample testimonial data for initial display
     - Implement testimonial filtering and sorting utilities
     - _Requirements: 10.1, 10.2_
   
-  - [ ] 6.2 Create TestimonialCard component
+  - [x] 6.2 Create TestimonialCard component
     - Create `src/app/components/features/TestimonialCard.tsx`
     - Implement card layout with patient name/anonymous, date, rating, text
     - Add star rating display (1-5 stars)
@@ -209,7 +209,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Style with brand guidelines and smooth animations
     - _Requirements: 10.2_
   
-  - [ ] 6.3 Create TestimonialForm component
+  - [x] 6.3 Create TestimonialForm component
     - Create `src/app/components/features/TestimonialForm.tsx`
     - Implement form fields: name, email, isAnonymous, rating, text, service, photo
     - Add star rating selector component
@@ -222,7 +222,7 @@ The implementation follows a logical sequence: foundation setup → core feature
     - Display submission confirmation
     - _Requirements: 10.3, 10.4_
   
-  - [ ] 6.4 Create testimonials management hook
+  - [x] 6.4 Create testimonials management hook
     - Create `src/app/hooks/useTestimonials.ts`
     - Implement testimonial submission logic
     - Add filtering by service/division
@@ -243,8 +243,8 @@ The implementation follows a logical sequence: foundation setup → core feature
     - **Validates: Requirements 10.5**
     - Test that for any submitted testimonial, it's stored in pending state and not displayed until approved
 
-- [ ] 7. Update Header component with new navigation
-  - [ ] 7.1 Update Header navigation structure
+- [-] 7. Update Header component with new navigation
+  - [-] 7.1 Update Header navigation structure
     - Update `src/app/components/Header.tsx`
     - Restructure navigation to reflect three divisions (MMC, MPPS, MHS)
     - Update services dropdown with division links

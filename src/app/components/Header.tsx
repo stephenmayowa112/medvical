@@ -10,15 +10,16 @@ const navLinks = [
     label: 'Our Services',
     href: '/services',
     children: [
-      { label: 'Medical Centre', href: '/services/medical-centre' },
-      { label: 'Pharmacy and Medical Supplies', href: '/services/pharmacy-supplies' },
-      { label: 'Med-Vical Health', href: '/health-education' },
+      { label: 'All Services', href: '/services' },
+      { label: 'Med-Vical Medical Centre (MMC)', href: '/services/medical-centre' },
+      { label: 'Med-Vical Pharmacy & Supplies (MPPS)', href: '/services/pharmacy-supplies' },
+      { label: 'Med-Vical Health (MHS)', href: '/health-education' },
     ],
   },
   { label: 'Health Education', href: '/health-education' },
-  { label: 'Patient Registration', href: '/clinic-registration' },
-  { label: 'Flyers', href: '/flyers' },
+  { label: 'Testimonials', href: '/testimonials' },
   { label: 'Contact Us', href: '/#contact' },
+  { label: 'simHealth Africa', href: 'https://simhealthafrica.org', external: true },
 ];
 
 export function Header() {
@@ -85,24 +86,18 @@ export function Header() {
               link.children ? (
                 <div key={link.label} className="relative" ref={servicesRef}>
                   <button
+                    type="button"
                     className={`text-sm hover:text-blue-600 transition-colors flex items-center gap-1 ${location.pathname.startsWith('/services') || location.pathname.startsWith('/store') ? 'text-blue-600 font-medium' : ''
                       }`}
                     onClick={() => setServicesOpen((prev) => !prev)}
-                    aria-expanded={servicesOpen}
+                    aria-expanded={servicesOpen ? 'true' : 'false'}
                     aria-haspopup="true"
                   >
                     {link.label}
                     <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {servicesOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
-                      <Link
-                        to={link.href}
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600 transition-colors"
-                        onClick={() => setServicesOpen(false)}
-                      >
-                        All Services
-                      </Link>
+                    <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
                       {link.children.map((child) => (
                         <Link
                           key={child.label}
@@ -117,6 +112,16 @@ export function Header() {
                     </div>
                   )}
                 </div>
+              ) : 'external' in link && link.external ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-blue-600 transition-colors"
+                >
+                  {link.label}
+                </a>
               ) : link.href.startsWith('/#') ? (
                 <a
                   key={link.label}
