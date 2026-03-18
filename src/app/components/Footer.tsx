@@ -139,7 +139,7 @@ export function Footer() {
                   )}
                 </motion.li>
               ))}
-              <motion.li whileHover={{ x: 4 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
+              <motion.li key="simhealth" whileHover={{ x: 4 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                 <a
                   href="https://simhealthafrica.org"
                   target="_blank"

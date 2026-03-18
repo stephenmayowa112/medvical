@@ -278,8 +278,8 @@ The implementation follows a logical sequence: foundation setup → core feature
     - **Validates: Requirements 11.5**
     - Test that for any page, simHealth Africa link is accessible
 
-- [-] 8. Update Footer component with newsletter and new content
-  - [-] 8.1 Update Footer with newsletter integration
+- [x] 8. Update Footer component with newsletter and new content
+  - [x] 8.1 Update Footer with newsletter integration
     - Update `src/app/components/Footer.tsx`
     - Integrate NewsletterForm component in footer
     - Update quick links section with new pages
@@ -302,8 +302,8 @@ The implementation follows a logical sequence: foundation setup → core feature
     - **Validates: Requirements 15.2, 15.3, 15.4**
     - Test that for any office location, it includes complete address, phone, and hours
 
-- [ ] 9. Update HomePage with new content and features
-  - [ ] 9.1 Update HomePage content and structure
+- [-] 9. Update HomePage with new content and features
+  - [-] 9.1 Update HomePage content and structure
     - Update `src/app/pages/HomePage.tsx`
     - Update Hero component with new tagline and messaging
     - Create DivisionsOverview component showcasing MMC, MPPS, MHS
