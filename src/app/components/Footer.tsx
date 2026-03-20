@@ -76,7 +76,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-xs text-gray-400 mb-3 leading-relaxed">
-              Delivering healthcare products and services with integrity and excellence.
+              Delivering healthcare services and products with integrity and excellence.
             </p>
 
             {/* Accreditation Badges */}

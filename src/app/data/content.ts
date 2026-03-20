@@ -247,8 +247,6 @@ export const ABUJA_OFFICE: OfficeLocation = {
  */
 export const ALL_OFFICE_LOCATIONS: OfficeLocation[] = [
   BENIN_CITY_OFFICE,
-  LAGOS_OFFICE,
-  ABUJA_OFFICE,
 ];
 
 // ============================================================================
