@@ -35,7 +35,7 @@ export const articles: Article[] = [
     date: '2026-02-26',
     readTime: '7 min read',
     image:
-      'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+      '/images/blackDoctor2.png',
     slug: 'best-paediatric-hospitals-benin-edo-state',
     metaTitle: 'Best Paediatric Hospitals in Benin, Edo State | Top Children\'s Care',
     metaDescription:
