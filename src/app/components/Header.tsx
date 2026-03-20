@@ -17,6 +17,8 @@ const navLinks = [
     ],
   },
   { label: 'Health Education', href: '/health-education' },
+  { label: 'Upcoming Events', href: '/upcoming-events' },
+  { label: 'Archive', href: '/archive' },
   { label: 'Testimonials', href: '/testimonials' },
   { label: 'Contact Us', href: '/#contact' },
   { label: 'simHealth Africa', href: 'https://simhealthafrica.org', external: true },

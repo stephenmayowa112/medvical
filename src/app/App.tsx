@@ -13,6 +13,8 @@ const MedicalCentrePage = lazy(() => import('./pages/MedicalCentrePage'));
 const MedicalSuppliesPage = lazy(() => import('./pages/MedicalSuppliesPage'));
 const PharmacySuppliesPage = lazy(() => import('./pages/PharmacySuppliesPage'));
 const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'));
+const UpcomingEventsPage = lazy(() => import('./pages/UpcomingEventsPage'));
+const ArchivePage = lazy(() => import('./pages/ArchivePage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const FlyersListPage = lazy(() => import('./pages/FlyersListPage'));
 const FlyerPage = lazy(() => import('./pages/FlyerPage'));
@@ -39,6 +41,8 @@ export default function App() {
               <Route path="/services/medical-supplies" element={<MedicalSuppliesPage />} />
               <Route path="/services/pharmacy-supplies" element={<PharmacySuppliesPage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
+              <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
+              <Route path="/archive" element={<ArchivePage />} />
               <Route path="/store" element={<StorePage />} />
               <Route path="/health-education" element={<HealthEducationPage />} />
               <Route path="/health-education/:slug" element={<ArticlePage />} />
