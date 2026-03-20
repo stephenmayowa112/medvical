@@ -21,6 +21,17 @@ const cardColors = [
 ];
 
 const coreServices = [
+   {
+    icon: Ambulance,
+    title: 'Medicare & Emergency Services',
+    description: 'Medical coverage and emergency services during major events, rallies, conventions, and church programmes.',
+  },
+  {
+    icon: FlaskConical,
+    title: 'Diagnostic Services',
+    description: 'Full diagnostic laboratory and radiological services including MRI, CT scan, X-ray, Mammography, Ultrasonography, and ECG.',
+  },
+
   {
     icon: ShieldCheck,
     title: 'Health Check & Screening',
@@ -40,17 +51,8 @@ const coreServices = [
     icon: Building2,
     title: 'Primary Healthcare',
     description: 'Primary healthcare services, pre-employment medical checks, and disease prevention services.',
-  },
-  {
-    icon: Ambulance,
-    title: 'Medicare & Emergency Services',
-    description: 'Medical coverage and emergency services during major events, rallies, conventions, and church programmes.',
-  },
-  {
-    icon: FlaskConical,
-    title: 'Diagnostic Services',
-    description: 'Full diagnostic laboratory and radiological services including MRI, CT scan, X-ray, Mammography, Ultrasonography, and ECG.',
-  },
+  }
+ 
 ];
 
 const specialtyClinics = [
@@ -141,41 +143,6 @@ export default function MedicalCentrePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          {/* Excellence Banner - Floating at top */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mb-8"
-          >
-            <motion.div
-              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-500/90 to-teal-500/90 backdrop-blur-md border border-white/20 shadow-2xl"
-              animate={{ 
-                boxShadow: [
-                  '0 10px 40px -10px rgba(16,185,129,0.4)',
-                  '0 10px 60px -10px rgba(16,185,129,0.6)',
-                  '0 10px 40px -10px rgba(16,185,129,0.4)',
-                ]
-              }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <motion.div
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              >
-                <Baby className="w-5 h-5 text-white" />
-              </motion.div>
-              <span className="text-white font-semibold text-sm md:text-base tracking-wide">
-                Excellence in Paediatric & Neonatal Healthcare Services
-              </span>
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                className="w-2 h-2 rounded-full bg-white"
-              />
-            </motion.div>
-          </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -208,27 +175,63 @@ export default function MedicalCentrePage() {
             </motion.p>
             
             <motion.div
-              className="flex flex-wrap gap-4"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <Link to="/patient-registration">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100 text-base font-bold px-8 py-6">
-                    Register as Patient
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <Link to="/patient-registration">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                    <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100 text-base font-bold px-8 py-6 w-full sm:w-auto">
+                      Register as Patient
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </motion.div>
+                </Link>
+                <a href="tel:+2347086080230">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                    <Button size="lg" variant="outline" className="border-2 border-white bg-white/15 text-white font-bold text-base px-8 py-6 hover:bg-white hover:text-[#0d3b66] w-full sm:w-auto">
+                      <Phone className="w-5 h-5 mr-2" />
+                      Book Appointment
+                    </Button>
+                  </motion.div>
+                </a>
+              </div>
+
+              {/* Excellence Banner - Below buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="mt-8 pb-8"
+              >
+                <motion.div
+                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-500/90 to-teal-500/90 backdrop-blur-md border border-white/20 shadow-2xl"
+                  animate={{ 
+                    boxShadow: [
+                      '0 10px 40px -10px rgba(16,185,129,0.4)',
+                      '0 10px 60px -10px rgba(16,185,129,0.6)',
+                      '0 10px 40px -10px rgba(16,185,129,0.4)',
+                    ]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                  >
+                    <Baby className="w-5 h-5 text-white" />
+                  </motion.div>
+                  <span className="text-white font-semibold text-sm md:text-base tracking-wide">
+                    Excellence in Paediatric & Neonatal Healthcare Services
+                  </span>
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                    className="w-2 h-2 rounded-full bg-white"
+                  />
                 </motion.div>
-              </Link>
-              <a href="tel:+2347086080230">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                  <Button size="lg" variant="outline" className="border-2 border-white bg-white/15 text-white font-bold text-base px-8 py-6 hover:bg-white hover:text-[#0d3b66]">
-                    <Phone className="w-5 h-5 mr-2" />
-                    Book Appointment
-                  </Button>
-                </motion.div>
-              </a>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
