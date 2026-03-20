@@ -3,6 +3,7 @@ import { ArrowRight, Building2, Package, Heart } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
+import { Link } from 'react-router';
 import { ALL_DIVISIONS, type DivisionInfo } from '../data/content';
 
 const divisionIcons: Record<string, React.ElementType> = {
@@ -13,8 +14,8 @@ const divisionIcons: Record<string, React.ElementType> = {
 
 const divisionLinks: Record<string, string> = {
   MMC: '/services/medical-centre',
-  MPPS: '/services/medical-supplies',
-  MHS: '/services/pharmacy-supplies',
+  MPPS: '/services/pharmacy-supplies',
+  MHS: '/health-education',
 };
 
 const colorClasses: Record<string, { bg: string; border: string; badge: string; btn: string; icon: string }> = {
@@ -80,11 +81,11 @@ function DivisionCard({ division, index }: { division: DivisionInfo; index: numb
           </ul>
 
           {/* CTA */}
-          <Button asChild size="sm" className={`w-full ${colors.btn}`}>
-            <a href={link}>
+          <Link to={link}>
+            <Button size="sm" className={`w-full ${colors.btn}`}>
               Learn More <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
-            </a>
-          </Button>
+            </Button>
+          </Link>
         </CardContent>
       </Card>
     </motion.div>

@@ -67,7 +67,7 @@ export function Header() {
       <div className="hidden md:block bg-gradient-to-r from-[#0d3b66] to-[#2a8cc4] text-white text-xs py-1.5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <span className="italic">...family friendly, client-centred</span>
-          <span>Pharmacy, Hospital/Lab Equipment & Consumables, Personal Healthcare & Consumer Products, & Healthcare Services</span>
+          <span>Medical Centre | Pharmacy & Medical Supplies | Outreach & Engagement</span>
         </div>
       </div>
 

@@ -94,8 +94,7 @@ const diagnosticServices = [
   'Digital X-Ray',
   'Ultrasound & Sonography',
   'ECG & Echocardiography',
-  'Laboratory Services',
-  'Endoscopy & Colonoscopy'
+  'Laboratory Services'
 ];
 
 const gridContainer = {
