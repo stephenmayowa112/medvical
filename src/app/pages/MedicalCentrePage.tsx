@@ -21,7 +21,7 @@ const cardColors = [
 ];
 
 const coreServices = [
-   {
+  {
     icon: Ambulance,
     title: 'Medicare & Emergency Services',
     description: 'Medical coverage and emergency services during major events, rallies, conventions, and church programmes.',
@@ -31,7 +31,6 @@ const coreServices = [
     title: 'Diagnostic Services',
     description: 'Full diagnostic laboratory and radiological services including MRI, CT scan, X-ray, Mammography, Ultrasonography, and ECG.',
   },
-
   {
     icon: ShieldCheck,
     title: 'Health Check & Screening',
@@ -51,8 +50,7 @@ const coreServices = [
     icon: Building2,
     title: 'Primary Healthcare',
     description: 'Primary healthcare services, pre-employment medical checks, and disease prevention services.',
-  }
- 
+  },
 ];
 
 const specialtyClinics = [
