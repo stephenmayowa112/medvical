@@ -91,12 +91,10 @@ const ambulanceServices = {
 };
 
 const diagnosticServices = [
-  'MRI & CT Scan',
   'Digital X-Ray',
   'Ultrasound & Sonography',
   'ECG & Echocardiography',
   'Laboratory Services',
-  'Mammography',
   'Endoscopy & Colonoscopy'
 ];
 
@@ -199,6 +197,96 @@ export default function MedicalCentrePage() {
               </a>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* NICU/PICU Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-r from-blue-50 to-cyan-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                {nicuPICUInfo.title}
+              </h3>
+              <p className="text-gray-600 mb-6">{nicuPICUInfo.description}</p>
+              <ul className="space-y-3">
+                {nicuPICUInfo.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              <div className="bg-white rounded-2xl p-8 shadow-xl">
+                <h4 className="text-xl font-semibold mb-4">24/7 Ambulance Service</h4>
+                <p className="text-gray-600 mb-4">
+                  Our 24/7 ambulance service is equipped with advanced life support systems and 
+                  staffed by trained paramedics for emergency medical situations.
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-blue-600" />
+                    <div>
+                      <p className="font-medium">Emergency Contact</p>
+                      <p className="text-gray-600">{ambulanceServices.contact.emergency}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-5 h-5 text-blue-600" />
+                    <span>{ambulanceServices.contact.hours}</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Diagnostic Services */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Advanced Diagnostic Services</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              State-of-the-art diagnostic facilities for accurate and timely diagnosis
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {diagnosticServices.map((service, idx) => (
+              <motion.div
+                key={idx}
+                className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                whileHover={{ y: -4 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+              >
+                <div className="text-center">
+                  <Activity className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+                  <h4 className="font-medium">{service}</h4>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -332,96 +420,6 @@ export default function MedicalCentrePage() {
         </div>
       </section>
 
-      {/* NICU/PICU Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-cyan-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                {nicuPICUInfo.title}
-              </h3>
-              <p className="text-gray-600 mb-6">{nicuPICUInfo.description}</p>
-              <ul className="space-y-3">
-                {nicuPICUInfo.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              <div className="bg-white rounded-2xl p-8 shadow-xl">
-                <h4 className="text-xl font-semibold mb-4">24/7 Ambulance Service</h4>
-                <p className="text-gray-600 mb-4">
-                  Our 24/7 ambulance service is equipped with advanced life support systems and 
-                  staffed by trained paramedics for emergency medical situations.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <PhoneIcon className="w-5 h-5 text-blue-600" />
-                    <div>
-                      <p className="font-medium">Emergency Contact</p>
-                      <p className="text-gray-600">{ambulanceServices.contact.emergency}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Clock className="w-5 h-5 text-blue-600" />
-                    <span>{ambulanceServices.contact.hours}</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Diagnostic Services */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Advanced Diagnostic Services</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              State-of-the-art diagnostic facilities for accurate and timely diagnosis
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {diagnosticServices.map((service, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-                whileHover={{ y: -4 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                <div className="text-center">
-                  <Activity className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-                  <h4 className="font-medium">{service}</h4>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Walk-in Clinic CTA */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -454,7 +452,7 @@ export default function MedicalCentrePage() {
               <a href="tel:+2347086080230">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                   <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100">
-                    <PhoneIcon className="w-4 h-4 mr-2" />
+                    <Phone className="w-4 h-4 mr-2" />
                     Call 07086080230
                   </Button>
                 </motion.div>
