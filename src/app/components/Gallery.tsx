@@ -3,15 +3,15 @@ import { motion } from 'motion/react';
 export function Gallery() {
   const images = [
     {
-      url: 'https://images.unsplash.com/photo-1764004450351-37fb72cb8e8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZW50YWwlMjBjbGluaWMlMjBtb2Rlcm58ZW58MXx8fHwxNzcxMjU1NDgzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=medivical&utm_medium=referral',
+      url: 'https://images.unsplash.com/photo-1764004450351-37fb72cb8e8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
       title: 'Modern Facility',
     },
     {
-      url: 'https://images.unsplash.com/photo-1758205307912-5896ff0c65ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZW50aXN0JTIwZXhhbWluaW5nJTIwcGF0aWVudHxlbnwxfHx8fDE3NzEyNDc4MjR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=medivical&utm_medium=referral',
+      url: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
       title: 'Expert Medical Care',
     },
     {
-      url: 'https://images.unsplash.com/photo-1684607632313-ededff0c700e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZW50aXN0JTIwcGF0aWVudCUyMGNvbnN1bHRhdGlvbnxlbnwxfHx8fDE3NzEyMzY1MzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=medivical&utm_medium=referral',
+      url: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
       title: 'Patient Consultation',
     },
   ];

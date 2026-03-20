@@ -67,7 +67,7 @@ export default function PharmacySuppliesPage() {
       setProcurementOfficer('');
       setShowWholesaleForm(false);
     } else {
-      alert('There was an error submitting your request. Please try again or call us directly at 08087874018.');
+      alert('There was an error submitting your request. Please try again or call us directly at 07030943250.');
     }
   };
 
@@ -250,15 +250,19 @@ export default function PharmacySuppliesPage() {
                       <ul className="space-y-2 text-sm text-gray-700">
                         <li className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                          Medical equipments and devices
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                          Pharmaceuticals
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                           Wholesale pricing
                         </li>
                         <li className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                           Bulk orders
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                          Medical equipment
                         </li>
                         <li className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
@@ -364,11 +368,11 @@ export default function PharmacySuppliesPage() {
                 </Button>
               </motion.div>
             </a>
-            <a href="tel:+2348087874018">
+            <a href="tel:+2347030943250">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                 <Button size="lg" variant="outline" className="!text-yellow-300 border-white hover:bg-white/10 hover:!text-white">
                   <Phone className="w-4 h-4 mr-2" />
-                  Call Wholesale: 08087874018
+                  Call Wholesale: 07030943250
                 </Button>
               </motion.div>
             </a>

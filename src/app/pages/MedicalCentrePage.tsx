@@ -141,7 +141,42 @@ export default function MedicalCentrePage() {
         <div className="absolute inset-0 bg-black/55" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          {/* Excellence Banner - Floating at top */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mb-8"
+          >
+            <motion.div
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-500/90 to-teal-500/90 backdrop-blur-md border border-white/20 shadow-2xl"
+              animate={{ 
+                boxShadow: [
+                  '0 10px 40px -10px rgba(16,185,129,0.4)',
+                  '0 10px 60px -10px rgba(16,185,129,0.6)',
+                  '0 10px 40px -10px rgba(16,185,129,0.4)',
+                ]
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              >
+                <Baby className="w-5 h-5 text-white" />
+              </motion.div>
+              <span className="text-white font-semibold text-sm md:text-base tracking-wide">
+                Excellence in Paediatric & Neonatal Healthcare Services
+              </span>
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                className="w-2 h-2 rounded-full bg-white"
+              />
+            </motion.div>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -409,7 +444,7 @@ export default function MedicalCentrePage() {
                 style={{ filter: 'blur(24px)' }}
               />
               <motion.img
-                src="https://images.unsplash.com/photo-1666214280557-0b7cc7940c6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800"
+                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800"
                 alt="Specialist doctors providing consultations"
                 className="relative rounded-2xl shadow-xl w-full object-cover aspect-[4/3]"
                 whileHover={{ scale: 1.02 }}
