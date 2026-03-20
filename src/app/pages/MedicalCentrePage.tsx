@@ -444,7 +444,7 @@ export default function MedicalCentrePage() {
                 style={{ filter: 'blur(24px)' }}
               />
               <motion.img
-                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800"
+                src="/images/blackDoctor.png"
                 alt="Specialist doctors providing consultations"
                 className="relative rounded-2xl shadow-xl w-full object-cover aspect-[4/3]"
                 whileHover={{ scale: 1.02 }}
