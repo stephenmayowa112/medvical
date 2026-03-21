@@ -79,7 +79,7 @@ export default function ArticlePage() {
     if (!article) return;
 
     const BASE_URL = 'https://medvical.com';
-    const articleUrl = `${BASE_URL}/health-education/${article.slug}`;
+    const articleUrl = `${BASE_URL}/med-vical-health/${article.slug}`;
 
     // Title
     document.title = article.metaTitle || article.title;
@@ -185,7 +185,7 @@ export default function ArticlePage() {
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Article Not Found</h1>
           <p className="text-gray-500 mb-6">The article you are looking for does not exist or has been moved.</p>
-          <Link to="/health-education">
+          <Link to="/med-vical-health">
             <Button className="bg-blue-600 hover:bg-blue-700 text-white">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Health Education
@@ -220,7 +220,7 @@ export default function ArticlePage() {
             transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <Link
-              to="/health-education"
+              to="/med-vical-health"
               className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -350,7 +350,7 @@ export default function ArticlePage() {
                         transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
                       >
                         <Link
-                          to={`/health-education/${related.slug}`}
+                          to={`/med-vical-health/${related.slug}`}
                           className="block group"
                         >
                           <motion.div
@@ -420,7 +420,7 @@ export default function ArticlePage() {
                 </Button>
               </motion.div>
             </Link>
-            <Link to="/health-education">
+            <Link to="/med-vical-health">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                 <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
                   More Articles

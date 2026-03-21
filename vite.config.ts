@@ -37,23 +37,23 @@ export default defineConfig({
           },
         },
         {
-          path: '/health-education',
+          path: '/med-vical-health',
           tags: {
             title: 'Health Education & Resources | Med-Vical International',
             description: 'Well-researched, professionally reviewed health articles to keep you and your family informed. Written by the Med-Vical medical team in Benin City.',
-            url: `${BASE_URL}/health-education`,
-            canonical: `${BASE_URL}/health-education`,
+            url: `${BASE_URL}/med-vical-health`,
+            canonical: `${BASE_URL}/med-vical-health`,
             robots: 'index, follow',
           },
         },
         {
-          path: '/health-education/best-paediatric-hospitals-benin-edo-state',
+          path: '/med-vical-health/best-paediatric-hospitals-benin-edo-state',
           tags: {
             title: 'Best Paediatric Hospitals in Benin, Edo State | Top Children\'s Care',
             description: 'Looking for the best paediatric hospitals in Benin, Edo State? Discover advanced NICU, emergency paediatric care, and expert mother and child healthcare at Medvical International Ltd in Benin City.',
-            url: `${BASE_URL}/health-education/best-paediatric-hospitals-benin-edo-state`,
+            url: `${BASE_URL}/med-vical-health/best-paediatric-hospitals-benin-edo-state`,
             image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-            canonical: `${BASE_URL}/health-education/best-paediatric-hospitals-benin-edo-state`,
+            canonical: `${BASE_URL}/med-vical-health/best-paediatric-hospitals-benin-edo-state`,
             author: 'Medvical International Medical Team',
             robots: 'index, follow',
             schema: {

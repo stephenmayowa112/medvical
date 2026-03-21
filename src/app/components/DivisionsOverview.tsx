@@ -15,7 +15,7 @@ const divisionIcons: Record<string, React.ElementType> = {
 const divisionLinks: Record<string, string> = {
   MMC: '/services/medical-centre',
   MPPS: '/services/pharmacy-supplies',
-  MHS: '/health-education',
+  MHS: '/med-vical-health',
 };
 
 const colorClasses: Record<string, { bg: string; border: string; badge: string; btn: string; icon: string }> = {

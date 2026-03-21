@@ -127,7 +127,7 @@ export function Footer() {
                 { to: '/services', label: 'Our Services' },
                 { to: '/services/medical-centre', label: 'Medical Centre (MMC)' },
                 { to: '/services/pharmacy-supplies', label: 'Pharmacy & Supplies (MPPS)' },
-                { to: '/health-education', label: 'Med-Vical Health (MHS)' },
+                { to: '/med-vical-health', label: 'Med-Vical Health (MHS)' },
                 { to: '/testimonials', label: 'Testimonials' },
                 { href: '/#contact', label: 'Contact Us' },
               ].map((link) => (

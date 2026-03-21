@@ -44,8 +44,10 @@ export default function App() {
               <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
               <Route path="/archive" element={<ArchivePage />} />
               <Route path="/store" element={<StorePage />} />
-              <Route path="/health-education" element={<HealthEducationPage />} />
-              <Route path="/health-education/:slug" element={<ArticlePage />} />
+              <Route path="/med-vical-health" element={<HealthEducationPage />} />
+              <Route path="/med-vical-health/:slug" element={<ArticlePage />} />
+              <Route path="/health-education" element={<Navigate to="/med-vical-health" replace />} />
+              <Route path="/health-education/:slug" element={<Navigate to="/med-vical-health/:slug" replace />} />
               <Route path="/patient-registration" element={<PatientRegistrationPage />} />
               <Route path="/flyers" element={<FlyersListPage />} />
               <Route path="/flyers/:slug" element={<FlyerPage />} />

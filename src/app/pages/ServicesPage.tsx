@@ -106,7 +106,7 @@ const getDivisionLink = (divisionId: DivisionId) => {
     case 'MPPS':
       return '/services/pharmacy-supplies';
     case 'MHS':
-      return '/services/health-education';
+      return '/med-vical-health';
     default:
       return '/services';
   }

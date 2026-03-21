@@ -35,6 +35,14 @@ const mhsPrograms = [
     title: 'AccessHealth Platform',
     description: 'A practical channel for continuous health engagement, appointment guidance, and community health communication.',
   },
+  {
+    title: 'Social Innovation',
+    description: 'We promote creativity and innovation that address critical social problems in the community.',
+  },
+  {
+    title: 'Community Engagement',
+    description: 'We engage with the community, building sustainable relationships. We identify and address issues that affect their wellbeing.',
+  },
 ];
 
 const upcomingEvents = [
@@ -58,7 +66,7 @@ export default function HealthEducationPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
     const BASE_URL = 'https://medvical.com';
-    const pageUrl = `${BASE_URL}/health-education`;
+    const pageUrl = `${BASE_URL}/med-vical-health`;
     const pageTitle = 'Health Education & Resources | Med-Vical International';
     const pageDesc = 'Well-researched, professionally reviewed health articles to keep you and your family informed. Written by the Med-Vical medical team in Benin City.';
 
@@ -137,7 +145,8 @@ export default function HealthEducationPage() {
               <span className="text-sm">Health Education & Resources</span>
             </motion.div>
             <h1 className="text-4xl md:text-5xl mb-4">
-              Your Trusted Source for Health Information
+              Med-Vical International<br />
+              <span className="italic">Mission Driven, Community Focused</span>
             </h1>
             <motion.p
               className="text-lg text-blue-100 max-w-2xl mx-auto"
@@ -158,7 +167,10 @@ export default function HealthEducationPage() {
           <div className="mb-8 md:mb-10">
             <h2 className="text-3xl mb-2">Med-Vical Health (MHS) Programmes</h2>
             <p className="text-gray-600 max-w-3xl">
-              We combine education, outreach, and institutional support to improve health outcomes across schools, families, and workplaces.
+              Med-Vical International is a mission-driven organisation that provides access to quality and affordable healthcare services and products. We are impact driven and community focused. As a result, we commit a portion of our profit to philanthropy and charity, addressing social problems among individuals, families and communities, particularly in the areas of health, education and livelihood. We do this because we truly care about our neighbours and their wellbeing.
+            </p>
+            <p className="text-gray-600 max-w-3xl mt-4">
+              Med-Vical International combines education, outreach, and institutional support to improve health outcomes. We are your trusted source for health information: well-researched, professionally reviewed health articles to keep you and your family informed.
             </p>
           </div>
 
@@ -277,7 +289,7 @@ export default function HealthEducationPage() {
                           {filteredArticles[0].readTime}
                         </span>
                       </div>
-                      <Link to={`/health-education/${filteredArticles[0].slug}`}>
+                      <Link to={`/med-vical-health/${filteredArticles[0].slug}`}>
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} className="w-fit">
                           <Button className="w-fit bg-blue-600 hover:bg-blue-700 text-white">
                             Read Article
@@ -320,7 +332,7 @@ export default function HealthEducationPage() {
                 : filteredArticles
               ).map((article) => (
                 <motion.div key={article.id} variants={gridItem}>
-                  <Link to={`/health-education/${article.slug}`} className="block h-full">
+                  <Link to={`/med-vical-health/${article.slug}`} className="block h-full">
                     <motion.div
                       whileHover={{ y: -8, boxShadow: '0 20px 40px -12px rgba(59,130,246,0.12)' }}
                       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
