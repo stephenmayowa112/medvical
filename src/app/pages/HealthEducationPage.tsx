@@ -184,7 +184,7 @@ export default function HealthEducationPage() {
                 Med-Vical International combines education, outreach, and institutional support to improve health outcomes. We are your trusted source for health information: well-researched, professionally reviewed health articles to keep you and your family informed.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                Our social impact programmes are complemented by Training and Capacity Building Programmes (the not for profit arm of our services), through systematic support for health programmes; research, training and dissemination; social innovation; policy, advocacy and collaboration.
+                Our social impact programmes are complemented by <a href="https://simhealthafrica.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 hover:underline font-medium">simHealth</a> (the not for profit arm of our services), through systematic support for health programmes; research, training and dissemination; social innovation; policy, advocacy and collaboration.
               </p>
             </div>
           </motion.div>
