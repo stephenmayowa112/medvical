@@ -21,7 +21,7 @@ const navLinks = [
   { label: 'Archive', href: '/archive' },
   { label: 'Testimonials', href: '/testimonials' },
   { label: 'Contact Us', href: '/#contact' },
-  { label: 'simHealth Africa', href: 'https://simhealthafrica.org', external: true },
+  { label: 'Training & Capacity Building', href: '/training-capacity-building' },
 ];
 
 export function Header() {
@@ -83,13 +83,13 @@ export function Header() {
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-4">
             {navLinks.map((link) =>
               link.children ? (
                 <div key={link.label} className="relative" ref={servicesRef}>
                   <button
                     type="button"
-                    className={`text-sm hover:text-blue-600 transition-colors flex items-center gap-1 ${location.pathname.startsWith('/services') || location.pathname.startsWith('/store') ? 'text-blue-600 font-medium' : ''
+                    className={`text-xs hover:text-blue-600 transition-colors flex items-center gap-1 ${location.pathname.startsWith('/services') || location.pathname.startsWith('/med-vical-health') ? 'text-blue-600 font-medium' : ''
                       }`}
                     onClick={() => setServicesOpen((prev) => !prev)}
                     aria-expanded={servicesOpen ? 'true' : 'false'}
@@ -120,7 +120,7 @@ export function Header() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm hover:text-blue-600 transition-colors"
+                  className="text-xs hover:text-blue-600 transition-colors"
                 >
                   {link.label}
                 </a>
@@ -128,7 +128,7 @@ export function Header() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm hover:text-blue-600 transition-colors"
+                  className="text-xs hover:text-blue-600 transition-colors"
                   onClick={(e) => {
                     e.preventDefault();
                     handleNavClick(link.href);
@@ -140,7 +140,7 @@ export function Header() {
                 <Link
                   key={link.label}
                   to={link.href}
-                  className={`text-sm hover:text-blue-600 transition-colors ${location.pathname === link.href ? 'text-blue-600 font-medium' : ''
+                  className={`text-xs hover:text-blue-600 transition-colors ${location.pathname === link.href ? 'text-blue-600 font-medium' : ''
                     }`}
                 >
                   {link.label}

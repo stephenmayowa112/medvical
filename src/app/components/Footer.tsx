@@ -94,7 +94,7 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex gap-3">
               {[
-                { icon: Facebook, label: 'Facebook', href: '#' },
+                { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/share/1KhowaJmKT/?mibextid=wwXIfr' },
                 { icon: Twitter, label: 'Twitter', href: '#' },
                 { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/medvical_international/' },
                 { icon: Linkedin, label: 'LinkedIn', href: '#' },
@@ -104,6 +104,8 @@ export function Footer() {
                   <motion.a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={`Follow us on ${social.label}`}
                     className={`w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center transition-all shadow-lg shadow-transparent ${socialColors[i]}`}
                     whileHover={{ scale: 1.2, rotate: 8 }}
@@ -114,6 +116,21 @@ export function Footer() {
                   </motion.a>
                 );
               })}
+              {/* TikTok */}
+              <motion.a
+                href="https://www.tiktok.com/@medvical.internat?_r=1&_t=ZS-94sNB9XrUfc"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on TikTok"
+                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center transition-all shadow-lg shadow-transparent hover:bg-gray-700 hover:shadow-gray-700/50"
+                whileHover={{ scale: 1.2, rotate: 8 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+              </motion.a>
             </div>
           </motion.div>
 

@@ -43,6 +43,10 @@ const mhsPrograms = [
     title: 'Community Engagement',
     description: 'We engage with the community, building sustainable relationships. We identify and address issues that affect their wellbeing.',
   },
+  {
+    title: 'Training and Capacity Building Programmes',
+    description: 'We offer curated and hands-on training and capacity building programmes for clinical and non-clinical staff, e.g. training programme on helping babies breathe and essential newborn care.',
+  },
 ];
 
 const upcomingEvents = [
@@ -142,7 +146,7 @@ export default function HealthEducationPage() {
               transition={{ duration: 0.5, delay: 0.15 }}
             >
               <BookOpen className="w-4 h-4" />
-              <span className="text-sm">Health Education & Resources</span>
+              <span className="text-sm">Med-Vical Health (MHS)</span>
             </motion.div>
             <h1 className="text-4xl md:text-5xl mb-4">
               Med-Vical International<br />
@@ -162,56 +166,114 @@ export default function HealthEducationPage() {
       </section>
 
       {/* MHS Programmes */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16 bg-gradient-to-b from-white via-blue-50/30 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 md:mb-10">
-            <h2 className="text-3xl mb-2">Med-Vical Health (MHS) Programmes</h2>
-            <p className="text-gray-600 max-w-3xl">
-              Med-Vical International is a mission-driven organisation that provides access to quality and affordable healthcare services and products. We are impact driven and community focused. As a result, we commit a portion of our profit to philanthropy and charity, addressing social problems among individuals, families and communities, particularly in the areas of health, education and livelihood. We do this because we truly care about our neighbours and their wellbeing.
-            </p>
-            <p className="text-gray-600 max-w-3xl mt-4">
-              Med-Vical International combines education, outreach, and institutional support to improve health outcomes. We are your trusted source for health information: well-researched, professionally reviewed health articles to keep you and your family informed.
-            </p>
-          </div>
+          <motion.div
+            className="mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Med-Vical Health (MHS) Programmes</h2>
+            <div className="max-w-4xl mx-auto space-y-4 text-center">
+              <p className="text-gray-700 leading-relaxed text-lg">
+                Med-Vical International is a mission-driven organisation that provides access to quality and affordable healthcare services and products. We are impact driven and community focused. As a result, we commit a part of our resources for philanthropy and charity, addressing social problems among individuals, families and communities, particularly in the areas of health, education and livelihood. We do this because we truly care about our neighbours and their wellbeing.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                Med-Vical International combines education, outreach, and institutional support to improve health outcomes. We are your trusted source for health information: well-researched, professionally reviewed health articles to keep you and your family informed.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                Our social impact programmes are complemented by Training and Capacity Building Programmes (the not for profit arm of our services), through systematic support for health programmes; research, training and dissemination; social innovation; policy, advocacy and collaboration.
+              </p>
+            </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-6 mb-10">
-            {mhsPrograms.map((program) => (
-              <Card key={program.title} className="border border-slate-200 bg-white">
-                <CardContent className="p-6">
-                  <h3 className="text-xl mb-2">{program.title}</h3>
-                  <p className="text-gray-600">{program.description}</p>
-                </CardContent>
-              </Card>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {mhsPrograms.map((program, index) => (
+              <motion.div
+                key={program.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="border border-blue-100 bg-white hover:shadow-xl transition-all h-full group">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <BookOpen className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 text-gray-900">{program.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{program.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
-            <Card className="border border-slate-200">
-              <CardContent className="p-6">
-                <h3 className="text-xl mb-4">Event Calendar</h3>
-                <div className="space-y-4">
+          <div className="grid lg:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="border border-blue-100 bg-white shadow-lg h-full">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
+                      <Calendar className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900">Event Calendar</h3>
+                  </div>
+                  <div className="space-y-4">
                   {upcomingEvents.map((event) => (
-                    <div key={event.name} className="border-l-4 border-blue-500 pl-4">
-                      <p className="font-semibold text-slate-800">{event.name}</p>
-                      <p className="text-sm text-slate-600">{event.date}</p>
-                      <p className="text-sm text-slate-500">{event.venue}</p>
+                    <div key={event.name} className="border-l-4 border-blue-500 pl-4 py-2 hover:bg-blue-50 transition-colors rounded-r">
+                      <p className="font-semibold text-gray-900">{event.name}</p>
+                      <p className="text-sm text-blue-600 font-medium mt-1">{event.date}</p>
+                      <p className="text-sm text-gray-600 mt-1">{event.venue}</p>
                     </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
+            </motion.div>
 
-            <Card className="border border-slate-200">
-              <CardContent className="p-6">
-                <h3 className="text-xl mb-4">Educational Resources</h3>
-                <ul className="space-y-3 text-slate-700">
-                  <li>Monthly family health briefs and preventive care guides.</li>
-                  <li>School-ready policy templates for safe and healthy learning environments.</li>
-                  <li>Corporate wellness toolkits and periodic screening schedules.</li>
-                  <li>Community-first referral information for fast access to specialist support.</li>
-                </ul>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="border border-blue-100 bg-white shadow-lg h-full">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+                      <BookOpen className="w-5 h-5 text-emerald-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900">Educational Resources</h3>
+                  </div>
+                  <ul className="space-y-4 text-gray-700">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span>Monthly family health briefs and preventive care guides.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span>School-ready policy templates for safe and healthy learning environments.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span>Corporate wellness toolkits and periodic screening schedules.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                      <span>Community-first referral information for fast access to specialist support.</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>

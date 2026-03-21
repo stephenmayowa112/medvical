@@ -15,6 +15,8 @@ const PharmacySuppliesPage = lazy(() => import('./pages/PharmacySuppliesPage'));
 const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'));
 const UpcomingEventsPage = lazy(() => import('./pages/UpcomingEventsPage'));
 const ArchivePage = lazy(() => import('./pages/ArchivePage'));
+const TrainingCapacityBuildingPage = lazy(() => import('./pages/TrainingCapacityBuildingPage'));
+const MACEConferencePage = lazy(() => import('./pages/MACEConferencePage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const FlyersListPage = lazy(() => import('./pages/FlyersListPage'));
 const FlyerPage = lazy(() => import('./pages/FlyerPage'));
@@ -43,6 +45,8 @@ export default function App() {
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
               <Route path="/archive" element={<ArchivePage />} />
+              <Route path="/training-capacity-building" element={<TrainingCapacityBuildingPage />} />
+              <Route path="/mace-conference" element={<MACEConferencePage />} />
               <Route path="/store" element={<StorePage />} />
               <Route path="/med-vical-health" element={<HealthEducationPage />} />
               <Route path="/med-vical-health/:slug" element={<ArticlePage />} />
