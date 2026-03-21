@@ -177,7 +177,7 @@ export default function HealthEducationPage() {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Med-Vical Health (MHS) Programmes</h2>
             <div className="max-w-4xl mx-auto space-y-4 text-center">
-              <p className="text-gray-700 leading-relaxed text-lg">
+              <p className="text-gray-700 leading-relaxed">
                 Med-Vical International is a mission-driven organisation that provides access to quality and affordable healthcare services and products. We are impact driven and community focused. As a result, we commit a part of our resources for philanthropy and charity, addressing social problems among individuals, families and communities, particularly in the areas of health, education and livelihood. We do this because we truly care about our neighbours and their wellbeing.
               </p>
               <p className="text-gray-700 leading-relaxed">
@@ -203,8 +203,8 @@ export default function HealthEducationPage() {
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       <BookOpen className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-gray-900">{program.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{program.description}</p>
+                    <h3 className="text-lg font-semibold mb-3 text-gray-900">{program.title}</h3>
+                    <p className="text-gray-700 leading-relaxed">{program.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
