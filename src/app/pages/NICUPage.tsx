@@ -13,44 +13,34 @@ export default function NICUPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Header */}
-      <section className="py-12 bg-gradient-to-r from-[#0d3b66] to-[#2a8cc4]">
+      {/* Minimal Header */}
+      <section className="py-3 bg-gradient-to-r from-[#0d3b66] to-[#2a8cc4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link to="/services/medical-centre">
-            <Button variant="ghost" className="text-white hover:bg-white/20 mb-6">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Medical Centre
-            </Button>
-          </Link>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-4"
-          >
-            <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-              <Baby className="w-8 h-8 text-white" />
-            </div>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+          <div className="flex items-center justify-between">
+            <Link to="/services/medical-centre">
+              <Button variant="ghost" className="text-white hover:bg-white/20" size="sm">
+                <ArrowLeft className="w-3 h-3 mr-1" />
+                Back
+              </Button>
+            </Link>
+            <div className="flex items-center gap-2">
+              <Baby className="w-4 h-4 text-white" />
+              <h1 className="text-lg md:text-xl font-bold text-white">
                 24/7 Neonatal Intensive Care Unit
               </h1>
-              <p className="text-blue-100 text-lg">
-                State-of-the-art care for newborns requiring intensive medical attention
-              </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Image Section */}
-      <section className="py-16">
+      <section className="py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-lg shadow-lg overflow-hidden"
           >
             <img
               src="/images/neonatalIntensiveCareUnit.png"
@@ -60,12 +50,12 @@ export default function NICUPage() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-4 text-center"
           >
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+            <p className="text-gray-600 text-sm max-w-3xl mx-auto">
               Our Neonatal Intensive Care Unit (NICU) provides specialized care for premature and critically ill newborns, 
               equipped with advanced medical technology and staffed by experienced neonatal specialists available 24/7.
             </p>
