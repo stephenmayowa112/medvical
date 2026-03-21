@@ -253,7 +253,17 @@ export default function MedicalCentrePage() {
                 {nicuPICUInfo.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <span>{feature}</span>
+                    {idx === 0 ? (
+                      <Link to="/services/medical-centre/nicu" className="text-blue-600 hover:text-blue-700 hover:underline font-medium">
+                        {feature}
+                      </Link>
+                    ) : idx === 1 ? (
+                      <Link to="/services/medical-centre/picu" className="text-blue-600 hover:text-blue-700 hover:underline font-medium">
+                        {feature}
+                      </Link>
+                    ) : (
+                      <span>{feature}</span>
+                    )}
                   </li>
                 ))}
               </ul>
