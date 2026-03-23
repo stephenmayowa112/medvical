@@ -15,13 +15,13 @@ const navLinks = [
       { label: 'Med-Vical Health (MHS)', href: '/med-vical-health' },
     ],
   },
-  { label: 'Articles', href: '/articles' },
-  { label: 'MACE Conference', href: '/mace-conference' },
-  { label: 'Upcoming Events', href: '/upcoming-events' },
   { label: 'Testimonials', href: '/testimonials' },
-  { label: 'Contact Us', href: '/#contact' },
-  { label: 'Training & Capacity Building', href: '/training-capacity-building' },
+  { label: 'MACE Conference', href: '/mace-conference' },
+  { label: 'Articles', href: '/articles' },
+  { label: 'Upcoming Events', href: '/upcoming-events' },
+  { label: 'Training', href: '/training-capacity-building' },
   { label: 'Archive', href: '/archive' },
+  { label: 'Contact Us', href: '/#contact' },
 ];
 
 export function Header() {
