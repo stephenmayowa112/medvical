@@ -46,6 +46,16 @@ function renderSection(section: ArticleSection, index: number) {
           ))}
         </ul>
       );
+    case 'image':
+      return (
+        <div key={index} className="my-8 rounded-xl overflow-hidden shadow-lg">
+          <img
+            src={section.src}
+            alt={section.alt || 'Article image'}
+            className="w-full h-auto object-cover"
+          />
+        </div>
+      );
     case 'callout':
       return (
         <div

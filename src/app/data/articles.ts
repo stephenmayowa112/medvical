@@ -14,9 +14,11 @@ export interface Article {
 }
 
 export interface ArticleSection {
-  type: 'paragraph' | 'heading' | 'subheading' | 'list' | 'callout' | 'address';
+  type: 'paragraph' | 'heading' | 'subheading' | 'list' | 'callout' | 'address' | 'image';
   text?: string;
   items?: string[];
+  src?: string;
+  alt?: string;
 }
 
 export const articleCategories = [
@@ -269,7 +271,7 @@ export const articles: Article[] = [
     author: 'Med-Vical Medical Centre',
     date: '2025-03-15',
     readTime: '5 min read',
-    image: '/images/blackDoctor2.png',
+    image: '/images/article1.jpg',
     slug: 'med-vical-school-health-programme-overview',
     metaTitle: 'Med-Vical School Health Programme | Promoting Health in Schools',
     metaDescription:
@@ -280,8 +282,18 @@ export const articles: Article[] = [
         text: 'The Med-Vical School Health Programme (MSH) is a holistic and impact-driven initiative designed to improve the health, wellbeing, and overall development of school children while fostering a safe and supportive learning environment.',
       },
       {
+        type: 'image',
+        src: '/images/article1.jpg',
+        alt: 'Med-Vical School Health Programme',
+      },
+      {
         type: 'paragraph',
         text: 'The programme is an initiative of Med-Vical International and simHealth Africa, delivered through Med-Vical Medical Centre. Since its launch in 2022, it has continued to grow in reach and impact, providing schools with structured, preventive healthcare solutions that support both learning and child development.',
+      },
+      {
+        type: 'image',
+        src: '/images/article2.jpg',
+        alt: 'School health screening in action',
       },
       {
         type: 'heading',
@@ -294,6 +306,11 @@ export const articles: Article[] = [
       {
         type: 'paragraph',
         text: 'Through strategic partnerships with schools, we deliver tailored health solutions that support not only school children, but also the wider school community.',
+      },
+      {
+        type: 'image',
+        src: '/images/article4.jpg',
+        alt: 'Health education session with students',
       },
       {
         type: 'heading',
@@ -313,6 +330,21 @@ export const articles: Article[] = [
           'Training for teachers and staff on first aid, emergency response, and child health monitoring',
           'Access to pediatric care, including free registration and consultation at our facility',
         ],
+      },
+      {
+        type: 'image',
+        src: '/images/article5.jpg',
+        alt: 'Medical screening of school children',
+      },
+      {
+        type: 'image',
+        src: '/images/article7.jpg',
+        alt: 'Health professionals with students',
+      },
+      {
+        type: 'image',
+        src: '/images/article8.jpg',
+        alt: 'School health programme team',
       },
       {
         type: 'callout',
