@@ -6,6 +6,7 @@ import { lazy, Suspense } from 'react';
 const HomePage = lazy(() => import('./pages/HomePage'));
 const StorePage = lazy(() => import('./pages/StorePage'));
 const HealthEducationPage = lazy(() => import('./pages/HealthEducationPage'));
+const ArticlesPage = lazy(() => import('./pages/ArticlesPage'));
 const PatientRegistrationPage = lazy(() => import('./pages/PatientRegistrationPage'));
 const ArticlePage = lazy(() => import('./pages/ArticlePage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
@@ -52,6 +53,8 @@ export default function App() {
               <Route path="/training-capacity-building" element={<TrainingCapacityBuildingPage />} />
               <Route path="/mace-conference" element={<MACEConferencePage />} />
               <Route path="/store" element={<StorePage />} />
+              <Route path="/articles" element={<ArticlesPage />} />
+              <Route path="/articles/:slug" element={<ArticlePage />} />
               <Route path="/med-vical-health" element={<HealthEducationPage />} />
               <Route path="/med-vical-health/:slug" element={<ArticlePage />} />
               <Route path="/health-education" element={<Navigate to="/med-vical-health" replace />} />

@@ -5,7 +5,6 @@ import { useState, useRef, useEffect } from 'react';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/#about' },
   {
     label: 'Our Services',
     href: '/services',
@@ -16,12 +15,13 @@ const navLinks = [
       { label: 'Med-Vical Health (MHS)', href: '/med-vical-health' },
     ],
   },
+  { label: 'Articles', href: '/articles' },
   { label: 'MACE Conference', href: '/mace-conference' },
   { label: 'Upcoming Events', href: '/upcoming-events' },
-  { label: 'Archive', href: '/archive' },
   { label: 'Testimonials', href: '/testimonials' },
   { label: 'Contact Us', href: '/#contact' },
   { label: 'Training & Capacity Building', href: '/training-capacity-building' },
+  { label: 'Archive', href: '/archive' },
 ];
 
 export function Header() {

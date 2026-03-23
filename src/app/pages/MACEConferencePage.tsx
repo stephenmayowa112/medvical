@@ -48,28 +48,11 @@ export default function MACEConferencePage() {
               Conference & Exhibition
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              MEDACCESS Conference & Exhibition
+              MedAccess Conference & Exhibition
             </h1>
             <p className="text-xl text-blue-100 mb-2">
               (MACE Conference)
             </p>
-            <motion.div
-              className="max-w-3xl mx-auto mt-6"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="flex items-start gap-3 bg-white/10 backdrop-blur-md rounded-xl p-6 text-left">
-                <Target className="w-6 h-6 text-yellow-300 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Value Proposition</h3>
-                  <p className="text-blue-100">
-                    To promote sustainable access to quality and affordable healthcare products and technology 
-                    for improved health delivery. This is in line with the mission of Med-Vical International.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
