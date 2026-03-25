@@ -88,6 +88,7 @@ export function Contact() {
                       <h3 className="font-medium mb-1">Phone</h3>
                       <p className="text-sm text-gray-600">MMC: 07086080230 / 07030977820</p>
                       <p className="text-sm text-gray-600">Pharmacy: 07030943250 / 09018911685</p>
+                      <p className="text-sm text-gray-600">Outreach: 07030977820</p>
                       <p className="text-sm text-gray-600">Emergency: 24/7</p>
                     </div>
                   </div>

@@ -159,8 +159,8 @@ export const MHS_DIVISION: DivisionInfo = {
     'Preventive Care Programs',
     'Corporate Wellness',
   ],
-  contactPhone: '+2349018911685',
-  whatsappNumber: '2349018911685',
+  contactPhone: '+2347030977820',
+  whatsappNumber: '2347030977820',
 };
 
 /**
