@@ -5,11 +5,12 @@ import { Badge } from '../components/ui/badge';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { motion } from 'motion/react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 import { sendFormEmail } from '../../config/email';
 
 export default function PharmacySuppliesPage() {
+  const navigate = useNavigate();
   const [showRetailForm, setShowRetailForm] = useState(false);
   const [showWholesaleForm, setShowWholesaleForm] = useState(false);
   const [retailName, setRetailName] = useState('');
@@ -38,10 +39,11 @@ export default function PharmacySuppliesPage() {
     });
 
     if (success) {
-      alert('Thank you! Your request has been submitted. We will contact you shortly.');
-      setRetailName('');
-      setRetailPhone('');
-      setShowRetailForm(false);
+      alert('Thank you! Your information has been submitted. Redirecting you to our store...');
+      // Redirect to store page
+      setTimeout(() => {
+        navigate('/store?type=retail');
+      }, 1500);
     } else {
       alert('There was an error submitting your request. Please try again or call us directly at 09018911685.');
     }
@@ -62,10 +64,11 @@ export default function PharmacySuppliesPage() {
     });
 
     if (success) {
-      alert('Thank you! Your request has been submitted. We will contact you shortly.');
-      setFacilityName('');
-      setProcurementOfficer('');
-      setShowWholesaleForm(false);
+      alert('Thank you! Your information has been submitted. Redirecting you to our store...');
+      // Redirect to store page
+      setTimeout(() => {
+        navigate('/store?type=wholesale');
+      }, 1500);
     } else {
       alert('There was an error submitting your request. Please try again or call us directly at 07030943250.');
     }

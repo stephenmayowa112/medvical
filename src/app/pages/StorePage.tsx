@@ -3,6 +3,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
+import { Label } from '../components/ui/label';
 import {
   Dialog,
   DialogContent,
@@ -11,7 +12,9 @@ import {
   DialogDescription,
 } from '../components/ui/dialog';
 import { motion, AnimatePresence } from 'motion/react';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router';
+import { products, productCategories } from '../data/products';
 
 const gridContainer = {
   hidden: { opacity: 0 },
@@ -24,7 +27,9 @@ const gridItem = {
 
 interface Product {
   id: number;
+  itemCode: string;
   name: string;
+  sizes: string[];
   category: string;
   price: number;
   image: string;
@@ -34,104 +39,33 @@ interface Product {
 
 interface CartItem extends Product {
   quantity: number;
+  selectedSize: string;
 }
-
-const categories = [
-  'All',
-  'Pain Relief',
-  'Vitamins & Supplements',
-  'First Aid',
-  'Personal Care',
-  'Prescription Supplies',
-  'Baby Care',
-];
-
-// Placeholder products — replace with real inventory
-const products: Product[] = [
-  {
-    id: 1,
-    name: 'Paracetamol 500mg',
-    category: 'Pain Relief',
-    price: 500,
-    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    description: 'Effective pain and fever relief. Pack of 12 tablets.',
-    inStock: true,
-  },
-  {
-    id: 2,
-    name: 'Vitamin C 1000mg',
-    category: 'Vitamins & Supplements',
-    price: 2500,
-    image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    description: 'Boost your immune system with daily Vitamin C supplementation.',
-    inStock: true,
-  },
-  {
-    id: 3,
-    name: 'First Aid Kit',
-    category: 'First Aid',
-    price: 5000,
-    image: 'https://images.unsplash.com/photo-1603398938378-e54eab446dde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    description: 'Complete first aid kit for home and travel use.',
-    inStock: true,
-  },
-  {
-    id: 4,
-    name: 'Hand Sanitizer 500ml',
-    category: 'Personal Care',
-    price: 1500,
-    image: 'https://images.unsplash.com/photo-1584483766114-2cea6facdf57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    description: 'Antibacterial hand sanitizer with 70% alcohol.',
-    inStock: true,
-  },
-  {
-    id: 5,
-    name: 'Multivitamin Tablets',
-    category: 'Vitamins & Supplements',
-    price: 3500,
-    image: 'https://images.unsplash.com/photo-1550572017-edd951b55104?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    description: 'Daily multivitamin for overall wellness. 30 tablets per pack.',
-    inStock: true,
-  },
-  {
-    id: 6,
-    name: 'Ibuprofen 400mg',
-    category: 'Pain Relief',
-    price: 800,
-    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    description: 'Anti-inflammatory pain relief tablets. Pack of 20.',
-    inStock: true,
-  },
-  {
-    id: 7,
-    name: 'Baby Diapers (Pack of 30)',
-    category: 'Baby Care',
-    price: 4500,
-    image: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    description: 'Soft, absorbent diapers for babies. Size M.',
-    inStock: true,
-  },
-  {
-    id: 8,
-    name: 'Digital Thermometer',
-    category: 'First Aid',
-    price: 3000,
-    image: 'https://images.unsplash.com/photo-1584483766114-2cea6facdf57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-    description: 'Fast and accurate digital thermometer for home use.',
-    inStock: true,
-  },
-];
 
 function formatNaira(amount: number) {
   return `₦${amount.toLocaleString()}`;
 }
 
 export default function StorePage() {
+  const [searchParams] = useSearchParams();
+  const orderType = searchParams.get('type'); // 'retail' or 'wholesale'
+  
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [cart, setCart] = useState<CartItem[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedSize, setSelectedSize] = useState<string>('');
+
+  useEffect(() => {
+    if (orderType) {
+      // Show a welcome message based on order type
+      const message = orderType === 'retail' 
+        ? 'Welcome! Browse our products for your retail order.'
+        : 'Welcome! Browse our products for your wholesale order.';
+      console.log(message);
+    }
+  }, [orderType]);
 
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
@@ -142,30 +76,34 @@ export default function StorePage() {
     });
   }, [searchQuery, selectedCategory]);
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Product, size: string) => {
     setCart((prev) => {
-      const exists = prev.find((item) => item.id === product.id);
+      const exists = prev.find((item) => item.id === product.id && item.selectedSize === size);
       if (exists) {
         return prev.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === product.id && item.selectedSize === size 
+            ? { ...item, quantity: item.quantity + 1 } 
+            : item
         );
       }
-      return [...prev, { ...product, quantity: 1 }];
+      return [...prev, { ...product, quantity: 1, selectedSize: size }];
     });
   };
 
-  const updateQuantity = (id: number, delta: number) => {
+  const updateQuantity = (id: number, size: string, delta: number) => {
     setCart((prev) =>
       prev
         .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity + delta } : item
+          item.id === id && item.selectedSize === size 
+            ? { ...item, quantity: item.quantity + delta } 
+            : item
         )
         .filter((item) => item.quantity > 0)
     );
   };
 
-  const removeFromCart = (id: number) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
+  const removeFromCart = (id: number, size: string) => {
+    setCart((prev) => prev.filter((item) => !(item.id === id && item.selectedSize === size)));
   };
 
   const cartTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -174,9 +112,10 @@ export default function StorePage() {
   const handleCheckout = () => {
     if (cart.length === 0) return;
     const items = cart
-      .map((item) => `• ${item.name} x${item.quantity} — ${formatNaira(item.price * item.quantity)}`)
+      .map((item) => `• ${item.name} (Size: ${item.selectedSize}) x${item.quantity} — ${formatNaira(item.price * item.quantity)}`)
       .join('\n');
-    const message = `Hello Med-Vical International!\n\nI'd like to order the following items:\n\n${items}\n\n*Total: ${formatNaira(cartTotal)}*\n\nPlease confirm availability and delivery details. Thank you!`;
+    const orderTypeText = orderType === 'wholesale' ? 'Wholesale' : 'Retail';
+    const message = `Hello Med-Vical International!\n\nI'd like to place a ${orderTypeText} order for the following items:\n\n${items}\n\n*Total: ${formatNaira(cartTotal)}*\n\nPlease confirm availability and delivery details. Thank you!`;
     const phone = '2349018911685';
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
   };
@@ -207,8 +146,9 @@ export default function StorePage() {
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            Purchase genuine pharmaceutical products, healthcare supplies, and personal care items
-            at affordable prices. Delivered from our trusted pharmacy in Benin City.
+            {orderType === 'wholesale' 
+              ? 'Browse our comprehensive range of physiotherapy and orthopaedic products for wholesale orders.'
+              : 'Purchase genuine physiotherapy and orthopaedic products at affordable prices. Delivered from our trusted facility in Benin City.'}
           </motion.p>
         </div>
       </section>
@@ -230,7 +170,7 @@ export default function StorePage() {
             </div>
             <div className="flex items-center gap-2 flex-wrap">
               <Filter className="w-4 h-4 text-gray-500" />
-              {categories.map((cat) => (
+              {productCategories.map((cat) => (
                 <motion.div key={cat} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
                   <Badge
                     variant={selectedCategory === cat ? 'default' : 'outline'}
@@ -321,10 +261,10 @@ export default function StorePage() {
                                   className="bg-blue-600 hover:bg-blue-700 text-white"
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    addToCart(product);
+                                    setSelectedProduct(product);
                                   }}
                                 >
-                                  Add to Cart
+                                  View Details
                                 </Button>
                               </motion.div>
                             </div>
@@ -372,12 +312,12 @@ export default function StorePage() {
                               <img src={item.image} alt={item.name} className="w-12 h-12 rounded-lg object-cover" />
                               <div className="flex-1 min-w-0">
                                 <p className="text-xs font-medium truncate">{item.name}</p>
-                                <p className="text-xs text-gray-500">{formatNaira(item.price)}</p>
+                                <p className="text-xs text-gray-500">{formatNaira(item.price)} • Size: {item.selectedSize}</p>
                                 <div className="flex items-center gap-2 mt-1">
                                   <button
                                     aria-label="Decrease quantity"
                                     className="w-5 h-5 rounded bg-gray-200 flex items-center justify-center hover:bg-gray-300"
-                                    onClick={() => updateQuantity(item.id, -1)}
+                                    onClick={() => updateQuantity(item.id, item.selectedSize, -1)}
                                   >
                                     <Minus className="w-3 h-3" />
                                   </button>
@@ -385,14 +325,14 @@ export default function StorePage() {
                                   <button
                                     aria-label="Increase quantity"
                                     className="w-5 h-5 rounded bg-gray-200 flex items-center justify-center hover:bg-gray-300"
-                                    onClick={() => updateQuantity(item.id, 1)}
+                                    onClick={() => updateQuantity(item.id, item.selectedSize, 1)}
                                   >
                                     <Plus className="w-3 h-3" />
                                   </button>
                                   <button
                                     aria-label="Remove item"
                                     className="ml-auto text-red-400 hover:text-red-600"
-                                    onClick={() => removeFromCart(item.id)}
+                                    onClick={() => removeFromCart(item.id, item.selectedSize)}
                                   >
                                     <X className="w-3 h-3" />
                                   </button>
@@ -463,12 +403,12 @@ export default function StorePage() {
                         <img src={item.image} alt={item.name} className="w-12 h-12 rounded-lg object-cover" />
                         <div className="flex-1 min-w-0">
                           <p className="text-xs font-medium truncate">{item.name}</p>
-                          <p className="text-xs text-gray-500">{formatNaira(item.price)}</p>
+                          <p className="text-xs text-gray-500">{formatNaira(item.price)} • Size: {item.selectedSize}</p>
                           <div className="flex items-center gap-2 mt-1">
                             <button
                               aria-label="Decrease quantity"
                               className="w-5 h-5 rounded bg-gray-200 flex items-center justify-center"
-                              onClick={() => updateQuantity(item.id, -1)}
+                              onClick={() => updateQuantity(item.id, item.selectedSize, -1)}
                             >
                               <Minus className="w-3 h-3" />
                             </button>
@@ -476,14 +416,14 @@ export default function StorePage() {
                             <button
                               aria-label="Increase quantity"
                               className="w-5 h-5 rounded bg-gray-200 flex items-center justify-center"
-                              onClick={() => updateQuantity(item.id, 1)}
+                              onClick={() => updateQuantity(item.id, item.selectedSize, 1)}
                             >
                               <Plus className="w-3 h-3" />
                             </button>
                             <button
                               aria-label="Remove item"
                               className="ml-auto text-red-400 hover:text-red-600"
-                              onClick={() => removeFromCart(item.id)}
+                              onClick={() => removeFromCart(item.id, item.selectedSize)}
                             >
                               <X className="w-3 h-3" />
                             </button>
@@ -584,7 +524,12 @@ export default function StorePage() {
       </section>
 
       {/* Product Detail Modal */}
-      <Dialog open={!!selectedProduct} onOpenChange={(open) => { if (!open) setSelectedProduct(null); }}>
+      <Dialog open={!!selectedProduct} onOpenChange={(open) => { 
+        if (!open) {
+          setSelectedProduct(null);
+          setSelectedSize('');
+        }
+      }}>
         <DialogContent className="sm:max-w-lg p-0 overflow-hidden rounded-2xl">
           {selectedProduct && (
             <>
@@ -614,6 +559,9 @@ export default function StorePage() {
                     <Badge variant="outline" className="text-xs">
                       {selectedProduct.category}
                     </Badge>
+                    <Badge variant="outline" className="text-xs">
+                      Code: {selectedProduct.itemCode}
+                    </Badge>
                   </div>
                   <DialogTitle className="text-xl font-bold text-[#0d3b66]">
                     {selectedProduct.name}
@@ -623,9 +571,31 @@ export default function StorePage() {
                   </DialogDescription>
                 </DialogHeader>
 
-                <div className="flex items-center gap-2 mb-5 text-sm text-gray-500">
+                <div className="flex items-center gap-2 mb-4 text-sm text-gray-500">
                   <Package className="w-4 h-4" />
                   <span>{selectedProduct.inStock ? 'Available for delivery' : 'Currently unavailable'}</span>
+                </div>
+
+                {/* Size Selection */}
+                <div className="mb-5">
+                  <Label className="text-sm font-medium mb-2 block">Select Size:</Label>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProduct.sizes.map((size) => (
+                      <motion.button
+                        key={size}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`px-4 py-2 rounded-lg border-2 text-sm font-medium transition-all ${
+                          selectedSize === size
+                            ? 'border-blue-600 bg-blue-600 text-white'
+                            : 'border-gray-300 bg-white text-gray-700 hover:border-blue-400'
+                        }`}
+                        onClick={() => setSelectedSize(size)}
+                      >
+                        {size}
+                      </motion.button>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-between gap-4">
@@ -635,16 +605,22 @@ export default function StorePage() {
                   <Button
                     size="lg"
                     className="bg-blue-600 hover:bg-blue-700 text-white px-8"
-                    disabled={!selectedProduct.inStock}
+                    disabled={!selectedProduct.inStock || !selectedSize}
                     onClick={() => {
-                      addToCart(selectedProduct);
-                      setSelectedProduct(null);
+                      if (selectedSize) {
+                        addToCart(selectedProduct, selectedSize);
+                        setSelectedProduct(null);
+                        setSelectedSize('');
+                      }
                     }}
                   >
                     <ShoppingCart className="w-4 h-4 mr-2" />
                     Add to Cart
                   </Button>
                 </div>
+                {!selectedSize && selectedProduct.inStock && (
+                  <p className="text-xs text-red-500 text-center mt-2">Please select a size</p>
+                )}
               </div>
             </>
           )}
