@@ -112,10 +112,10 @@ export default function StorePage() {
   const handleCheckout = () => {
     if (cart.length === 0) return;
     const items = cart
-      .map((item) => `• ${item.name} (Size: ${item.selectedSize}) x${item.quantity} — ${formatNaira(item.price * item.quantity)}`)
+      .map((item) => `• ${item.name} (Size: ${item.selectedSize}) - Quantity: ${item.quantity}`)
       .join('\n');
     const orderTypeText = orderType === 'wholesale' ? 'Wholesale' : 'Retail';
-    const message = `Hello Med-Vical International!\n\nI'd like to place a ${orderTypeText} order for the following items:\n\n${items}\n\n*Total: ${formatNaira(cartTotal)}*\n\nPlease confirm availability and delivery details. Thank you!`;
+    const message = `Hello Med-Vical International!\n\nI'd like to place a ${orderTypeText} order for the following items:\n\n${items}\n\nPlease confirm availability and pricing. Thank you!`;
     const phone = '2349018911685';
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
   };
@@ -251,10 +251,7 @@ export default function StorePage() {
                             </Badge>
                             <h3 className="font-semibold text-sm mb-1">{product.name}</h3>
                             <p className="text-xs text-gray-500 mb-3 line-clamp-2">{product.description}</p>
-                            <div className="flex items-center justify-between">
-                              <span className="text-lg font-bold text-[#0d3b66]">
-                                {formatNaira(product.price)}
-                              </span>
+                            <div className="flex items-center justify-end">
                               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <Button
                                   size="sm"
@@ -312,7 +309,7 @@ export default function StorePage() {
                               <img src={item.image} alt={item.name} className="w-12 h-12 rounded-lg object-cover" />
                               <div className="flex-1 min-w-0">
                                 <p className="text-xs font-medium truncate">{item.name}</p>
-                                <p className="text-xs text-gray-500">{formatNaira(item.price)} • Size: {item.selectedSize}</p>
+                                <p className="text-xs text-gray-500">Size: {item.selectedSize}</p>
                                 <div className="flex items-center gap-2 mt-1">
                                   <button
                                     aria-label="Decrease quantity"
@@ -343,17 +340,13 @@ export default function StorePage() {
                         </AnimatePresence>
                       </div>
                       <div className="border-t pt-3">
-                        <div className="flex justify-between mb-3">
-                          <span className="font-medium text-sm">Total:</span>
-                          <span className="font-bold text-[#0d3b66]">{formatNaira(cartTotal)}</span>
-                        </div>
                         <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                           <Button className="w-full bg-green-600 hover:bg-green-700" onClick={handleCheckout}>
                             Checkout via WhatsApp
                           </Button>
                         </motion.div>
                         <p className="text-[10px] text-gray-400 text-center mt-2">
-                          Orders will be confirmed via WhatsApp or phone call.
+                          Prices will be confirmed via WhatsApp or phone call.
                         </p>
                       </div>
                     </>
@@ -403,7 +396,7 @@ export default function StorePage() {
                         <img src={item.image} alt={item.name} className="w-12 h-12 rounded-lg object-cover" />
                         <div className="flex-1 min-w-0">
                           <p className="text-xs font-medium truncate">{item.name}</p>
-                          <p className="text-xs text-gray-500">{formatNaira(item.price)} • Size: {item.selectedSize}</p>
+                          <p className="text-xs text-gray-500">Size: {item.selectedSize}</p>
                           <div className="flex items-center gap-2 mt-1">
                             <button
                               aria-label="Decrease quantity"
@@ -433,17 +426,13 @@ export default function StorePage() {
                     ))}
                   </div>
                   <div className="border-t pt-3">
-                    <div className="flex justify-between mb-3">
-                      <span className="font-medium">Total:</span>
-                      <span className="font-bold text-[#0d3b66] text-lg">{formatNaira(cartTotal)}</span>
-                    </div>
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                       <Button className="w-full bg-green-600 hover:bg-green-700" onClick={handleCheckout}>
                         Checkout via WhatsApp
                       </Button>
                     </motion.div>
                     <p className="text-[10px] text-gray-400 text-center mt-2">
-                      Orders will be confirmed via WhatsApp or phone call.
+                      Prices will be confirmed via WhatsApp or phone call.
                     </p>
                   </div>
                 </>
@@ -598,13 +587,10 @@ export default function StorePage() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-2xl font-bold text-[#0d3b66]">
-                    {formatNaira(selectedProduct.price)}
-                  </span>
+                <div className="flex items-center justify-center">
                   <Button
                     size="lg"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 w-full"
                     disabled={!selectedProduct.inStock || !selectedSize}
                     onClick={() => {
                       if (selectedSize) {
@@ -621,6 +607,9 @@ export default function StorePage() {
                 {!selectedSize && selectedProduct.inStock && (
                   <p className="text-xs text-red-500 text-center mt-2">Please select a size</p>
                 )}
+                <p className="text-xs text-gray-500 text-center mt-2">
+                  Price will be confirmed via WhatsApp
+                </p>
               </div>
             </>
           )}
