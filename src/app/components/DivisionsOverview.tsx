@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Building2, Package, Heart } from 'lucide-react';
+import { ArrowRight, Building2, ShoppingCart, Gift } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
@@ -8,8 +8,8 @@ import { ALL_DIVISIONS, type DivisionInfo } from '../data/content';
 
 const divisionIcons: Record<string, React.ElementType> = {
   hospital: Building2,
-  pharmacy: Package,
-  heart: Heart,
+  pharmacy: ShoppingCart,
+  heart: Gift,
 };
 
 const divisionLinks: Record<string, string> = {

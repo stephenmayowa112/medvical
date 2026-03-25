@@ -1,4 +1,4 @@
-import { Baby, FlaskConical, Ambulance, Heart } from 'lucide-react';
+import { Baby, FlaskConical, Ambulance, ShoppingCart, Heart } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { motion } from 'motion/react';

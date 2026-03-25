@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Stethoscope, Pill, Users, ArrowRight } from 'lucide-react';
+import { Stethoscope, ShoppingCart, Gift, ArrowRight, Ambulance } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -27,7 +27,7 @@ const FEATURED_SERVICES: ServiceItem[] = [
     description: 'Round-the-clock emergency care with a fully equipped ambulance service ready to respond at any time.',
     division: 'MMC',
     divisionColor: 'blue',
-    icon: Stethoscope,
+    icon: Ambulance,
     link: '/services/medical-centre',
   },
   {
@@ -35,32 +35,32 @@ const FEATURED_SERVICES: ServiceItem[] = [
     description: 'Quality pharmaceutical products available for retail customers and wholesale orders for clinics and hospitals.',
     division: 'MPPS',
     divisionColor: 'red',
-    icon: Pill,
-    link: '/services/medical-supplies',
+    icon: ShoppingCart,
+    link: '/services/pharmacy-supplies',
   },
   {
     title: 'Online Ordering via WhatsApp',
     description: 'Convenient WhatsApp ordering for medical supplies and pharmaceutical products with prompt delivery.',
     division: 'MPPS',
     divisionColor: 'red',
-    icon: Pill,
-    link: '/services/medical-supplies',
+    icon: ShoppingCart,
+    link: '/services/pharmacy-supplies',
   },
   {
     title: 'School Health Programme',
     description: 'Comprehensive health education and preventive care initiatives designed to improve student wellness.',
     division: 'MHS',
     divisionColor: 'orange',
-    icon: Users,
-    link: '/services/pharmacy-supplies',
+    icon: Gift,
+    link: '/med-vical-health',
   },
   {
     title: 'Community Outreach',
     description: 'Bringing quality healthcare to underserved communities through outreach programmes and the AccessHealth platform.',
     division: 'MHS',
     divisionColor: 'orange',
-    icon: Users,
-    link: '/services/pharmacy-supplies',
+    icon: Gift,
+    link: '/med-vical-health',
   },
 ];
 
