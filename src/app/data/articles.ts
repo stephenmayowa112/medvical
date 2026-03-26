@@ -25,6 +25,7 @@ export const articleCategories = [
   'All',
   'Paediatrics',
   'School Health',
+  'Health & Wellness',
 ];
 
 export const articles: Article[] = [
@@ -353,6 +354,136 @@ export const articles: Article[] = [
       {
         type: 'address',
         text: 'Med-Vical International\n#44 Boundary Road, GRA\nBenin City',
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: 'Health Check & Screening: Prevention at the Heart of Care',
+    excerpt:
+      'Prevention is at the heart of everything we do at Med-Vical Medical Centre. Through our Health Check & Screening services, we bring structured, professional health assessments directly to the people and organisations we serve.',
+    category: 'Health & Wellness',
+    author: 'Med-Vical Medical Centre',
+    date: '2026-03-26',
+    readTime: '5 min read',
+    image: '/images/blackDoctor.png',
+    slug: 'health-check-screening-prevention',
+    metaTitle: 'Health Check & Screening Services | Med-Vical Medical Centre',
+    metaDescription:
+      'Proactive health screening services for corporate organisations and communities. Early detection of hypertension, diabetes, and other conditions through professional on-site assessments.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Prevention is at the heart of everything we do at Med-Vical Medical Centre. One of the most practical ways we live this out is through our Health Check & Screening services — a programme that brings structured, professional health assessments directly to the people and organisations we serve.',
+      },
+      {
+        type: 'heading',
+        text: 'Reaching People Where They Are',
+      },
+      {
+        type: 'paragraph',
+        text: 'Rather than waiting for individuals to present with symptoms, we take a proactive approach. Through on-site engagements and outreach programmes, our team routinely carries out health screenings across corporate organisations, community groups, and partner institutions. This model ensures that more people — particularly busy working professionals and underserved community members — have access to timely health information without the barriers that often delay care.',
+      },
+      {
+        type: 'heading',
+        text: 'What Our Screenings Cover',
+      },
+      {
+        type: 'paragraph',
+        text: 'Our assessments are designed to be both accessible and clinically meaningful. Depending on the population being served, screenings typically include blood pressure checks, blood glucose testing, BMI evaluation, and other targeted diagnostics relevant to the group\'s health profile. Each screening exercise is tailored to address the specific needs and risk factors of the participants involved.',
+      },
+      {
+        type: 'heading',
+        text: 'Beyond the Numbers',
+      },
+      {
+        type: 'paragraph',
+        text: 'A health screening is only as valuable as what follows it. At Med-Vical, every participant receives personalised feedback on their results — not just a figure on a page, but a clear explanation of what those results mean for their health. Where further evaluation is needed, we provide appropriate referrals for follow-up care, either within our facility or through our established partner network.',
+      },
+      {
+        type: 'heading',
+        text: 'A Commitment to Early Intervention',
+      },
+      {
+        type: 'paragraph',
+        text: 'The impact of early detection cannot be overstated. Conditions such as hypertension, diabetes, and obesity — when identified early — are far more manageable and treatable. Through our screening services, we have helped numerous individuals become aware of health concerns they may not have otherwise known about, empowering them to take informed next steps.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This work reflects Med-Vical\'s broader commitment to preventive healthcare — not just treating illness, but actively supporting the long-term wellbeing of the communities and organisations we partner with.',
+      },
+      {
+        type: 'callout',
+        text: 'Interested in bringing our Health Check & Screening services to your organisation or community group? Contact us to find out how we can work together.',
+      },
+      {
+        type: 'address',
+        text: 'Med-Vical International\n#44 Boundary Road, GRA\nBenin City\nTel: +2349019305059',
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: 'Health & Wellness Education: Empowering Healthier Lives',
+    excerpt:
+      'At Med-Vical Medical Centre, we understand that access to healthcare information is just as important as access to healthcare itself. Health & Wellness Education equips individuals with the knowledge, tools, and confidence to live healthier lives.',
+    category: 'Health & Wellness',
+    author: 'Med-Vical Medical Centre',
+    date: '2026-03-26',
+    readTime: '5 min read',
+    image: '/images/blackDoctor2.png',
+    slug: 'health-wellness-education',
+    metaTitle: 'Health & Wellness Education | Med-Vical Medical Centre',
+    metaDescription:
+      'Interactive health education sessions for corporate wellness, community outreach, and health campaigns. Learn about lifestyle modification, nutrition, stress management, and preventive care.',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'At Med-Vical Medical Centre, we understand that access to healthcare information is just as important as access to healthcare itself. Health & Wellness Education is a core part of our approach to improving long-term health outcomes, equipping individuals with the knowledge, tools, and confidence to live healthier lives.',
+      },
+      {
+        type: 'heading',
+        text: 'Delivering Education Where It Matters',
+      },
+      {
+        type: 'paragraph',
+        text: 'We actively deliver health education sessions across a range of settings, including corporate wellness programmes, community outreaches, and health campaigns. By bringing these sessions directly to workplaces, communities, and partner institutions, we ensure that health education reaches people in familiar, accessible environments rather than remaining confined to clinical settings.',
+      },
+      {
+        type: 'heading',
+        text: 'What We Cover',
+      },
+      {
+        type: 'paragraph',
+        text: 'Our sessions are designed to be practical, relevant, and easy to apply. Topics covered include lifestyle modification, nutrition, stress management, preventive healthcare practices, and the management of common non-communicable diseases. The content is shaped around the specific needs of the group being engaged, ensuring that every session is meaningful and actionable for participants.',
+      },
+      {
+        type: 'heading',
+        text: 'An Interactive, People-Centred Approach',
+      },
+      {
+        type: 'paragraph',
+        text: 'We believe that health education is most effective when it is engaging and participatory. Our team facilitates interactive sessions that go beyond simply sharing information — we create space for questions, discussion, and practical takeaways that participants can apply to their everyday lives. We have facilitated multiple sessions for adult groups across different settings, consistently focusing on ensuring that knowledge is not just received but truly understood.',
+      },
+      {
+        type: 'heading',
+        text: 'Education and Screening: A Holistic Combination',
+      },
+      {
+        type: 'paragraph',
+        text: 'Health & Wellness Education does not stand alone at Med-Vical — it works hand in hand with our Health Check & Screening services to deliver a more complete picture of care. Where screenings help individuals understand their current health status, education empowers them to act on that knowledge. Together, these services reflect our commitment to a holistic approach to health, one that addresses both awareness and action.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Through this integrated model, we continue to support individuals and organisations in building healthier habits, making informed decisions, and taking meaningful steps towards better long-term wellbeing.',
+      },
+      {
+        type: 'callout',
+        text: 'Interested in bringing a Health & Wellness Education session to your organisation or community group? Contact us to find out how we can work together.',
+      },
+      {
+        type: 'address',
+        text: 'Med-Vical International\n#44 Boundary Road, GRA\nBenin City\nTel: +2349019305059',
       },
     ],
   },
