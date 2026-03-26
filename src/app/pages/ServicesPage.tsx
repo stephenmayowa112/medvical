@@ -489,7 +489,7 @@ export default function ServicesPage() {
                 </Button>
               </motion.div>
             </Link>
-            <a href="tel:+2349018911685">
+            <a href="tel:+2349019305059">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                 <Button size="lg" variant="outline" className="!text-yellow-300 border-white hover:bg-white/10 hover:!text-white">
                   <Phone className="w-4 h-4 mr-2" />

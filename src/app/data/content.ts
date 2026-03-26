@@ -136,8 +136,8 @@ export const MPPS_DIVISION: DivisionInfo = {
     'Pharmaceutical Products',
     'Health & Wellness Products',
   ],
-  contactPhone: '+2348087874018',
-  whatsappNumber: '2348087874018',
+  contactPhone: '+2347030943250',
+  whatsappNumber: '2347030943250',
 };
 
 /**
@@ -159,8 +159,8 @@ export const MHS_DIVISION: DivisionInfo = {
     'Preventive Care Programs',
     'Corporate Wellness',
   ],
-  contactPhone: '+2347030977820',
-  whatsappNumber: '2347030977820',
+  contactPhone: '+2349126976533',
+  whatsappNumber: '2349126976533',
 };
 
 /**
@@ -206,7 +206,7 @@ export const LAGOS_OFFICE: OfficeLocation = {
   name: 'Med-Vical International - Lagos (Liaison Office)',
   city: 'Lagos',
   address: '3, Shola Martins, Oko-Oba, Lagos State, Nigeria',
-  phone: '+2348087874018',
+  phone: '+2349019305059',
   email: 'medvicalinternational@yahoo.com',
   hours: {
     weekday: 'Monday - Friday: 8:00 AM - 6:00 PM',

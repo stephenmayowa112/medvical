@@ -34,7 +34,7 @@ export const articles: Article[] = [
     excerpt:
       'When searching for the best paediatric hospitals in Benin, Edo State, parents are not just looking for treatment. They are looking for expertise, advanced technology, and a safe environment for their children.',
     category: 'Paediatrics',
-    author: 'Medvical International Medical Team',
+    author: 'Med-Vical International Medical Team',
     date: '2026-02-26',
     readTime: '7 min read',
     image:
@@ -42,7 +42,7 @@ export const articles: Article[] = [
     slug: 'best-paediatric-hospitals-benin-edo-state',
     metaTitle: 'Best Paediatric Hospitals in Benin, Edo State | Top Children\'s Care',
     metaDescription:
-      'Looking for the best paediatric hospitals in Benin, Edo State? Discover advanced NICU, emergency paediatric care, and expert mother and child healthcare at Medvical International Ltd in Benin City.',
+      'Looking for the best paediatric hospitals in Benin, Edo State? Discover advanced NICU, emergency paediatric care, and expert mother and child healthcare at Med-Vical International in Benin City.',
     content: [
       {
         type: 'paragraph',
@@ -112,11 +112,11 @@ export const articles: Article[] = [
       },
       {
         type: 'heading',
-        text: 'Why Parents Choose Medvical International Ltd',
+        text: 'Why Parents Choose Med-Vical International',
       },
       {
         type: 'paragraph',
-        text: 'Medvical International Ltd is a leading healthcare organization in Nigeria, offering:',
+        text: 'Med-Vical International is a leading healthcare organization in Nigeria, offering:',
       },
       {
         type: 'list',
@@ -129,7 +129,7 @@ export const articles: Article[] = [
       },
       {
         type: 'paragraph',
-        text: 'In addition to clinical excellence, Medvical International also operates one of the most affordable and well-stocked pharmacies in Benin City, offering:',
+        text: 'In addition to clinical excellence, Med-Vical International also operates one of the most affordable and well-stocked pharmacies in Benin City, offering:',
       },
       {
         type: 'list',
@@ -141,11 +141,11 @@ export const articles: Article[] = [
       },
       {
         type: 'callout',
-        text: 'If you are searching for one of the best paediatric hospitals in Benin, Edo State, Medvical International Ltd provides trusted, comprehensive child healthcare services.',
+        text: 'If you are searching for one of the best paediatric hospitals in Benin, Edo State, Med-Vical International provides trusted, comprehensive child healthcare services.',
       },
       {
         type: 'address',
-        text: 'Medvical International Ltd\n42, Boundary Road\nBenin City, Edo State',
+        text: 'Med-Vical International\n42, Boundary Road\nBenin City, Edo State',
       },
       {
         type: 'paragraph',
@@ -254,7 +254,7 @@ export const articles: Article[] = [
       },
       {
         type: 'callout',
-        text: 'For further information/inquiries, including request for partnership and/or sponsorship, contact us at: Email: info@medvical.com; medvicalschoolhealth@medvical.com; Tel/WhatsApp: +234 9126976533/9019305059',
+        text: 'For further information/inquiries, including request for partnership and/or sponsorship, contact us at: Email: info@medvical.com; medvicalschoolhealth@medvical.com; Tel/WhatsApp: +2349126976533',
       },
       {
         type: 'address',

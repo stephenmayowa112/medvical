@@ -478,7 +478,7 @@ export default function ClinicRegistrationPage() {
               {
                 icon: Phone,
                 title: 'Call Us',
-                info: '09018911685',
+                info: '07086080230',
                 sub: 'Mon–Sat: 8am to 5pm',
               },
               {

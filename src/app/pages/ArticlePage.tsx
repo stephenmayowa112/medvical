@@ -328,7 +328,7 @@ export default function ArticlePage() {
                 <CardContent className="p-5">
                   <h3 className="font-semibold text-[#0d3b66] mb-2">Need Paediatric Care?</h3>
                   <p className="text-sm text-gray-600 mb-4">
-                    Medvical International provides trusted, comprehensive child healthcare services in Benin City.
+                    Med-Vical International provides trusted, comprehensive child healthcare services in Benin City.
                   </p>
                   <Link to="/patient-registration" className="block">
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
@@ -337,10 +337,10 @@ export default function ArticlePage() {
                       </Button>
                     </motion.div>
                   </Link>
-                  <a href="tel:+2348147982690" className="block">
+                  <a href="tel:+2347086080230" className="block">
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                       <Button variant="outline" className="w-full" size="sm">
-                        Call: 08147982690
+                        Call: 07086080230
                       </Button>
                     </motion.div>
                   </a>
@@ -414,7 +414,7 @@ export default function ArticlePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Visit Medvical International Ltd in Benin City for advanced paediatric care, NICU services, and trusted healthcare.
+            Visit Med-Vical International in Benin City for advanced paediatric care, NICU services, and trusted healthcare.
           </motion.p>
           <motion.div
             className="flex flex-wrap justify-center gap-4"

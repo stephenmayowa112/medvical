@@ -45,7 +45,7 @@ export default function PharmacySuppliesPage() {
         navigate('/store?type=retail');
       }, 1500);
     } else {
-      alert('There was an error submitting your request. Please try again or call us directly at 09018911685.');
+      alert('There was an error submitting your request. Please try again or call us directly at 07030943250.');
     }
   };
 
@@ -363,11 +363,11 @@ export default function PharmacySuppliesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <a href="tel:+2349018911685">
+            <a href="tel:+2347030943250">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                 <Button size="lg" className="bg-white text-[#0d3b66] hover:bg-gray-100 hover:text-[#0d3b66]">
                   <Phone className="w-4 h-4 mr-2" />
-                  Call Retail: 09018911685
+                  Call Retail: 07030943250
                 </Button>
               </motion.div>
             </a>

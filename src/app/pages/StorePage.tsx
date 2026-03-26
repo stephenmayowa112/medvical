@@ -116,7 +116,7 @@ export default function StorePage() {
       .join('\n');
     const orderTypeText = orderType === 'wholesale' ? 'Wholesale' : 'Retail';
     const message = `Hello Med-Vical International!\n\nI'd like to place a ${orderTypeText} order for the following items:\n\n${items}\n\nPlease confirm availability and pricing. Thank you!`;
-    const phone = '2349018911685';
+    const phone = '2347030943250';
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
@@ -479,7 +479,7 @@ export default function StorePage() {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
               <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                Call: 09018911685
+                Call: 07030943250
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
