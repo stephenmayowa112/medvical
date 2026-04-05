@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { motion } from 'motion/react';
+import { Link } from 'react-router';
 
 export function Hero() {
   return (
@@ -46,15 +47,12 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <a href="https://wa.me/message/RK4MSSMD3MHCG1" target="_blank" rel="noopener noreferrer">
+              <Link to="/services">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
                   Shop Now
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
-              </a>
-              <Button size="lg" variant="outline" className="border-white bg-white/20 backdrop-blur-sm text-white hover:bg-white hover:text-[#0d3b66]" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
-                Learn More
-              </Button>
+              </Link>
               <Button size="lg" variant="outline" className="border-white bg-white/20 backdrop-blur-sm !text-yellow-300 hover:bg-white/10 hover:!text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                 Contact Us
               </Button>
