@@ -15,8 +15,11 @@ export default function PharmacySuppliesPage() {
   const [showWholesaleForm, setShowWholesaleForm] = useState(false);
   const [retailName, setRetailName] = useState('');
   const [retailPhone, setRetailPhone] = useState('');
+  const [retailEmail, setRetailEmail] = useState('');
   const [facilityName, setFacilityName] = useState('');
   const [procurementOfficer, setProcurementOfficer] = useState('');
+  const [wholesaleEmail, setWholesaleEmail] = useState('');
+  const [wholesalePhone, setWholesalePhone] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +37,8 @@ export default function PharmacySuppliesPage() {
       fields: {
         name: retailName,
         phone: retailPhone,
-        message: `New retail pharmacy order request:\n\nCustomer Name: ${retailName}\nPhone Number: ${retailPhone}`,
+        email: retailEmail,
+        message: `New retail pharmacy order request:\n\nCustomer Name: ${retailName}\nPhone Number: ${retailPhone}\nEmail: ${retailEmail}`,
       },
     });
 
@@ -59,7 +63,9 @@ export default function PharmacySuppliesPage() {
       fields: {
         facility_name: facilityName,
         procurement_officer: procurementOfficer,
-        message: `New wholesale medical supplies order request:\n\nFacility Name: ${facilityName}\nProcurement Officer: ${procurementOfficer}`,
+        email: wholesaleEmail,
+        phone: wholesalePhone,
+        message: `New wholesale medical supplies order request:\n\nFacility Name: ${facilityName}\nProcurement Officer: ${procurementOfficer}\nEmail: ${wholesaleEmail}\nPhone Number: ${wholesalePhone}`,
       },
     });
 
@@ -213,6 +219,18 @@ export default function PharmacySuppliesPage() {
                           className="mt-1"
                         />
                       </div>
+                      <div>
+                        <Label htmlFor="retail-email">Email Address</Label>
+                        <Input
+                          id="retail-email"
+                          type="email"
+                          placeholder="Enter your email"
+                          value={retailEmail}
+                          onChange={(e) => setRetailEmail(e.target.value)}
+                          required
+                          className="mt-1"
+                        />
+                      </div>
                       <div className="flex gap-3">
                         <Button type="submit" className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
                           Submit
@@ -253,11 +271,11 @@ export default function PharmacySuppliesPage() {
                       <ul className="space-y-2 text-sm text-gray-700">
                         <li className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                          Medical equipments and devices
+                          Medical equipment, devices and consumables
                         </li>
                         <li className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                          Pharmaceuticals
+                          Pharmaceutical services
                         </li>
                         <li className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
@@ -304,6 +322,30 @@ export default function PharmacySuppliesPage() {
                           placeholder="Enter procurement officer name"
                           value={procurementOfficer}
                           onChange={(e) => setProcurementOfficer(e.target.value)}
+                          required
+                          className="mt-1"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="wholesale-email">Email Address</Label>
+                        <Input
+                          id="wholesale-email"
+                          type="email"
+                          placeholder="Enter email address"
+                          value={wholesaleEmail}
+                          onChange={(e) => setWholesaleEmail(e.target.value)}
+                          required
+                          className="mt-1"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="wholesale-phone">Phone Number</Label>
+                        <Input
+                          id="wholesale-phone"
+                          type="tel"
+                          placeholder="Enter phone number"
+                          value={wholesalePhone}
+                          onChange={(e) => setWholesalePhone(e.target.value)}
                           required
                           className="mt-1"
                         />
