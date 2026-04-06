@@ -1,4 +1,4 @@
-import { DollarSign, MapPin, Users, Zap, ShieldCheck, Clock } from 'lucide-react';
+import { DollarSign, MapPin, Users, Zap, Award, Clock } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export function WhyChooseUs() {
@@ -9,7 +9,7 @@ export function WhyChooseUs() {
       description: 'We put patients and families first in everything we do — from the moment you walk in to long after you leave.',
     },
     {
-      icon: ShieldCheck,
+      icon: Award,
       title: 'NHIA & EDOHIS Accredited',
       description: 'Fully accredited by Nigeria\'s leading health insurance bodies, ensuring quality standards you can trust.',
     },

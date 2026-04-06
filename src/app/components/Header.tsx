@@ -83,20 +83,20 @@ export function Header() {
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-4">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) =>
               link.children ? (
                 <div key={link.label} className="relative" ref={servicesRef}>
                   <button
                     type="button"
-                    className={`text-xs hover:text-blue-600 transition-colors flex items-center gap-1 ${location.pathname.startsWith('/services') || location.pathname.startsWith('/med-vical-health') ? 'text-blue-600 font-medium' : ''
+                    className={`text-sm font-medium hover:text-blue-600 transition-colors flex items-center gap-1 ${location.pathname.startsWith('/services') || location.pathname.startsWith('/med-vical-health') ? 'text-blue-600 font-semibold' : 'text-gray-700'
                       }`}
                     onClick={() => setServicesOpen((prev) => !prev)}
                     aria-expanded={servicesOpen ? 'true' : 'false'}
                     aria-haspopup="true"
                   >
                     {link.label}
-                    <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {servicesOpen && (
                     <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
@@ -120,7 +120,7 @@ export function Header() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs hover:text-blue-600 transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
                 >
                   {link.label}
                 </a>
@@ -128,7 +128,7 @@ export function Header() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-xs hover:text-blue-600 transition-colors"
+                  className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
                   onClick={(e) => {
                     e.preventDefault();
                     handleNavClick(link.href);
@@ -140,7 +140,7 @@ export function Header() {
                 <Link
                   key={link.label}
                   to={link.href}
-                  className={`text-xs hover:text-blue-600 transition-colors ${location.pathname === link.href ? 'text-blue-600 font-medium' : ''
+                  className={`text-sm font-medium hover:text-blue-600 transition-colors ${location.pathname === link.href ? 'text-blue-600 font-semibold' : 'text-gray-700'
                     }`}
                 >
                   {link.label}
