@@ -2,9 +2,20 @@ import { Presentation, Target, CheckCircle2, ArrowRight, Calendar, MapPin, Packa
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Textarea } from '../components/ui/textarea';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '../components/ui/dialog';
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { sendFormEmail } from '../../config/email';
 
 const corePillars = [
   {
@@ -76,11 +87,96 @@ const colorClasses = {
 };
 
 export default function MACEConferencePage() {
+  const [selectedRegistrationType, setSelectedRegistrationType] = useState<'participant' | 'speaker' | 'exhibitor' | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    organization: '',
+    jobTitle: '',
+    message: '',
+    // Speaker specific
+    topicTitle: '',
+    topicDescription: '',
+    // Exhibitor specific
+    companyName: '',
+    productsServices: '',
+    boothSize: '',
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = 'MACE Conference | Med-Vical International';
     return () => { document.title = 'Med-Vical International'; };
   }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const resetForm = () => {
+    setFormData({
+      fullName: '',
+      email: '',
+      phone: '',
+      organization: '',
+      jobTitle: '',
+      message: '',
+      topicTitle: '',
+      topicDescription: '',
+      companyName: '',
+      productsServices: '',
+      boothSize: '',
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    let subject = '';
+    let formType = '';
+    let messageContent = '';
+
+    if (selectedRegistrationType === 'participant') {
+      subject = 'MACE 2026 - Participant Registration';
+      formType = 'MACE Participant Registration';
+      messageContent = `New participant registration for MACE 2026:\n\nFull Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nOrganization: ${formData.organization}\nJob Title: ${formData.jobTitle}\n\nAdditional Information:\n${formData.message || 'None provided'}`;
+    } else if (selectedRegistrationType === 'speaker') {
+      subject = 'MACE 2026 - Speaker Registration';
+      formType = 'MACE Speaker Registration';
+      messageContent = `New speaker registration for MACE 2026:\n\nFull Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nOrganization: ${formData.organization}\nJob Title: ${formData.jobTitle}\n\nProposed Topic:\nTitle: ${formData.topicTitle}\nDescription: ${formData.topicDescription}\n\nAdditional Information:\n${formData.message || 'None provided'}`;
+    } else if (selectedRegistrationType === 'exhibitor') {
+      subject = 'MACE 2026 - Exhibitor Registration';
+      formType = 'MACE Exhibitor Registration';
+      messageContent = `New exhibitor registration for MACE 2026:\n\nFull Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nCompany Name: ${formData.companyName}\nJob Title: ${formData.jobTitle}\n\nProducts/Services: ${formData.productsServices}\nPreferred Booth Size: ${formData.boothSize}\n\nAdditional Information:\n${formData.message || 'None provided'}`;
+    }
+
+    const success = await sendFormEmail({
+      subject,
+      fromName: 'MACE Conference Registration',
+      formType,
+      fields: {
+        full_name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        organization: formData.organization || formData.companyName,
+        job_title: formData.jobTitle,
+        message: messageContent,
+      },
+    });
+
+    setIsSubmitting(false);
+
+    if (success) {
+      alert('Thank you for your registration! Our team will contact you with more details about MACE 2026.');
+      setSelectedRegistrationType(null);
+      resetForm();
+    } else {
+      alert('There was an error submitting your registration. Please try again or contact us directly.');
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -317,12 +413,13 @@ export default function MACEConferencePage() {
                       </div>
                       <h3 className="text-xl font-bold mb-3">{option.title}</h3>
                       <p className="text-gray-600 text-sm mb-4">{option.description}</p>
-                      <Link to="/#contact">
-                        <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                          Register Interest
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                      </Link>
+                      <Button 
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                        onClick={() => setSelectedRegistrationType(option.color === 'blue' ? 'participant' : option.color === 'emerald' ? 'speaker' : 'exhibitor')}
+                      >
+                        Register Now
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -385,6 +482,196 @@ export default function MACEConferencePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Registration Forms Dialog */}
+      <Dialog open={selectedRegistrationType !== null} onOpenChange={(open) => !open && setSelectedRegistrationType(null)}>
+        <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">
+              {selectedRegistrationType === 'participant' && 'Register as a Participant'}
+              {selectedRegistrationType === 'speaker' && 'Register as a Speaker'}
+              {selectedRegistrationType === 'exhibitor' && 'Register as an Exhibitor'}
+            </DialogTitle>
+            <DialogDescription>
+              {selectedRegistrationType === 'participant' && 'Fill in your details to register for MACE 2026 as a participant.'}
+              {selectedRegistrationType === 'speaker' && 'Share your expertise at MACE 2026. Fill in your details and proposed topic.'}
+              {selectedRegistrationType === 'exhibitor' && 'Showcase your products and services at MACE 2026. Complete the form below.'}
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+            {/* Common Fields */}
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="fullName">Full Name <span className="text-red-500">*</span></Label>
+                <Input
+                  id="fullName"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Enter your full name"
+                />
+              </div>
+              <div>
+                <Label htmlFor="email">Email Address <span className="text-red-500">*</span></Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="your.email@example.com"
+                />
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="phone">Phone Number <span className="text-red-500">*</span></Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="+234 XXX XXX XXXX"
+                />
+              </div>
+              <div>
+                <Label htmlFor="jobTitle">Job Title <span className="text-red-500">*</span></Label>
+                <Input
+                  id="jobTitle"
+                  name="jobTitle"
+                  value={formData.jobTitle}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Your position"
+                />
+              </div>
+            </div>
+
+            {/* Conditional Fields */}
+            {selectedRegistrationType === 'exhibitor' ? (
+              <div>
+                <Label htmlFor="companyName">Company Name <span className="text-red-500">*</span></Label>
+                <Input
+                  id="companyName"
+                  name="companyName"
+                  value={formData.companyName}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Your company name"
+                />
+              </div>
+            ) : (
+              <div>
+                <Label htmlFor="organization">Organization</Label>
+                <Input
+                  id="organization"
+                  name="organization"
+                  value={formData.organization}
+                  onChange={handleInputChange}
+                  placeholder="Your organization (optional)"
+                />
+              </div>
+            )}
+
+            {/* Speaker Specific Fields */}
+            {selectedRegistrationType === 'speaker' && (
+              <>
+                <div>
+                  <Label htmlFor="topicTitle">Proposed Topic Title <span className="text-red-500">*</span></Label>
+                  <Input
+                    id="topicTitle"
+                    name="topicTitle"
+                    value={formData.topicTitle}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Title of your presentation"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="topicDescription">Topic Description <span className="text-red-500">*</span></Label>
+                  <Textarea
+                    id="topicDescription"
+                    name="topicDescription"
+                    value={formData.topicDescription}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Brief description of your proposed topic (200-300 words)"
+                    rows={4}
+                    className="resize-none"
+                  />
+                </div>
+              </>
+            )}
+
+            {/* Exhibitor Specific Fields */}
+            {selectedRegistrationType === 'exhibitor' && (
+              <>
+                <div>
+                  <Label htmlFor="productsServices">Products/Services <span className="text-red-500">*</span></Label>
+                  <Textarea
+                    id="productsServices"
+                    name="productsServices"
+                    value={formData.productsServices}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Describe the products or services you wish to exhibit"
+                    rows={3}
+                    className="resize-none"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="boothSize">Preferred Booth Size</Label>
+                  <Input
+                    id="boothSize"
+                    name="boothSize"
+                    value={formData.boothSize}
+                    onChange={handleInputChange}
+                    placeholder="e.g., 3m x 3m, 6m x 3m (optional)"
+                  />
+                </div>
+              </>
+            )}
+
+            {/* Additional Information */}
+            <div>
+              <Label htmlFor="message">Additional Information</Label>
+              <Textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder="Any additional information you'd like to share (optional)"
+                rows={3}
+                className="resize-none"
+              />
+            </div>
+
+            <div className="flex gap-3 pt-4">
+              <Button
+                type="submit"
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit Registration'}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setSelectedRegistrationType(null)}
+                disabled={isSubmitting}
+              >
+                Cancel
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
