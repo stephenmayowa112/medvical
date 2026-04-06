@@ -6,7 +6,7 @@ import { TestimonialCard } from './features/TestimonialCard';
 import { SAMPLE_TESTIMONIALS } from '../data/testimonials';
 
 const APPROVED = SAMPLE_TESTIMONIALS.filter((t) => t.approved);
-const AUTO_PLAY_INTERVAL = 5000;
+const AUTO_PLAY_INTERVAL = 8000;
 
 export function TestimonialsCarousel() {
   const [current, setCurrent] = useState(0);
