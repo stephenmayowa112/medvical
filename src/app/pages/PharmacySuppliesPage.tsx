@@ -180,6 +180,10 @@ export default function PharmacySuppliesPage() {
                         </li>
                         <li className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                          Consumer products
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                           Fast delivery
                         </li>
                       </ul>
