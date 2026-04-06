@@ -184,6 +184,14 @@ export default function PharmacySuppliesPage() {
                         </li>
                         <li className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                          Medical equipment, devices and consumables
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                          Pharmaceutical services
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                           Fast delivery
                         </li>
                       </ul>
