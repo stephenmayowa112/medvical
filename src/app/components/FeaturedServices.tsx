@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Stethoscope, ShoppingCart, Gift, ArrowRight, Ambulance } from 'lucide-react';
+import { Stethoscope, ShoppingCart, ArrowRight, Ambulance, GraduationCap, Heart } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
@@ -51,7 +51,7 @@ const FEATURED_SERVICES: ServiceItem[] = [
     description: 'Comprehensive health education and preventive care initiatives designed to improve student wellness.',
     division: 'MHS',
     divisionColor: 'orange',
-    icon: Gift,
+    icon: GraduationCap,
     link: '/med-vical-health',
   },
   {
@@ -59,7 +59,7 @@ const FEATURED_SERVICES: ServiceItem[] = [
     description: 'Bringing quality healthcare to underserved communities through outreach programmes and the AccessHealth platform.',
     division: 'MHS',
     divisionColor: 'orange',
-    icon: Gift,
+    icon: Heart,
     link: '/med-vical-health',
   },
 ];
