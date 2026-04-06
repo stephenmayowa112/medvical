@@ -1,4 +1,4 @@
-import { BookOpen, Search, Calendar, User, ArrowRight, Clock, CheckCircle2 } from 'lucide-react';
+import { BookOpen, Search, Calendar, User, ArrowRight, Clock, CheckCircle2, GraduationCap, Heart, Briefcase, MessageSquare, Lightbulb, Users, Award } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Badge } from '../components/ui/badge';
@@ -22,30 +22,44 @@ const mhsPrograms = [
   {
     title: 'School Health Programme',
     description: 'Routine screenings, health talks, immunization support, and school wellness planning for learners and staff.',
+    icon: GraduationCap,
+    color: 'from-blue-500 to-blue-600',
   },
   {
     title: 'Community Outreach Initiatives',
     description: 'Mobile outreaches focused on prevention, early detection, and referral support in underserved communities.',
+    icon: Heart,
+    color: 'from-red-500 to-red-600',
   },
   {
     title: 'Health Retainership Services',
     description: 'Structured retainership packages for organizations with periodic checkups, health education, and rapid referral access.',
+    icon: Briefcase,
+    color: 'from-emerald-500 to-emerald-600',
   },
   {
     title: 'AccessHealth Platform',
     description: 'A practical channel for continuous health engagement, appointment guidance, and community health communication.',
+    icon: MessageSquare,
+    color: 'from-purple-500 to-purple-600',
   },
   {
     title: 'Social Innovation',
     description: 'We promote creativity and innovation that address critical social problems in the community.',
+    icon: Lightbulb,
+    color: 'from-orange-500 to-orange-600',
   },
   {
     title: 'Community Engagement',
     description: 'We engage with the community, building sustainable relationships. We identify and address issues that affect their wellbeing.',
+    icon: Users,
+    color: 'from-cyan-500 to-cyan-600',
   },
   {
     title: 'Training and Capacity Building Programmes',
     description: 'We offer curated and hands-on training and capacity building programmes for clinical and non-clinical staff, e.g. training programme on helping babies breathe and essential newborn care.',
+    icon: Award,
+    color: 'from-indigo-500 to-indigo-600',
   },
 ];
 
@@ -190,25 +204,28 @@ export default function HealthEducationPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {mhsPrograms.map((program, index) => (
-              <motion.div
-                key={program.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="border border-blue-100 bg-white hover:shadow-xl transition-all h-full group">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      <BookOpen className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-lg font-semibold mb-3 text-gray-900">{program.title}</h3>
-                    <p className="text-gray-700 leading-relaxed">{program.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            {mhsPrograms.map((program, index) => {
+              const Icon = program.icon;
+              return (
+                <motion.div
+                  key={program.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="border border-blue-100 bg-white hover:shadow-xl transition-all h-full group">
+                    <CardContent className="p-6">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${program.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-3 text-gray-900">{program.title}</h3>
+                      <p className="text-gray-700 leading-relaxed">{program.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
