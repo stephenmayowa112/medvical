@@ -31,8 +31,8 @@ export default function PharmacySuppliesPage() {
     e.preventDefault();
     
     const success = await sendFormEmail({
-      subject: 'New Retail Pharmacy Order - MedVical',
-      fromName: 'MedVical Pharmacy (Retail)',
+      subject: 'New Retail Pharmacy Order - Med-Vical',
+      fromName: 'Med-Vical Pharmacy (Retail)',
       formType: 'Retail - Quick Medical Needs',
       fields: {
         name: retailName,
@@ -57,8 +57,8 @@ export default function PharmacySuppliesPage() {
     e.preventDefault();
     
     const success = await sendFormEmail({
-      subject: 'New Wholesale Medical Supplies Order - MedVical',
-      fromName: 'MedVical Supply (Wholesale)',
+      subject: 'New Wholesale Medical Supplies Order - Med-Vical',
+      fromName: 'Med-Vical Supply (Wholesale)',
       formType: 'Wholesale - Clinics & Government Officials',
       fields: {
         facility_name: facilityName,
