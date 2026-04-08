@@ -88,13 +88,13 @@ const getDivisionInquiryType = (divisionId: DivisionId) => {
 const getDivisionImage = (divisionId: DivisionId) => {
   switch (divisionId) {
     case 'MMC':
-      return 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800';
+      return '/images/averyBlackDoctor.png';
     case 'MPPS':
       return 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800';
     case 'MHS':
       return 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800';
     default:
-      return 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800';
+      return '/images/averyBlackDoctor.png';
   }
 };
 
