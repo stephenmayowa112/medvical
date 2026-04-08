@@ -161,13 +161,13 @@ export default function PharmacySuppliesPage() {
                   <h3 className="text-2xl font-bold mb-2">Retail</h3>
                   <p className="text-blue-100 text-sm">Quick Medical Needs</p>
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col h-full">
                   {!showRetailForm ? (
-                    <div className="space-y-4">
-                      <p className="text-gray-600 text-sm leading-relaxed">
+                    <div className="flex flex-col h-full">
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
                         For individuals and families needing quick access to quality pharmaceutical products and personal healthcare items.
                       </p>
-                      <ul className="space-y-2 text-sm text-gray-700">
+                      <ul className="space-y-2 text-sm text-gray-700 mb-4 flex-grow">
                         <li className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                           Prescription medications
@@ -197,7 +197,7 @@ export default function PharmacySuppliesPage() {
                           Fast delivery
                         </li>
                       </ul>
-                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="mt-auto">
                         <Button 
                           className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                           onClick={() => setShowRetailForm(true)}
@@ -288,13 +288,13 @@ export default function PharmacySuppliesPage() {
                   <h3 className="text-2xl font-bold mb-2">Wholesale</h3>
                   <p className="text-emerald-100 text-sm">Clinics & Government Officials</p>
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col h-full">
                   {!showWholesaleForm ? (
-                    <div className="space-y-4">
-                      <p className="text-gray-600 text-sm leading-relaxed">
+                    <div className="flex flex-col h-full">
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
                         For healthcare facilities, clinics, hospitals, and government institutions requiring bulk medical supplies and equipment.
                       </p>
-                      <ul className="space-y-2 text-sm text-gray-700">
+                      <ul className="space-y-2 text-sm text-gray-700 mb-4 flex-grow">
                         <li className="flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                           Medical equipment, devices and consumables
@@ -316,7 +316,7 @@ export default function PharmacySuppliesPage() {
                           Nationwide delivery
                         </li>
                       </ul>
-                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="mt-auto">
                         <Button 
                           className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
                           onClick={() => setShowWholesaleForm(true)}
