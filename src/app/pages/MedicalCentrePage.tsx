@@ -1,7 +1,8 @@
 import {
   Stethoscope, Baby, FlaskConical, Ambulance, Heart, Brain,
   Activity, Bone, ShieldCheck, GraduationCap, Building2, Phone,
-  ArrowRight, CheckCircle2, Clock, Calendar, MessageCircle
+  ArrowRight, CheckCircle2, Clock, Calendar, MessageCircle, Scan,
+  Radio, HeartPulse, TestTube
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
@@ -91,10 +92,10 @@ const ambulanceServices = {
 };
 
 const diagnosticServices = [
-  'Digital X-Ray',
-  'Ultrasound & Sonography',
-  'ECG & Echocardiography',
-  'Laboratory Services'
+  { name: 'Digital X-Ray', icon: Scan },
+  { name: 'Ultrasound & Sonography', icon: Radio },
+  { name: 'ECG & Echocardiography', icon: HeartPulse },
+  { name: 'Laboratory Services', icon: TestTube }
 ];
 
 const gridContainer = {
@@ -315,22 +316,25 @@ export default function MedicalCentrePage() {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {diagnosticServices.map((service, idx) => (
-              <motion.div
-                key={idx}
-                className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-                whileHover={{ y: -4 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                <div className="text-center">
-                  <Activity className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-                  <h4 className="font-medium">{service}</h4>
-                </div>
-              </motion.div>
-            ))}
+            {diagnosticServices.map((service, idx) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                  whileHover={{ y: -4 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                >
+                  <div className="text-center">
+                    <Icon className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+                    <h4 className="font-medium">{service.name}</h4>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

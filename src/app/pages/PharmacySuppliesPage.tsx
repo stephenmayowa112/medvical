@@ -16,6 +16,7 @@ export default function PharmacySuppliesPage() {
   const [retailName, setRetailName] = useState('');
   const [retailPhone, setRetailPhone] = useState('');
   const [retailEmail, setRetailEmail] = useState('');
+  const [retailProduct, setRetailProduct] = useState('');
   const [facilityName, setFacilityName] = useState('');
   const [procurementOfficer, setProcurementOfficer] = useState('');
   const [wholesaleEmail, setWholesaleEmail] = useState('');
@@ -38,7 +39,8 @@ export default function PharmacySuppliesPage() {
         name: retailName,
         phone: retailPhone,
         email: retailEmail,
-        message: `New retail pharmacy order request:\n\nCustomer Name: ${retailName}\nPhone Number: ${retailPhone}\nEmail: ${retailEmail}`,
+        product_inquiry: retailProduct,
+        message: `New retail pharmacy order request:\n\nCustomer Name: ${retailName}\nPhone Number: ${retailPhone}\nEmail: ${retailEmail}\nProduct Inquiry: ${retailProduct}`,
       },
     });
 
@@ -239,6 +241,18 @@ export default function PharmacySuppliesPage() {
                           placeholder="Enter your email"
                           value={retailEmail}
                           onChange={(e) => setRetailEmail(e.target.value)}
+                          required
+                          className="mt-1"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="retail-product">Product Inquiry</Label>
+                        <Input
+                          id="retail-product"
+                          type="text"
+                          placeholder="Please tell us the product you want to buy"
+                          value={retailProduct}
+                          onChange={(e) => setRetailProduct(e.target.value)}
                           required
                           className="mt-1"
                         />
