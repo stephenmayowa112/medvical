@@ -262,11 +262,11 @@ export default function MACEConferencePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { src: '/images/mace1.jpg', alt: 'Med-Vical delivery truck for healthcare logistics' },
-              { src: '/images/mace2.jpg', alt: 'Medical laboratory equipment and devices' },
-              { src: '/images/mace3.jpg', alt: 'Pharmaceutical products and medications' },
-              { src: '/images/mace4.jpg', alt: 'Medical devices including wheelchair and hospital bed' },
-              { src: '/images/mace5.jpg', alt: 'Neonatal incubator and medical technology' },
+              { src: '/images/Picture1.jpg', alt: 'MedAccess Conference & Exhibition' },
+              { src: '/images/Picture2.jpg', alt: 'Healthcare products and technology' },
+              { src: '/images/Picture3.jpg', alt: 'Medical equipment and devices' },
+              { src: '/images/Picture4.png', alt: 'Healthcare innovation and technology' },
+              { src: '/images/Picture5.png', alt: 'Medical supplies and equipment' },
             ].map((image, index) => (
               <motion.div
                 key={index}
