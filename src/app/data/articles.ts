@@ -163,7 +163,7 @@ export const articles: Article[] = [
     author: 'Med-Vical Medical Centre',
     date: '2025-03-20',
     readTime: '8 min read',
-    image: '/images/blackDoctor.png',
+    image: '/images/article2.jpg',
     slug: 'building-healthier-schools-one-child-at-a-time',
     metaTitle: 'Building Healthier Schools | Med-Vical School Health Programme',
     metaDescription:
@@ -366,7 +366,7 @@ export const articles: Article[] = [
     author: 'Med-Vical Medical Centre',
     date: '2026-03-26',
     readTime: '5 min read',
-    image: '/images/blackDoctor.png',
+    image: '/images/article2.jpg',
     slug: 'health-check-screening-prevention',
     metaTitle: 'Health Check & Screening Services | Med-Vical Medical Centre',
     metaDescription:
@@ -431,7 +431,7 @@ export const articles: Article[] = [
     author: 'Med-Vical Medical Centre',
     date: '2026-03-26',
     readTime: '5 min read',
-    image: '/images/blackDoctor2.png',
+    image: '/images/article2.jpg',
     slug: 'health-wellness-education',
     metaTitle: 'Health & Wellness Education | Med-Vical Medical Centre',
     metaDescription:
@@ -492,3 +492,4 @@ export const articles: Article[] = [
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);
 }
+
